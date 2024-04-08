@@ -4,6 +4,9 @@ import mongoose, { Model } from "mongoose";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User, UserDocument } from "../../schemas/user.schema";
+import { OnEvent } from "@nestjs/event-emitter";
+import { EVENTS } from "src/utils/constants";
+import { OrderCreatedEvent } from "../orders/events";
 
 type UserI = User & { _id: mongoose.Types.ObjectId };
 
@@ -44,7 +47,7 @@ export class UsersService {
     >,
     data: UpdateUserDto
   ): Promise<UserI> {
-    return this.UserModel.findOneAndUpdate(searchParams, data);
+    return this.UserModel.findOneAndUpdate(searchParams, data, { new: true });
   }
 
   async delete(id: string): Promise<UserI> {
@@ -52,5 +55,15 @@ export class UsersService {
       _id: id,
     }).exec();
     return deletedUser;
+  }
+
+  @OnEvent(EVENTS.order_created)
+  async handleOrderCreatedEvent(event: OrderCreatedEvent) {
+    // add order to user's orders list
+    await this.UserModel.findOneAndUpdate(
+      { _id: event.user_id },
+      { $push: { orders: event.order_id } },
+      { new: true }
+    );
   }
 }

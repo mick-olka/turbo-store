@@ -8,6 +8,9 @@ import { Product } from "src/schemas/product.schema";
 import { PaginationQuery, PromisePaginationResT } from "src/utils/interfaces";
 import { getFilterForSearch } from "src/utils/utils";
 import { UserDocument } from "src/schemas/user.schema";
+import { EventEmitter2 } from "@nestjs/event-emitter";
+import { EVENTS } from "src/utils/constants";
+import { OrderCreatedEvent, OrderDeletedEvent } from "./events";
 
 type OrderI = Order & { _id: mongoose.Types.ObjectId };
 
@@ -23,6 +26,7 @@ const populateProducts = {
 @Injectable()
 export class OrdersService {
   constructor(
+    private eventEmitter: EventEmitter2,
     @InjectModel(Order.name)
     private readonly OrderModel: Model<OrderDocument>
   ) {}
@@ -51,9 +55,13 @@ export class OrdersService {
 
   async create(data: CreateOrderDto, userId: string): Promise<OrderI> {
     const order_data = { ...data, date: new Date(), user: userId };
-    const createdItem = await this.OrderModel.create(order_data);
-    // await this.UserModel
-    return createdItem;
+    const createdOrder = await this.OrderModel.create(order_data);
+    const orderCreatedEvent = new OrderCreatedEvent(
+      userId,
+      createdOrder._id.toString()
+    );
+    this.eventEmitter.emit(EVENTS.order_created, orderCreatedEvent);
+    return createdOrder;
   }
 
   async update(id: string, data: UpdateOrderDto): Promise<OrderI> {
@@ -65,11 +73,16 @@ export class OrdersService {
     return updatedItem;
   }
 
-  async delete(id: string): Promise<OrderI> {
-    const deletedItem = await this.OrderModel.findByIdAndRemove({
+  async delete(id: string, userId: string): Promise<OrderI> {
+    const deletedOrder = await this.OrderModel.findByIdAndRemove({
       _id: id,
     }).exec();
-    return deletedItem;
+    const orderDeletedEvent = new OrderDeletedEvent(
+      userId,
+      deletedOrder._id.toString()
+    );
+    this.eventEmitter.emit(EVENTS.order_deleted, orderDeletedEvent);
+    return deletedOrder;
   }
 
   // @OnEvent(EVENTS.product_deleted)

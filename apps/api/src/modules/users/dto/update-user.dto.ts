@@ -31,4 +31,10 @@ export class UpdateUserDto {
   })
   @IsOptional()
   readonly role?: UserRole;
+
+  @ApiProperty({
+    description: "User's orders",
+  })
+  @IsOptional()
+  readonly orders?: string[];
 }

@@ -10,4 +10,5 @@ export enum EVENTS {
   collection_items_updated = "collection.items.updated",
   product_import = "product.import",
   order_created = "order.created",
+  order_deleted = "order.deleted",
 }

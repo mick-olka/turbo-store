@@ -118,7 +118,10 @@ export class OrdersController {
     status: HttpStatus.OK,
     description: "Successfully deleted order.",
   })
-  async delete(@Param("id") id: string): Promise<OrderI> {
-    return this.ordersService.delete(id);
+  async delete(
+    @Req() req: ReqWithUser,
+    @Param("id") id: string
+  ): Promise<OrderI> {
+    return this.ordersService.delete(id, req.user.sub);
   }
 }
