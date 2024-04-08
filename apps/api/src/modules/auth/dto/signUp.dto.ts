@@ -3,16 +3,22 @@ import { ApiProperty } from "@nestjs/swagger";
 import { UserRole } from "src/schemas/user.schema";
 
 export class SignUpDto {
-  @ApiProperty({
-    description: "New email",
-  })
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  first_name: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  last_name: string;
+
+  @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
   email: string;
 
-  @ApiProperty({
-    description: "New password",
-  })
+  @ApiProperty()
   @IsNotEmpty()
   password: string;
 

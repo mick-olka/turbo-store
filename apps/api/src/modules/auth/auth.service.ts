@@ -25,15 +25,14 @@ export class AuthService {
       userRole = UserRole.user;
       // throw new ForbiddenException("Access denied");
     }
-
     const hash = await this.hashData(dto.password);
-
     const newUser = await this.userService.create({
+      first_name: dto.first_name,
+      last_name: dto.last_name,
       email: dto.email,
       hash,
       role: userRole,
     });
-
     const tokens = await this.getTokens(
       String(newUser._id),
       newUser.email,

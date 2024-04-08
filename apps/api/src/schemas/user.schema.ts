@@ -14,6 +14,12 @@ export type ReqWithUser = Request & { user: { sub: string } };
 
 @Schema()
 export class User {
+  @Prop({ type: String, required: true })
+  first_name: string;
+
+  @Prop({ type: String, required: true })
+  last_name: string;
+
   @Prop({ type: Date, default: now() })
   createdAt: string;
 

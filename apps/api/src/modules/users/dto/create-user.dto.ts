@@ -6,6 +6,16 @@ export class CreateUserDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
+  readonly first_name: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  readonly last_name: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   readonly email: string;
 
   @ApiProperty()
