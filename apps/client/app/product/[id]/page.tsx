@@ -1,4 +1,4 @@
-import { getProductById } from "@/app/service";
+import { getProductById } from "@/app/lib/service";
 
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id);

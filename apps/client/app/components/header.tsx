@@ -57,18 +57,20 @@ export const Header = () => {
           <span className="pl-1 text-gray-500 text-md">0</span>
         </a>
 
-        <button
-          type="button"
-          className="hidden md:block w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex justify-center items-center"
-        >
-          <img
-            src="https://avatars.dicebear.com/api/bottts/2.svg"
-            alt="button"
-            width="28"
-            height="28"
-            className="rounded-lg mx-auto"
-          />
-        </button>
+        <Link href={"/profile"}>
+          <button
+            type="button"
+            className="hidden md:block w-10 h-10 rounded-lg bg-gray-100 border border-gray-200 flex justify-center items-center"
+          >
+            <img
+              src="https://avatars.dicebear.com/api/bottts/2.svg"
+              alt="button"
+              width="28"
+              height="28"
+              className="rounded-lg mx-auto"
+            />
+          </button>
+        </Link>
       </div>
     </header>
   );

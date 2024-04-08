@@ -1,6 +1,6 @@
 import { ItemsGrid } from "./components";
+import { getProducts } from "./lib/service";
 import { ProductCard } from "./product/product-card";
-import { getProducts } from "./service";
 
 export default async function Home() {
   const data = await getProducts();

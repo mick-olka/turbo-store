@@ -1,4 +1,4 @@
-import { I_Product, I_ProductsListRes } from "../models";
+import { I_Product, I_ProductsListRes } from "@/app/models";
 
 const url = process.env.API_URL;
 
