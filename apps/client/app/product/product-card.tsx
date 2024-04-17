@@ -3,7 +3,7 @@ import React from "react";
 
 import { CartIcon } from "../components/assets/icons/cart";
 import { StarIcon } from "../components/assets/icons/star";
-import { I_Product } from "../models";
+import { I_Product } from "../lib/models";
 
 export const ProductCard = ({ product }: { product: I_Product }) => {
   return (

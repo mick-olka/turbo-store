@@ -2,26 +2,16 @@
 
 import { FormEvent } from "react";
 
-import { signIn } from "../lib/service";
+import { useSignIn } from "../lib/hooks";
 
 export default function Page() {
-  // sessionStorage is not initialized
-  // const storage = useSession();
+  const { signIn } = useSignIn();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
-    if (email && password) {
-      try {
-        const data = await signIn(email, password);
-        if (data) {
-          sessionStorage.setItem("access_token", data.access_token);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    if (email && password) signIn({ email, password });
   };
   return (
     <div className="min-h-screen w-full bg-gray-100 flex flex-col justify-center sm:py-12">

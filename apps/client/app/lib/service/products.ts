@@ -1,6 +1,6 @@
-import { I_Product, I_ProductsListRes } from "@/app/models";
+import { I_Product, I_ProductsListRes } from "@/app/lib/models";
 
-const url = process.env.API_URL;
+const url = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getProducts(): Promise<I_ProductsListRes> {
   const res = await fetch(url + "/products");

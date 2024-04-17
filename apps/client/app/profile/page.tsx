@@ -1,8 +1,10 @@
 "use client";
 
-import { useAuthGuard } from "../lib/utils/use-access";
+import { useAuthGuard, useGetProfile } from "../lib/hooks";
 
-export default function Profile() {
+export default function ProfilePage() {
   useAuthGuard();
+  const { data } = useGetProfile();
+  console.log(data);
   return <div className="w-full p-4">Profile</div>;
 }
