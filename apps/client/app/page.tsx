@@ -1,4 +1,4 @@
-import { ItemsGrid } from "./components";
+import { ItemsGrid } from "./components/ui/items-grid";
 import { getProducts } from "./lib/service";
 import { ProductCard } from "./product/product-card";
 

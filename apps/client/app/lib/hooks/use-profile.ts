@@ -2,16 +2,17 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
 
+import { I_User } from "../models";
 import { E_AppRoutes } from "../models/app";
 import { fetchWithAuth } from "../utils/fetcher";
 import { useSession } from "./use-session";
 
 export const useGetProfile = () => {
   const storage = useSession();
-  const token = storage.getAccessToken();
+  let token = storage.getAccessToken();
   const router = useRouter();
-  const { data, error, isLoading } = useSWR(token ? ["/users/me", token] : null, ([url, token]) =>
-    fetchWithAuth(url, token),
+  const { data, error, isLoading } = useSWR<I_User>(token ? ["/users/me", token] : null, ([url, token]) =>
+    fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
     if (error || !token) {

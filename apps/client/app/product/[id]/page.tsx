@@ -1,99 +1,46 @@
+import { BreadCrumps } from "@/app/components/ui/breadcrumps";
+import { Carousel } from "@/app/components/ui/carousel";
 import { getProductById } from "@/app/lib/service";
+import Image from "next/image";
+import Link from "next/link";
+
+import { Gallery } from "./gallery";
+
+const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id);
+  const breadcrumps = [{ name: product.name["ua"], link: product.url_name }];
+  // const allPhotos = product.photos.map
+  const photosArr = [];
   return (
     <div className="p-4">
       <div className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center space-x-2 text-gray-400 text-sm">
-            <a href="#" className="hover:underline hover:text-gray-600">
-              Home
-            </a>
-            <span>
-              <svg
-                className="h-5 w-5 leading-none text-gray-300"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-            <a href="#" className="hover:underline hover:text-gray-600">
-              Electronics
-            </a>
-            <span>
-              <svg
-                className="h-5 w-5 leading-none text-gray-300"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </span>
-            <span>Headphones</span>
-          </div>
+          <BreadCrumps items={breadcrumps} />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
           <div className="flex flex-col md:flex-row -mx-4">
-            <div className="md:flex-1 px-4">
-              <div>
-                <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-                  <div className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                    <span className="text-5xl">1</span>
-                  </div>
-
-                  {/* <div
-                    x-show="image === 2"
-                    className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
-                  >
-                    <span className="text-5xl">2</span>
-                  </div>
-
-                  <div
-                    x-show="image === 3"
-                    className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
-                  >
-                    <span className="text-5xl">3</span>
-                  </div>
-
-                  <div
-                    x-show="image === 4"
-                    className="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
-                  >
-                    <span className="text-5xl">4</span>
-                  </div> */}
-                </div>
-
-                <div className="flex -mx-2 mb-4">
-                  <div>
-                    <div className="flex-1 px-2">
-                      <button
-                        // x-on:click="image = i"
-                        // className="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
-                        className="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center"
-                      >
-                        <span className="text-2xl"></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* <div className="max-w-lg max-h-lg">
+              <Carousel autoSlide={true}>
+                {[
+                  ...product.photos[0].path_arr.map(s => (
+                    <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} />
+                  )),
+                ]}
+              </Carousel>
+            </div> */}
+            <Gallery photos={product.photos} />
             <div className="md:flex-1 px-4">
               <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                Lorem ipsum dolor, sit amet consectetur, adipisicing elit.
+                {product.name["ua"]}
               </h2>
               <p className="text-gray-500 text-sm">
                 By{" "}
-                <a href="#" className="text-indigo-600 hover:underline">
+                <Link href="#" className="text-indigo-600 hover:underline">
                   ABC Company
-                </a>
+                </Link>
               </p>
 
               <div className="flex items-center space-x-4 my-4">
@@ -108,11 +55,6 @@ export default async function Product({ params }: { params: { id: string } }) {
                   <p className="text-gray-400 text-sm">Inclusive of all Taxes.</p>
                 </div>
               </div>
-
-              <p className="text-gray-500">
-                Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae exercitationem porro saepe ea harum
-                corrupti vero id laudantium enim, libero blanditiis expedita cupiditate a est.
-              </p>
 
               <div className="flex py-4 space-x-4">
                 <div className="relative">
@@ -145,6 +87,7 @@ export default async function Product({ params }: { params: { id: string } }) {
                   Add to Cart
                 </button>
               </div>
+              <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
             </div>
           </div>
         </div>
