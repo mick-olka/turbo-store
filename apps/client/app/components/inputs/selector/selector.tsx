@@ -4,19 +4,22 @@ interface I_Props {
   list: { name: string; id: string }[];
   value: string | null;
   onChange: (id: string | null) => void;
+  title?: string;
 }
 
-export const Selector = ({ list, value, onChange }: I_Props) => {
+export const Selector = ({ list, value, onChange, title }: I_Props) => {
   const [open, setOpen] = useState(false);
   const onItemClick = (id: string) => {
-    if (value === id) {
-      onChange(null);
-    } else onChange(id);
+    // if (value === id) {
+    //   onChange(null);
+    // } else onChange(id);
+    onChange(id);
     setOpen(false);
   };
   const current = list.find(l => l.id === value);
   return (
     <div className="mt-5 relative inline-block text-left w-56">
+      {title && <h3 className="p-1">{title}</h3>}
       <div className="min-w-full">
         <button
           type="button"

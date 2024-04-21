@@ -48,6 +48,18 @@ export class UsersController {
     return this.usersService.findById(id);
   }
 
+  @Get("me/orders")
+  @HttpCode(HttpStatus.OK)
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: "Successfully fetched my orders.",
+  })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: "Forbidden." })
+  getUserOrders(@Req() req: ReqWithUser): Promise<User> {
+    const id = req.user.sub;
+    return this.usersService.getUserOrders(id);
+  }
+
   @Patch("me")
   @HttpCode(HttpStatus.OK)
   @ApiResponse({

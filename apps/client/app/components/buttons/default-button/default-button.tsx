@@ -9,6 +9,7 @@ export const DefaultButton = forwardRef(({ children, ...props }: I_Props, ref: F
     <button
       type="button"
       className="hidden md:block w-fit p-1 h-10 rounded-lg bg-gray-100 border border-gray-200 flex justify-center items-center"
+      {...props}
     >
       {children}
     </button>

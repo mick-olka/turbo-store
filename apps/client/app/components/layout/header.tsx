@@ -5,6 +5,7 @@ import { E_AppRoutes } from "../../lib/models/app";
 import { PacketIcon } from "../assets/icons/packet";
 import { SearchIcon } from "../assets/icons/search";
 import { DefaultInput } from "../inputs/text-field/default-text-field";
+import { CartBtn } from "./cart-btn";
 
 export const Header = () => {
   return (
@@ -23,14 +24,15 @@ export const Header = () => {
           <DefaultInput type="search" placeholder="Search" />
           <SearchIcon />
         </div>
-
+        {/* 
         <Link
           href={E_AppRoutes.cart}
           className="flex h-10 items-center px-2 rounded-lg border border-gray-200 hover:border-gray-300 focus:outline-none hover:shadow-inner"
         >
           <PacketIcon />
           <span className="pl-1 text-gray-500 text-md">0</span>
-        </Link>
+        </Link> */}
+        <CartBtn />
 
         <Link href={E_AppRoutes.profile}>
           <button

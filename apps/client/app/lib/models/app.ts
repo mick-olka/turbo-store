@@ -4,4 +4,5 @@ export enum E_AppRoutes {
   profile = "/profile",
   login = "/login",
   collection = "/collection",
+  orders = "/orders",
 }

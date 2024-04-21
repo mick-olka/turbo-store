@@ -1,5 +1,6 @@
 import { E_AppRoutes } from "@/app/lib/models/app";
 import Link from "next/link";
+import React from "react";
 
 import { TightArrowRightIcon } from "../../assets/icons/tight-arrow-right";
 
@@ -15,14 +16,14 @@ export const BreadCrumps = ({ items }: I_Props) => {
           Home
         </Link>
         {items.map(i => (
-          <>
+          <React.Fragment key={i.name}>
             <span>
               <TightArrowRightIcon />
             </span>
             <Link href={i.link} className="hover:underline hover:text-gray-600">
               {i.name}
             </Link>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

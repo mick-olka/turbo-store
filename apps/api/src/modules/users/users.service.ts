@@ -1,14 +1,25 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import mongoose, { Model } from "mongoose";
+import mongoose, { Model, PopulateOptions } from "mongoose";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { User, UserDocument } from "../../schemas/user.schema";
 import { OnEvent } from "@nestjs/event-emitter";
 import { EVENTS } from "src/utils/constants";
 import { OrderCreatedEvent } from "../orders/events";
+import { Order } from "src/schemas/order.schema";
 
 type UserI = User & { _id: mongoose.Types.ObjectId };
+
+const populateOrders: PopulateOptions = {
+  path: "orders",
+  populate: {
+    // path: "orders",
+    path: "order",
+    model: Order.name,
+    select: "_id name cart",
+  },
+};
 
 @Injectable()
 export class UsersService {
@@ -28,6 +39,15 @@ export class UsersService {
 
   async findById(id: string): Promise<UserI> {
     return this.UserModel.findOne({ _id: id }).exec();
+  }
+
+  async getUserOrders(id: string): Promise<UserI> {
+    return (
+      this.UserModel.findOne({ _id: id })
+        // .select("_id")
+        .populate("orders")
+        .exec()
+    );
   }
 
   async findOne(params: Partial<User>): Promise<UserI> {
