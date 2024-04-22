@@ -1,8 +1,7 @@
-import { BreadCrumps } from "@/app/components/ui/breadcrumps";
-import { ItemsGrid } from "@/app/components/ui/items-grid";
-import { E_AppRoutes } from "@/app/lib/models/app";
-import { getCollectionById } from "@/app/lib/service";
 import { ProductCard } from "@/app/product/product-card";
+import { BreadCrumps, ItemsGrid } from "@/app/shared//components/ui";
+import { E_AppRoutes, I_Product } from "@/app/shared/models";
+import { getCollectionById } from "@/app/shared/service";
 
 export default async function Collection({ params }: { params: { url: string } }) {
   const collection = await getCollectionById(params.url);

@@ -1,7 +1,6 @@
+import { DefaultInput } from "@/app/shared/components/inputs/text-field/default-text-field";
+import { useCart } from "@/app/shared/hooks";
 import { useEffect, useState } from "react";
-
-import { DefaultInput } from "../components/inputs/text-field/default-text-field";
-import { useCart } from "../lib/hooks/use-cart";
 
 export const CartForm = () => {
   const cart = useCart();

@@ -1,8 +1,8 @@
 "use client";
 
-import { Selector } from "@/app/components/inputs/selector";
-import { Carousel } from "@/app/components/ui/carousel";
-import { I_PhotosBlock } from "@/app/lib/models";
+import { Selector } from "@/app/shared/components/inputs/selector";
+import { Carousel } from "@/app/shared/components/ui";
+import { I_PhotosBlock } from "@/app/shared/models";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 

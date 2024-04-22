@@ -1,12 +1,10 @@
 "use client";
 
+import { SearchIcon } from "@/app/shared/assets/icons/search";
+import { useGetOrders } from "@/app/shared/hooks";
+import { E_AppRoutes, I_Order } from "@/app/shared/models";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-import { SearchIcon } from "../components/assets/icons/search";
-import { useGetOrders, useGetProfile } from "../lib/hooks";
-import { I_Order } from "../lib/models";
-import { E_AppRoutes } from "../lib/models/app";
 
 export default function MyOrdersPage() {
   const [orders, setOrders] = useState<I_Order[]>([]);

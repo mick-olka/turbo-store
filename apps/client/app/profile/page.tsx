@@ -1,10 +1,9 @@
 "use client";
 
+import { Button } from "@/app/shared/components/button";
+import { useAuthGuard, useGetProfile } from "@/app/shared/hooks";
+import { E_AppRoutes } from "@/app/shared/models";
 import Link from "next/link";
-
-import { DefaultButton } from "../components/buttons/default-button";
-import { useAuthGuard, useGetProfile } from "../lib/hooks";
-import { E_AppRoutes } from "../lib/models/app";
 
 export default function ProfilePage() {
   useAuthGuard();
@@ -20,6 +19,7 @@ export default function ProfilePage() {
             <p className="text-muted-foreground">{data.email}</p>
           </div>
           <div className="shrink-0 bg-border h-[1px] w-full"></div>
+
           <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
             <div className="flex-1 lg:max-w-2xl">
               <h2 className="text-lg font-bold tracking-tight">Account</h2>
@@ -34,8 +34,22 @@ export default function ProfilePage() {
               {/* <h2 className="text-lg font-bold tracking-tight">My Orders</h2> */}
               <div className="text-sm text-muted-foreground">
                 <Link href={E_AppRoutes.orders}>
-                  <DefaultButton>My Orders</DefaultButton>
+                  <Button variant="bordered" size="lg">
+                    My Orders
+                  </Button>
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+            <div className="flex-1 lg:max-w-2xl">
+              <h2 className="text-lg font-bold tracking-tight">You can delete all data about you here</h2>
+              <p className="text-md font-normal tracking-tight">This action is irreversible</p>
+              <div className="text-sm text-muted-foreground">
+                <Button variant="danger" size="sm">
+                  Delete my account
+                </Button>
               </div>
             </div>
           </div>

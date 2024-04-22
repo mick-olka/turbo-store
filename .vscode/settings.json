@@ -5,5 +5,7 @@
     }
   ],
   "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "javascript.preferences.importModuleSpecifier": "shortest",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

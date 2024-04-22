@@ -1,8 +1,8 @@
 "use client";
 
-import { BreadCrumps } from "@/app/components/ui/breadcrumps";
-import { useGetOrderById } from "@/app/lib/hooks";
-import { E_AppRoutes } from "@/app/lib/models/app";
+import { BreadCrumps } from "@/app/shared/components/ui";
+import { useGetOrderById } from "@/app/shared/hooks";
+import { E_AppRoutes } from "@/app/shared/models/app";
 
 export default function CheckoutPage({ params }: { params: { id: string } }) {
   const { data, isLoading } = useGetOrderById(params.id);

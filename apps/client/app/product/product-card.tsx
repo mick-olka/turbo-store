@@ -1,9 +1,9 @@
+import { CartIcon } from "@/app/shared/assets/icons/cart";
+import { StarIcon } from "@/app/shared/assets/icons/star";
+import { Button } from "@/app/shared/components/button";
+import { I_Product, I_ProductRelated } from "@/app/shared/models";
 import Image from "next/image";
 import React from "react";
-
-import { CartIcon } from "../components/assets/icons/cart";
-import { StarIcon } from "../components/assets/icons/star";
-import { I_Product, I_ProductRelated } from "../lib/models";
 
 export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
   return (
@@ -17,7 +17,7 @@ export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
           className="max-h-32 w-full object-contain"
         />
         <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
-          <StarIcon />
+          <StarIcon className="text-yellow-400" />
           <span className="ml-1 text-sm text-slate-400">4.9</span>
         </div>
       </div>
@@ -28,8 +28,8 @@ export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
         <div className="mt-3 flex items-end justify-between">
           <p className="text-lg font-bold text-blue-500">${product.price}</p>
           <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-            <CartIcon />
-            <button className="text-sm">Add to cart</button>
+            <CartIcon variant="white" />
+            <Button size="sm">Add to cart</Button>
           </div>
         </div>
       </div>

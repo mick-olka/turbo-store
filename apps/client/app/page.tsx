@@ -1,5 +1,6 @@
-import { ItemsGrid } from "./components/ui/items-grid";
-import { getProducts } from "./lib/service";
+import { ItemsGrid } from "@/app/shared/components/ui/items-grid";
+import { getProducts } from "@/app/shared/service";
+
 import { ProductCard } from "./product/product-card";
 
 export default async function Home() {

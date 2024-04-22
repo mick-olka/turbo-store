@@ -1,12 +1,13 @@
 "use client";
 
-import { useCart } from "@/app/lib/hooks/use-cart";
-import { I_OrderItem, I_Product } from "@/app/lib/models";
-import { E_AppRoutes } from "@/app/lib/models/app";
+import { CartIcon } from "@/app/shared/assets/icons/cart";
+import { Button } from "@/app/shared/components/button";
+import { useCart } from "@/app/shared/hooks/use-cart";
+import { E_AppRoutes, I_OrderItem, I_ProductRelated } from "@/app/shared/models";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-export const AddToCartBtn = ({ product }: { product: I_Product }) => {
+export const AddToCartBtn = ({ product, size = "lg" }: { size?: "sm" | "lg"; product: I_ProductRelated }) => {
   const { addToCart } = useCart();
   const router = useRouter();
   const handleOrderProduct = () => {
@@ -22,12 +23,9 @@ export const AddToCartBtn = ({ product }: { product: I_Product }) => {
     router.push(E_AppRoutes.cart);
   };
   return (
-    <button
-      type="button"
-      className="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
-      onClick={handleOrderProduct}
-    >
+    <Button type="button" className="flex items-center justify-between" size={size} onClick={handleOrderProduct}>
+      <CartIcon size="md" variant="white" className="mr-2" />
       Add to Cart
-    </button>
+    </Button>
   );
 };

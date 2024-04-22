@@ -1,9 +1,9 @@
+import { Footer, Header, Sidebar } from "@/app/shared/components/layout";
+import { getCollections } from "@/app/shared/service";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Footer, Header, Sidebar } from "./components/layout";
 import "./globals.css";
-import { getCollections } from "./lib/service";
 
 const inter = Inter({ subsets: ["latin"] });
 
