@@ -5,4 +5,5 @@ export enum E_AppRoutes {
   login = "/login",
   collection = "/collection",
   orders = "/orders",
+  search = "/search",
 }

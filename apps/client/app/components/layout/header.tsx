@@ -2,10 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { E_AppRoutes } from "../../lib/models/app";
-import { PacketIcon } from "../assets/icons/packet";
-import { SearchIcon } from "../assets/icons/search";
-import { DefaultInput } from "../inputs/text-field/default-text-field";
 import { CartBtn } from "./cart-btn";
+import { SearchField } from "./search-pane";
 
 export const Header = () => {
   return (
@@ -20,10 +18,11 @@ export const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4">
-        <div className="relative hidden md:block">
+        <SearchField />
+        {/* <div className="relative hidden md:block">
           <DefaultInput type="search" placeholder="Search" />
           <SearchIcon />
-        </div>
+        </div> */}
         {/* 
         <Link
           href={E_AppRoutes.cart}

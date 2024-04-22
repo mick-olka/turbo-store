@@ -44,11 +44,9 @@ export const CartList = ({ items, onItemRemove }: Props) => {
           <tbody className="divide-y divide-gray-100 text-sm">
             {items.map((item, i) => (
               <tr key={"item" + i}>
+                <td className="p-2">{/* <input type="checkbox" className="h-5 w-5" value="id-1" /> */}</td>
                 <td className="p-2">
-                  <input type="checkbox" className="h-5 w-5" value="id-1" />
-                </td>
-                <td className="p-2">
-                  <div className="font-medium text-gray-800">{item.product}</div>
+                  <div className="font-medium text-gray-800">{item.name}</div>
                 </td>
                 <td className="p-2">
                   <div className="text-left">{item.count}</div>

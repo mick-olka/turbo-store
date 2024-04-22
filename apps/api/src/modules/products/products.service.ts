@@ -39,7 +39,7 @@ export class ProductsService {
     const p = Number(page),
       l = Number(limit);
     const filter = getFilterForSearch(
-      regex,
+      regex || null,
       ["code", "name.ua", "name.en"],
       all
     );

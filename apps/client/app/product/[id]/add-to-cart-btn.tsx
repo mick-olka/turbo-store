@@ -16,6 +16,7 @@ export const AddToCartBtn = ({ product }: { product: I_Product }) => {
       count: 1,
       main_color: "",
       pill_color: "",
+      name: product.name["ua"],
     };
     addToCart(order);
     router.push(E_AppRoutes.cart);

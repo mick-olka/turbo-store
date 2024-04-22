@@ -1,6 +1,4 @@
 import { BreadCrumps } from "@/app/components/ui/breadcrumps";
-import { useCart } from "@/app/lib/hooks/use-cart";
-import { I_OrderItem } from "@/app/lib/models";
 import { getProductById } from "@/app/lib/service";
 import Link from "next/link";
 

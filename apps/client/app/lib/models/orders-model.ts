@@ -2,6 +2,7 @@ import { I_Product } from "./products-model";
 
 export interface I_OrderItem {
   // _id: string
+  name: string;
   product: string;
   count: number;
   main_color: string;

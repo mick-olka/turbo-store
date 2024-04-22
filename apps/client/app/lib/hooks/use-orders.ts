@@ -5,12 +5,14 @@ import useSWR from "swr";
 import { I_Order, I_OrderDTO, I_OrderPopulated, I_UserOrders } from "../models";
 import { E_AppRoutes } from "../models/app";
 import { fetchWithAuth } from "../utils/fetcher";
+import { useCart } from "./use-cart";
 import { useSession } from "./use-session";
 
 const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const useMakeOrder = () => {
   const { getAccessToken } = useSession();
+  const cart = useCart();
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
@@ -27,12 +29,14 @@ export const useMakeOrder = () => {
       },
       body: JSON.stringify(body),
     });
-    if (!res.ok) {
-      alert("Invalid credentials");
-    } else {
+    if (res.ok) {
       const data: I_Order = await res.json();
       if (data) {
+        cart.setCart([]);
+        cart.setMessage("");
         router.push(E_AppRoutes.orders);
+      } else {
+        alert("Error sending order");
       }
     }
   };
