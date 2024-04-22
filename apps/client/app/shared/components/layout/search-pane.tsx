@@ -1,7 +1,7 @@
 "use client";
 
 import { SearchIcon } from "@/app/shared/assets/icons/search";
-import { DefaultInput } from "@/app/shared/components/inputs/text-field/default-text-field";
+import { TextField } from "@/app/shared/components/inputs/text-field";
 import { E_AppRoutes } from "@/app/shared/models";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +16,7 @@ export const SearchField = () => {
   };
   return (
     <div className="relative hidden md:block">
-      <DefaultInput type="search" placeholder="Search" onKeyDown={handleEnter} />
+      <TextField type="search" variant="solid" placeholder="Search" onKeyDown={handleEnter} className="pl-10" />
       <SearchIcon variant="grey" className="absolute top-0 left-0 ml-2 mt-2" />
     </div>
   );

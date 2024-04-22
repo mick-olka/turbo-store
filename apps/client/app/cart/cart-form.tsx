@@ -1,4 +1,4 @@
-import { DefaultInput } from "@/app/shared/components/inputs/text-field/default-text-field";
+import { TextField } from "@/app/shared/components/inputs/text-field";
 import { useCart } from "@/app/shared/hooks";
 import { useEffect, useState } from "react";
 
@@ -26,9 +26,9 @@ export const CartForm = () => {
   };
   return (
     <div className="flex flex-col gap-2 mb-3">
-      <DefaultInput placeholder="Your Name" value={name} onChange={e => handleChangeName(e.target.value)} />
-      <DefaultInput placeholder="Phone number" value={phone} onChange={e => handleChangePhone(e.target.value)} />
-      <DefaultInput placeholder="Message" value={message} onChange={e => handleChangeMessage(e.target.value)} />
+      <TextField placeholder="Your Name" value={name} onChange={e => handleChangeName(e.target.value)} />
+      <TextField placeholder="Phone number" value={phone} onChange={e => handleChangePhone(e.target.value)} />
+      <TextField placeholder="Message" value={message} onChange={e => handleChangeMessage(e.target.value)} />
     </div>
   );
 };

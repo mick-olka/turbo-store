@@ -34,7 +34,8 @@ export const Gallery = ({ photos }: I_Props) => {
   return (
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>
-      <Selector list={list} onChange={setCurrent} value={current} title="Specification" />
+      <p>Specification</p>
+      <Selector list={list} onChange={setCurrent} value={current} />
     </div>
   );
 };
