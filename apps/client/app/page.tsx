@@ -1,5 +1,5 @@
-import { ItemsGrid } from "@/app/shared/components/ui/items-grid";
-import { getProducts } from "@/app/shared/service";
+import { ItemsGrid } from "@/app/components/ui/items-grid";
+import { getProducts } from "@/shared/service";
 
 import { ProductCard } from "./product/product-card";
 

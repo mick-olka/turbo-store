@@ -1,5 +1,5 @@
-import { BreadCrumps } from "@/app/shared/components/ui/breadcrumps";
-import { getProductById } from "@/app/shared/service";
+import { BreadCrumps } from "@/app/components/ui/breadcrumps";
+import { getProductById } from "@/shared/service";
 import Link from "next/link";
 
 import { AddToCartBtn } from "./add-to-cart-btn";

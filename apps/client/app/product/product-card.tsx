@@ -1,7 +1,7 @@
-import { CartIcon } from "@/app/shared/assets/icons/cart";
-import { StarIcon } from "@/app/shared/assets/icons/star";
-import { Button } from "@/app/shared/components/button";
-import { I_Product, I_ProductRelated } from "@/app/shared/models";
+import { Button } from "@/app/components/button";
+import { CartIcon } from "@/shared/assets/icons/cart";
+import { StarIcon } from "@/shared/assets/icons/star";
+import { I_Product, I_ProductRelated } from "@/shared/models";
 import Image from "next/image";
 import React from "react";
 

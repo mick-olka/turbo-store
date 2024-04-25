@@ -1,7 +1,7 @@
 "use client";
 
-import { useAuthGuard, useCart, useMakeOrder } from "@/app/shared/hooks";
-import { I_OrderDTO, I_OrderItem } from "@/app/shared/models";
+import { useAuthGuard, useCart, useMakeOrder } from "@/shared/hooks";
+import { I_OrderDTO, I_OrderItem } from "@/shared/models";
 import { useEffect, useState } from "react";
 
 import { CartForm } from "./cart-form";

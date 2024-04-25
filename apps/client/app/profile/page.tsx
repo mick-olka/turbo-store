@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/app/shared/components/button";
-import { useAuthGuard, useGetProfile } from "@/app/shared/hooks";
-import { E_AppRoutes } from "@/app/shared/models";
+import { Button } from "@/app/components/button";
+import { useAuthGuard, useGetProfile } from "@/shared/hooks";
+import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
 
 export default function ProfilePage() {

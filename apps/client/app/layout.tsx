@@ -1,5 +1,5 @@
-import { Footer, Header, Sidebar } from "@/app/shared/components/layout";
-import { getCollections } from "@/app/shared/service";
+import { Footer, Header, Sidebar } from "@/app/components/layout";
+import { getCollections } from "@/shared/service";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 

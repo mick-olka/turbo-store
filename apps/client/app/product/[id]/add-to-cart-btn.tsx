@@ -1,9 +1,9 @@
 "use client";
 
-import { CartIcon } from "@/app/shared/assets/icons/cart";
-import { Button } from "@/app/shared/components/button";
-import { useCart } from "@/app/shared/hooks/use-cart";
-import { E_AppRoutes, I_OrderItem, I_ProductRelated } from "@/app/shared/models";
+import { Button } from "@/app/components/button";
+import { CartIcon } from "@/shared/assets/icons/cart";
+import { useCart } from "@/shared/hooks/use-cart";
+import { E_AppRoutes, I_OrderItem, I_ProductRelated } from "@/shared/models";
 import { useRouter } from "next/navigation";
 import React from "react";
 

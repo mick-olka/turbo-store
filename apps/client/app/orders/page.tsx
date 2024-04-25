@@ -1,8 +1,8 @@
 "use client";
 
-import { SearchIcon } from "@/app/shared/assets/icons/search";
-import { useGetOrders } from "@/app/shared/hooks";
-import { E_AppRoutes, I_Order } from "@/app/shared/models";
+import { SearchIcon } from "@/shared/assets/icons/search";
+import { useGetOrders } from "@/shared/hooks";
+import { E_AppRoutes, I_Order } from "@/shared/models";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

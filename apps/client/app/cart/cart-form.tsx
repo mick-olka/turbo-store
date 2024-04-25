@@ -1,5 +1,5 @@
-import { TextField } from "@/app/shared/components/inputs/text-field";
-import { useCart } from "@/app/shared/hooks";
+import { TextField } from "@/app/components/inputs/text-field";
+import { useCart } from "@/shared/hooks";
 import { useEffect, useState } from "react";
 
 export const CartForm = () => {

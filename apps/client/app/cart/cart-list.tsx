@@ -1,5 +1,5 @@
-import { TrashBinIcon } from "@/app/shared/assets/icons/trash-bin";
-import { I_OrderItem } from "@/app/shared/models";
+import { TrashBinIcon } from "@/shared/assets/icons/trash-bin";
+import { I_OrderItem } from "@/shared/models";
 import { useEffect, useState } from "react";
 
 interface Props {
