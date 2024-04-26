@@ -1,4 +1,5 @@
 import { I_OrderItem } from "@/shared/models";
+import { useRouter } from "next/navigation";
 
 enum Items {
   cart = "cart",
@@ -6,9 +7,11 @@ enum Items {
   phone = "phone",
   message = "message",
   orders = "orders",
+  spec = "spec",
 }
 
 export const useCart = () => {
+  // const router = useRouter();
   const setCart = (cart: I_OrderItem[]): void => {
     localStorage.setItem(Items.cart, JSON.stringify(cart));
   };
@@ -54,21 +57,19 @@ export const useCart = () => {
       localStorage.setItem(Items.cart, JSON.stringify(new_cart));
     }
   };
-  //   const getOrders = (): string[] => {
-  //     const str = localStorage.getItem(Items.orders);
-  //     if (str) {
-  //       return JSON.parse(str);
-  //     }
-  //     return [];
-  //   };
-  //   const addToOrders = (orderId: string) => {
-  //     const arr = getOrders();
-  //     if (arr) {
-  //       localStorage.setItem(Items.orders, JSON.stringify([...arr, orderId]));
-  //     } else {
-  //       localStorage.setItem(Items.orders, JSON.stringify([orderId]));
-  //     }
-  //   };
+
+  // specification*
+  const setSpec = (spec: { name: string; value: string } | null) => {
+    // localStorage.setItem(Items.spec, spec ? `${spec.name}:${spec.value}` : "");
+  };
+  const getSpec = () => {
+    // const spec = localStorage.getItem(Items.spec);
+    // if (spec) {
+    //   const [name, value] = spec.split(":");
+    //   if (name && value) return { name, value };
+    // }
+    // return { name: "", value: "" };
+  };
 
   return {
     setCart,
@@ -87,5 +88,8 @@ export const useCart = () => {
 
     setMessage: (msg: string) => localStorage.setItem(Items.message, msg),
     getMessage: (): string => localStorage.getItem(Items.message) || "",
+
+    setSpec,
+    getSpec,
   };
 };

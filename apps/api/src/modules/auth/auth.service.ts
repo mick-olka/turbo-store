@@ -62,6 +62,27 @@ export class AuthService {
     return tokens;
   }
 
+  async signInAdmin(dto: SignInDto): Promise<Tokens> {
+    const user = await this.userService.findOne({
+      email: dto.email,
+    });
+
+    if (!user) throw new ForbiddenException("Access denied");
+
+    const passwordMatches = await bcrypt.compare(dto.password, user.hash);
+
+    if (!passwordMatches || user.role !== UserRole.admin)
+      throw new ForbiddenException("Access denied");
+
+    const tokens = await this.getTokens(
+      String(user._id),
+      user.email,
+      user.role
+    );
+    await this.updateRefreshToken(String(user._id), tokens.refresh_token);
+    return tokens;
+  }
+
   async logout(
     userId: string,
     userEmail: string

@@ -5,9 +5,17 @@ import Link from "next/link";
 import { AddToCartPane } from "./add-to-cart-pane";
 import { Gallery } from "./gallery";
 
-export default async function Product({ params }: { params: { id: string } }) {
+export default async function Product({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { spec?: string };
+}) {
   const product = await getProductById(params.id);
   const breadCrumps = [{ name: product.name["ua"], link: product.url_name }];
+  const spec = searchParams.spec;
+  // console.log(spec);
 
   return (
     <div className="p-4">

@@ -44,6 +44,18 @@ export class AuthController {
     return this.authService.signIn(dto);
   }
 
+  @Post("login-admin")
+  @HttpCode(HttpStatus.OK)
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: "Successfully signed up.",
+    type: SignInDto,
+  })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: "Forbidden." })
+  signInAdmin(@Body() dto: SignInDto): Promise<Tokens> {
+    return this.authService.signInAdmin(dto);
+  }
+
   @UseGuards(AuthGuard("jwt"))
   @Get("logout")
   @HttpCode(HttpStatus.OK)

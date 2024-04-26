@@ -4,7 +4,7 @@ const url = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getProducts(search?: string): Promise<I_ProductsListRes> {
   const link = search ? `${url}/products?regex=${search}` : `${url}/products`;
-  const res = await fetch(link);
+  const res = await fetch(link, { next: { revalidate: 120 } });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
