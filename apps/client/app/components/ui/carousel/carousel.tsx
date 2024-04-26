@@ -10,16 +10,21 @@ interface I_Props {
 
 export const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 3000 }: I_Props) => {
   const [curr, setCurr] = useState(0);
-
-  const prev = () => setCurr(curr => (curr === 0 ? slides.length - 1 : curr - 1));
-
-  const next = () => setCurr(curr => (curr === slides.length - 1 ? 0 : curr + 1));
+  const q = slides.length;
+  const onPrev = () => {
+    const prev = (c: number) => (c <= 0 ? q - 1 : c - 1);
+    setCurr(prev);
+  };
+  const onNext = () => {
+    const next = (c: number) => (c >= q - 1 ? 0 : c + 1);
+    setCurr(next);
+  };
 
   useEffect(() => {
     if (!autoSlide) return;
-    const slideInterval = setInterval(next, autoSlideInterval);
+    const slideInterval = setInterval(onNext, autoSlideInterval);
     return () => clearInterval(slideInterval);
-  }, []);
+  }, [slides]);
   return (
     <div className="overflow-hidden relative">
       <div
@@ -29,12 +34,10 @@ export const Carousel = ({ children: slides, autoSlide = false, autoSlideInterva
         {slides}
       </div>
       <div className="absolute inset-0 flex items-center justify-between p-4">
-        <button onClick={prev} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-          {/* <ChevronLeft /> */}
+        <button onClick={onPrev} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
           {"<"}
         </button>
-        <button onClick={next} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-          {/* <ChevronRight /> */}
+        <button onClick={onNext} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
           {">"}
         </button>
       </div>

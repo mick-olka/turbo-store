@@ -1,4 +1,4 @@
-import { TightArrowRightIcon } from "@/shared/assets/icons/tight-arrow-right";
+import { TightArrowRightIcon } from "@/app/assets/icons/tight-arrow-right";
 import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
 import React from "react";

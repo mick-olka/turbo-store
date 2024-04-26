@@ -1,7 +1,7 @@
 "use client";
 
+import { CartIcon } from "@/app/assets/icons/cart";
 import { Button } from "@/app/components/button";
-import { CartIcon } from "@/shared/assets/icons/cart";
 import { useCart } from "@/shared/hooks/use-cart";
 import { E_AppRoutes, I_OrderItem, I_ProductRelated } from "@/shared/models";
 import { useRouter } from "next/navigation";

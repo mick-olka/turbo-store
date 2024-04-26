@@ -2,7 +2,7 @@
 
 import "./styles.scss";
 
-import CardVisaFront from "@/shared/assets/images/card-visa-front.png";
+import CardVisaFront from "@/app/assets/images/card-visa-front.png";
 import Image from "next/image";
 import { useState } from "react";
 

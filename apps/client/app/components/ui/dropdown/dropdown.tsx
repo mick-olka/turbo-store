@@ -1,4 +1,4 @@
-import { ThinArrowDown } from "@/shared/assets/icons/thin-arrow-down";
+import { ThinArrowDown } from "@/app/assets/icons/thin-arrow-down";
 import { useClickOutside } from "@/shared/hooks";
 import { HTMLAttributes, ReactNode, useRef, useState } from "react";
 

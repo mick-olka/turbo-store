@@ -1,7 +1,7 @@
 "use client";
 
+import { ArrowRight } from "@/app/assets/icons/arrow-right";
 import { Button } from "@/app/components/button";
-import { ArrowRight } from "@/shared/assets/icons/arrow-right";
 import { useSignIn } from "@/shared/hooks";
 import { FormEvent } from "react";
 

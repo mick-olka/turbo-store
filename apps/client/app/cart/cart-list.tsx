@@ -1,4 +1,4 @@
-import { TrashBinIcon } from "@/shared/assets/icons/trash-bin";
+import { TrashBinIcon } from "@/app/assets/icons/trash-bin";
 import { I_OrderItem } from "@/shared/models";
 import { useEffect, useState } from "react";
 

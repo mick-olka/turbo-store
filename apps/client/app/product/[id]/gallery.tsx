@@ -30,12 +30,12 @@ export const Gallery = ({ photos }: I_Props) => {
   useEffect(() => {
     setPhotosBlock(photos.find(p => p._id === current) || null);
   }, [photos, current]);
-  const list = photos.map(p => ({ name: `${p.main_color["ua"]} ${p.pill_color["ua"]}`, id: p._id }));
+  const list = photos.map(p => ({ name: `${p.main_color["ua"]} ${p.pill_color["ua"]}`, value: p._id }));
   return (
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>
       <p>Specification</p>
-      <Selector list={list} onChange={setCurrent} value={current} />
+      <Selector list={list} onItemSelect={setCurrent} value={current} />
     </div>
   );
 };

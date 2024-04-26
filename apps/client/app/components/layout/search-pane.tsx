@@ -1,7 +1,7 @@
 "use client";
 
+import { SearchIcon } from "@/app/assets/icons/search";
 import { TextField } from "@/app/components/inputs/text-field";
-import { SearchIcon } from "@/shared/assets/icons/search";
 import { E_AppRoutes } from "@/shared/models";
 import { useRouter } from "next/navigation";
 

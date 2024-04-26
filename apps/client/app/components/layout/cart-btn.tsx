@@ -1,6 +1,6 @@
 "use client";
 
-import { PacketIcon } from "@/shared/assets/icons/packet";
+import { PacketIcon } from "@/app/assets/icons/packet";
 import { useCart } from "@/shared/hooks";
 import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
