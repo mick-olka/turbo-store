@@ -8,12 +8,20 @@ import { ReactNode, useEffect, useState } from "react";
 
 interface I_Props {
   photos: I_PhotosBlock[];
+  onSpecificationSelect?: (p: I_PhotosBlock | null) => void;
 }
 const api_url = process.env.NEXT_PUBLIC_API_URL;
 
-export const Gallery = ({ photos }: I_Props) => {
+export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
   const [current, setCurrent] = useState<string | null>(photos[0]?._id || null);
   const [photosBlock, setPhotosBlock] = useState<I_PhotosBlock | null>(photos[0] || null);
+  const handleItemSelect = (id: string | null) => {
+    const item = photos.find(p => p._id === id);
+    if (item) {
+      setCurrent(item._id);
+    }
+    onSpecificationSelect && onSpecificationSelect(item || null);
+  };
   const gallery = (): ReactNode[] => {
     if (photosBlock)
       return [
@@ -35,7 +43,7 @@ export const Gallery = ({ photos }: I_Props) => {
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>
       <p>Specification</p>
-      <Selector list={list} onItemSelect={setCurrent} value={current} />
+      <Selector list={list} onItemSelect={handleItemSelect} value={current} />
     </div>
   );
 };
