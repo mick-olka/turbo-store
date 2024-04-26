@@ -2,31 +2,20 @@ import { BreadCrumps } from "@/app/components/ui/breadcrumps";
 import { getProductById } from "@/shared/service";
 import Link from "next/link";
 
-import { AddToCartBtn } from "./add-to-cart-btn";
+import { AddToCartPane } from "./add-to-cart-pane";
 import { Gallery } from "./gallery";
 
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await getProductById(params.id);
-  const breadcrumps = [{ name: product.name["ua"], link: product.url_name }];
+  const breadCrumps = [{ name: product.name["ua"], link: product.url_name }];
 
   return (
     <div className="p-4">
       <div className="py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BreadCrumps items={breadcrumps} />
-        </div>
+        <BreadCrumps items={breadCrumps} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-          <div className="flex flex-col md:flex-row -mx-4">
-            {/* <div className="max-w-lg max-h-lg">
-              <Carousel autoSlide={true}>
-                {[
-                  ...product.photos[0].path_arr.map(s => (
-                    <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} />
-                  )),
-                ]}
-              </Carousel>
-            </div> */}
+          <div className="flex flex-col items-center xl:items-start xl:flex-row -mx-4">
             <Gallery photos={product.photos} />
             <div className="md:flex-1 px-4">
               <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
@@ -60,29 +49,7 @@ export default async function Product({ params }: { params: { id: string } }) {
               </div>
 
               <div className="flex py-4 space-x-4">
-                <div className="relative">
-                  <div className="text-center left-0 pt-2 right-0 absolute block text-xs text-gray-400 tracking-wide font-semibold">
-                    К-ть
-                  </div>
-                  <select className="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 w-16 flex items-end pt-4">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-
-                  {/* <svg
-                    className="w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                  </svg> */}
-                </div>
-                <AddToCartBtn product={product} />
+                <AddToCartPane product={product} />
               </div>
               <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
             </div>

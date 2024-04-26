@@ -17,7 +17,7 @@ export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
           className="max-h-32 w-full object-contain"
         />
         <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
-          <StarIcon className="text-yellow-400" />
+          <StarIcon className="text-yellow-400" size="sm" />
           <span className="ml-1 text-sm text-slate-400">4.9</span>
         </div>
       </div>
