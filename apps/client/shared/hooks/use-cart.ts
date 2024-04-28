@@ -1,5 +1,8 @@
+"use client";
+
 import { I_OrderItem } from "@/shared/models";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 enum Items {
   cart = "cart",
@@ -11,7 +14,6 @@ enum Items {
 }
 
 export const useCart = () => {
-  // const router = useRouter();
   const setCart = (cart: I_OrderItem[]): void => {
     localStorage.setItem(Items.cart, JSON.stringify(cart));
   };
@@ -71,6 +73,15 @@ export const useCart = () => {
     // return { name: "", value: "" };
   };
 
+  const [total, setTotal] = useState(0);
+  const items = getCart();
+  useEffect(() => {
+    if (items.length) {
+      const totalSum = items.map(i => i.price * i.count).reduce((a, b) => a + b);
+      setTotal(totalSum);
+    } else setTotal(0);
+  }, [items]);
+
   return {
     setCart,
     getCart,
@@ -91,5 +102,7 @@ export const useCart = () => {
 
     setSpec,
     getSpec,
+
+    total,
   };
 };

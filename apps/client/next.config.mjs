@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: "rotang.ua" }, { hostname: "plchldr.co" }, { hostname: "localhost" }],
+    remotePatterns: [{ hostname: "rotang.ua" }, { hostname: "localhost" }],
   },
 };
 

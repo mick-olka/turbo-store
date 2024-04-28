@@ -5,3 +5,4 @@ export * from "./use-auth";
 export * from "./use-orders";
 export * from "./use-cart";
 export * from "./use-click-outside";
+export * from "./use-dictionary-provider";

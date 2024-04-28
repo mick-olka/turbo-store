@@ -1,3 +1,5 @@
+"use client";
+
 import { E_AppRoutes } from "@/shared/models/app";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -11,19 +13,3 @@ export const useAuthGuard = () => {
     }
   }, []);
 };
-
-// export async function signIn(email: string, password: string): Promise<TokensRes> {
-//   const res = await fetch(url + "/auth/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ email: email, password: password }),
-//   });
-//   if (!res.ok) {
-//     throw new Error("Login error");
-//   }
-//   const data: TokensRes = await res.json();
-//   // console.log(data);
-//   return data;
-// }

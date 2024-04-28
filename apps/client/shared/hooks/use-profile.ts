@@ -1,3 +1,5 @@
+"use client";
+
 import { E_AppRoutes, I_User } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
 import { useRouter } from "next/navigation";

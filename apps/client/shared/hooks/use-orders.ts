@@ -1,3 +1,5 @@
+"use client";
+
 import { E_AppRoutes, I_Order, I_OrderDTO, I_OrderPopulated, I_UserOrders } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
 import { useRouter } from "next/navigation";
@@ -11,7 +13,7 @@ const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const useMakeOrder = () => {
   const { getAccessToken } = useSession();
-  const cart = useCart();
+  const { total, setCart, setMessage, getCart, getName, getPhone, getMessage } = useCart();
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
@@ -31,15 +33,33 @@ export const useMakeOrder = () => {
     if (res.ok) {
       const data: I_Order = await res.json();
       if (data) {
-        cart.setCart([]);
-        cart.setMessage("");
+        setCart([]);
+        setMessage("");
         router.push(E_AppRoutes.orders);
       } else {
         alert("Error sending order");
       }
     }
   };
-  return { sendOrder: sendOrder };
+
+  const makeOrder = () => {
+    const name = getName();
+    const phone = getPhone();
+    const message = getMessage();
+    const cart = getCart();
+    if (name && phone && cart.length) {
+      const order: I_OrderDTO = {
+        cart: cart,
+        message: message,
+        name: name,
+        phone: phone,
+        sum: total,
+      };
+      sendOrder(order);
+    } else alert("Please fill form");
+  };
+
+  return { makeOrder };
 };
 
 export const useGetOrders = () => {
