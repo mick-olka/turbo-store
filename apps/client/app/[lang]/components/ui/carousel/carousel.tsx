@@ -19,7 +19,7 @@ export const Carousel = ({ children: slides, autoSlide = false, autoSlideInterva
     const next = (c: number) => (c >= q - 1 ? 0 : c + 1);
     setCurr(next);
   };
-
+  const isSingle = slides.length < 2;
   useEffect(() => {
     if (!autoSlide) return;
     const slideInterval = setInterval(onNext, autoSlideInterval);
@@ -34,23 +34,29 @@ export const Carousel = ({ children: slides, autoSlide = false, autoSlideInterva
         {slides}
       </div>
       <div className="absolute inset-0 flex items-center justify-between p-4">
-        <button onClick={onPrev} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-          {"<"}
-        </button>
-        <button onClick={onNext} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
-          {">"}
-        </button>
+        {isSingle ? null : (
+          <button onClick={onPrev} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
+            {"<"}
+          </button>
+        )}
+        {isSingle ? null : (
+          <button onClick={onNext} className="p-1 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white">
+            {">"}
+          </button>
+        )}
       </div>
-      <div className="absolute bottom-4 right-0 left-0">
-        <div className="flex items-center justify-center gap-2">
-          {slides.map((s: ReactNode, i: number) => (
-            <div
-              key={i}
-              className={`transition-all w-1.5 h-1.5 bg-black rounded-full  ${curr === i ? "p-0.5" : "bg-opacity-50"}`}
-            />
-          ))}
+      {isSingle ? null : (
+        <div className="absolute bottom-4 right-0 left-0">
+          <div className="flex items-center justify-center gap-2">
+            {slides.map((s: ReactNode, i: number) => (
+              <div
+                key={i}
+                className={`transition-all w-1.5 h-1.5 bg-black rounded-full  ${curr === i ? "p-0.5" : "bg-opacity-50"}`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

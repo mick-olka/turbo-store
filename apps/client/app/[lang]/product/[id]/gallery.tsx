@@ -1,5 +1,6 @@
 "use client";
 
+import NoImage from "@/app/[lang]/assets/images/no-img.png";
 import { Selector } from "@/app/[lang]/components/inputs/selector";
 import { Carousel } from "@/app/[lang]/components/ui";
 import { I_PhotosBlock } from "@/shared/models";
@@ -29,11 +30,7 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
           <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} />
         )),
       ];
-    return [
-      <div key={"0"} style={{ width: "460px", height: "300px" }} className="flex items-center justify-center">
-        No photos
-      </div>,
-    ];
+    return [<Image key={1} alt={"No photo"} width={640} height={640} src={NoImage} />];
   };
   useEffect(() => {
     setPhotosBlock(photos.find(p => p._id === current) || null);
