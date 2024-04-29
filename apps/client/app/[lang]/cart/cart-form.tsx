@@ -7,7 +7,7 @@ export const CartForm = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const { dictionary } = useDictionary();
+  const dictionary = useDictionary();
   useEffect(() => {
     setName(cart.getName());
     setPhone(cart.getPhone());

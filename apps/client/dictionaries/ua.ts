@@ -13,4 +13,9 @@ export const dictionaryUA: Dictionary = {
       payment_method: "Метод оплати",
     },
   },
+  sidebar: {
+    home: "Головна",
+    cart: "Мій кошик",
+    about: "Інформація",
+  },
 };

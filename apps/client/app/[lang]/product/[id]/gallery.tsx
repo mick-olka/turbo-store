@@ -39,7 +39,7 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
   return (
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>
-      <p>Specification</p>
+      <p className="m-2 size-4 font-light">Specification</p>
       <Selector list={list} onItemSelect={handleItemSelect} value={current} />
     </div>
   );

@@ -13,4 +13,9 @@ export const dictionaryDE: Dictionary = {
       payment_method: "Payment method",
     },
   },
+  sidebar: {
+    home: "Home page",
+    cart: "My cart",
+    about: "About page",
+  },
 };

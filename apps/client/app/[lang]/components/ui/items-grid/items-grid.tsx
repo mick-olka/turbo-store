@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 export const ItemsGrid = ({ items }: { items: { link: string; content: ReactNode }[] }) => {
   return (
     <section className="pt-0 pb-6 bg-gray-100">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {items.map(i => (
           <article
             key={i.link}

@@ -60,7 +60,8 @@ export class ProductsService {
   }
 
   async create(data: CreateProductDto): Promise<ProductI> {
-    const createdProduct = await this.ProductModel.create(data);
+    const createData = { ...data, collections: [] };
+    const createdProduct = await this.ProductModel.create(createData);
     return createdProduct;
   }
 

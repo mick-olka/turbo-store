@@ -28,7 +28,10 @@ export const ChooseProducts = ({
   const products_filtered = useMemo(() => {
     let res: I_Product[] = products || []
     if (products && collectionId)
-      res = res.map((p) => ({ ...p, disabled: p.collections.includes(collectionId) }))
+      res = res.map((p) => ({
+        ...p,
+        disabled: p.collections ? p.collections.includes(collectionId) : false,
+      }))
     if (products && exclude) res = res.filter((p) => ({ ...p, disabled: !exclude.includes(p._id) }))
     return res
   }, [products, collectionId, exclude])

@@ -6,18 +6,10 @@ import { createContext, useContext } from "react";
 
 type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
 
-const DictionaryContext = createContext<{ lang: Locale; dictionary: Dictionary } | null>(null);
+const DictionaryContext = createContext<Dictionary | null>(null);
 
-export function DictionaryProvider({
-  dictionary,
-  lang,
-  children,
-}: {
-  dictionary: Dictionary;
-  children: React.ReactNode;
-  lang: Locale;
-}) {
-  return <DictionaryContext.Provider value={{ dictionary, lang }}>{children}</DictionaryContext.Provider>;
+export function DictionaryProvider({ dictionary, children }: { dictionary: Dictionary; children: React.ReactNode }) {
+  return <DictionaryContext.Provider value={dictionary}>{children}</DictionaryContext.Provider>;
 }
 
 export function useDictionary() {

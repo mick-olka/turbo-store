@@ -18,7 +18,7 @@ const paymentTypes = [
 export default function CartPage() {
   useAuthGuard();
   const router = useRouter();
-  const { dictionary } = useDictionary();
+  const dictionary = useDictionary();
   const { removeFromCart, getCart, total } = useCart();
   const { makeOrder } = useMakeOrder();
   const [cart, setCart] = useState<I_OrderItem[]>([]);

@@ -11,4 +11,9 @@ export type Dictionary = {
       name_placeholder: string;
     };
   };
+  sidebar: {
+    home: string;
+    cart: string;
+    about: string;
+  };
 };
