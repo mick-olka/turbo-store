@@ -1,14 +1,16 @@
 import { ItemsGrid } from "@/app/[lang]/components/ui/items-grid";
 import { ProductCard } from "@/app/[lang]/product/product-card";
-import { I_Product } from "@/shared/models";
+import { I_Product, PageProps } from "@/shared/models";
 import { getProducts } from "@/shared/service";
 
-export default async function SearchPage({ searchParams }: { searchParams: { search: string } }) {
+type Props = PageProps<{}, { search: string }>;
+
+export default async function SearchPage({ params, searchParams }: Props) {
   const data = await getProducts(searchParams.search);
 
   const items = data.docs.map((product: I_Product) => ({
     link: "/product/" + product.url_name,
-    content: <ProductCard product={product} />,
+    content: <ProductCard product={product} lang={params.lang} />,
   }));
 
   return (

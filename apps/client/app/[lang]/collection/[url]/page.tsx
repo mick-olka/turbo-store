@@ -1,14 +1,16 @@
 import { BreadCrumps, ItemsGrid } from "@/app/[lang]/components/ui";
 import { ProductCard } from "@/app/[lang]/product/product-card";
-import { E_AppRoutes, I_Product } from "@/shared/models";
+import { E_AppRoutes, I_Product, PageProps } from "@/shared/models";
 import { getCollectionById } from "@/shared/service";
 
-export default async function Collection({ params }: { params: { url: string } }) {
+type Props = PageProps<{ url: string }, {}>;
+
+export default async function Collection({ params }: Props) {
   const collection = await getCollectionById(params.url);
 
   const items = collection.items.map(product => ({
     link: "/product/" + product.url_name,
-    content: <ProductCard product={product} />,
+    content: <ProductCard product={product} lang={params.lang} />,
   }));
 
   const breadcrumbs = [{ name: collection.name["ua"], link: E_AppRoutes.collection + "/" + collection.url_name }];

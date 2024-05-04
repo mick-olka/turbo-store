@@ -1,22 +1,18 @@
 import { BreadCrumps } from "@/app/[lang]/components/ui/breadcrumps";
+import { getDictionary } from "@/dictionaries/get-dictionary";
+import { PageProps } from "@/shared/models";
 import { getProductById } from "@/shared/service";
-import Link from "next/link";
 
 import { AddToCartPane } from "./add-to-cart-pane";
 import { Gallery } from "./gallery";
 
-export default async function Product({
-  params,
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams: { spec?: string };
-}) {
+type Props = PageProps<{ id: string }, { spec?: string }>;
+
+export default async function Product({ params, searchParams }: Props) {
   const product = await getProductById(params.id);
   const breadCrumps = [{ name: product.name["ua"], link: product.url_name }];
-  const spec = searchParams.spec;
-  // console.log(spec);
-
+  const dictionary = await getDictionary(params.lang);
+  // const spec = searchParams.spec;
   return (
     <div className="p-4">
       <div className="py-6">
@@ -27,13 +23,10 @@ export default async function Product({
             <Gallery photos={product.photos} />
             <div className="md:flex-1 px-4">
               <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                {product.name["ua"]}
+                {product.name[params.lang]}
               </h2>
               <p className="text-gray-500 text-sm">
-                By{" "}
-                <Link href="#" className="text-indigo-600 hover:underline">
-                  ABC Company
-                </Link>
+                Code: <span className="text-indigo-600 hover:underline">{product.code}</span>
               </p>
 
               <div className="flex items-center space-x-4 my-4">
@@ -52,13 +45,14 @@ export default async function Product({
                   {product.old_price ? (
                     <p className="text-green-500 text-xl font-semibold line-through">{product.old_price}</p>
                   ) : null}
-                  <p className="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+                  <p className="text-gray-400 text-sm">{dictionary.product.taxes}.</p>
                 </div>
               </div>
 
               <div className="flex py-4 space-x-4">
                 <AddToCartPane product={product} />
               </div>
+              <h3 className="font-bold text-lg">{dictionary.product.description}</h3>
               <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
             </div>
           </div>

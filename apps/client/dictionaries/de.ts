@@ -17,5 +17,20 @@ export const dictionaryDE: Dictionary = {
     home: "Home page",
     cart: "My cart",
     about: "About page",
+    categories: "Categories",
+  },
+  header: {
+    search: "Search",
+  },
+  footer: {
+    privacy_policy: "Privacy policy",
+    terms_of_service: "Terms of service",
+  },
+  product: {
+    add_to_cart: "Add to cart",
+    taxes: "Inclusive all Taxes",
+    quantity: "Q-ty",
+    specification: "Specification",
+    description: "Description",
   },
 };

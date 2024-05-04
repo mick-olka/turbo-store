@@ -3,6 +3,7 @@
 import NoImage from "@/app/[lang]/assets/images/no-img.png";
 import { Selector } from "@/app/[lang]/components/inputs/selector";
 import { Carousel } from "@/app/[lang]/components/ui";
+import { useDictionary } from "@/shared/hooks";
 import { I_PhotosBlock } from "@/shared/models";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
@@ -16,6 +17,7 @@ const api_url = process.env.NEXT_PUBLIC_API_URL;
 export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
   const [current, setCurrent] = useState<string | null>(photos[0]?._id || null);
   const [photosBlock, setPhotosBlock] = useState<I_PhotosBlock | null>(photos[0] || null);
+  const dictionary = useDictionary();
   const handleItemSelect = (id: string | null) => {
     const item = photos.find(p => p._id === id);
     if (item) {
@@ -27,7 +29,7 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
     if (photosBlock)
       return [
         ...photosBlock?.path_arr.map(s => (
-          <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} />
+          <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} className="object-contain" />
         )),
       ];
     return [<Image key={1} alt={"No photo"} width={640} height={640} src={NoImage} />];
@@ -39,7 +41,7 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
   return (
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>
-      <p className="m-2 size-4 font-light">Specification</p>
+      <p className="m-2 size-4 font-light">{dictionary.product.specification}</p>
       <Selector list={list} onItemSelect={handleItemSelect} value={current} />
     </div>
   );

@@ -11,9 +11,24 @@ export type Dictionary = {
       name_placeholder: string;
     };
   };
+  header: {
+    search: string;
+  };
+  footer: {
+    privacy_policy: string;
+    terms_of_service: string;
+  };
   sidebar: {
     home: string;
     cart: string;
     about: string;
+    categories: string;
+  };
+  product: {
+    add_to_cart: string;
+    taxes: string;
+    quantity: string;
+    specification: string;
+    description: string;
   };
 };

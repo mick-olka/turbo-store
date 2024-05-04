@@ -17,5 +17,20 @@ export const dictionaryUA: Dictionary = {
     home: "Головна",
     cart: "Мій кошик",
     about: "Інформація",
+    categories: "Категорії",
+  },
+  header: {
+    search: "Пошук",
+  },
+  footer: {
+    privacy_policy: "Privacy policy",
+    terms_of_service: "Terms of service",
+  },
+  product: {
+    add_to_cart: "До кошика",
+    taxes: "З урахуванням усіх податків",
+    quantity: "К-ть",
+    specification: "Модель",
+    description: "Опис",
   },
 };

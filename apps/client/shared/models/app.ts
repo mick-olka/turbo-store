@@ -13,6 +13,11 @@ export enum E_AppRoutes {
   checkout = "/cart/checkout",
 }
 
-export interface LocaleParam {
+export type LocaleParam<T extends object> = T & {
   lang: Locale;
-}
+};
+
+export type PageProps<Params extends object, SearchParams extends object> = {
+  params: LocaleParam<Params>;
+  searchParams: SearchParams;
+};

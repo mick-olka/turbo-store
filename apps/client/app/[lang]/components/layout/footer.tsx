@@ -1,6 +1,7 @@
+import { Dictionary } from "@/dictionaries/model";
 import Link from "next/link";
 
-export const Footer = () => {
+export const Footer = ({ dictionary }: { dictionary: Dictionary }) => {
   return (
     <footer className="py-6  bg-gray-200 text-gray-900">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
@@ -8,10 +9,10 @@ export const Footer = () => {
           <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
             <span>Copy rgight © 2024 by mhutsal </span>
             <Link rel="noopener noreferrer" href="#">
-              <span>Privacy policy</span>
+              <span>{dictionary.footer.privacy_policy}</span>
             </Link>
             <Link rel="noopener noreferrer" href="#">
-              <span>Terms of service</span>
+              <span>{dictionary.footer.terms_of_service}</span>
             </Link>
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">

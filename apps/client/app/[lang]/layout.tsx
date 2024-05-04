@@ -38,7 +38,7 @@ export default async function RootLayout({
               <Sidebar list={collections} dictionary={dictionary} lang={params.lang} />
               {children}
             </div>
-            <Footer />
+            <Footer dictionary={dictionary} />
           </main>
         </DictionaryProvider>
       </body>
