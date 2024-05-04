@@ -7,8 +7,16 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof butto
 
 export const Button = forwardRef(
   ({ variant, size, className, children, ...props }: Props, ref: ForwardedRef<HTMLButtonElement>) => {
+    // const disable = props.disabled ? "bg-gray-300 hover:opacity-1" : ""
     return (
-      <button ref={ref} {...props} className={classnames(buttonVariants({ variant, size, className }), "")}>
+      <button
+        ref={ref}
+        {...props}
+        className={classnames(
+          buttonVariants({ variant, size, className }),
+          props.disabled ? "bg-gray-300 hover:opacity-1" : "",
+        )}
+      >
         {children}
       </button>
     );

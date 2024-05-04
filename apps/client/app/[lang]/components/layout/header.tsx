@@ -14,7 +14,7 @@ export const Header = ({ lan }: { lan: Locale }) => {
     <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2 fixed z-10">
       <div className="flex items-center space-x-2">
         <Link href={E_AppRoutes.home} className="font-bold text-gray-700 text-2xl">
-          <h1 className="mx-6">Shop.</h1>
+          <h1 className="mx-6">Techno-Hutsal</h1>
         </Link>
       </div>
 

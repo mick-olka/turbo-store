@@ -16,7 +16,7 @@ export const TextField = forwardRef(
           className={classnames(fieldVariants({ variant, inputSize, className }), "")}
           {...(props as HTMLAttributes<HTMLInputElement>)}
         />
-        {error && <div className="text-red-500">{error}</div>}
+        {error && <div className="text-red-500 relative">{error}</div>}
       </>
     );
   },

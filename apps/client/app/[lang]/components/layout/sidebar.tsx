@@ -41,7 +41,7 @@ export const Sidebar = ({ list, dictionary, lang }: { lang: Locale; dictionary: 
       <hr />
       <h3 className="font-bold pt-2">Categories</h3>
       {list.map(l => (
-        <LinkItem key={l._id} lang={lang} url={E_AppRoutes.collection + "/" + l.url_name} name={l.name["ua"]} />
+        <LinkItem key={l._id} lang={lang} url={E_AppRoutes.collection + "/" + l.url_name} name={l.name[lang]} />
       ))}
     </aside>
   );

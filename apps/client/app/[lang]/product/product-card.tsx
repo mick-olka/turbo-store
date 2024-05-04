@@ -5,6 +5,8 @@ import { I_Product, I_ProductRelated } from "@/shared/models";
 import Image from "next/image";
 import React from "react";
 
+const api_url = process.env.NEXT_PUBLIC_API_URL;
+
 export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
   return (
     <>
@@ -13,7 +15,7 @@ export const ProductCard = ({ product }: { product: I_ProductRelated }) => {
           priority
           width="200"
           height="200"
-          src={"http://localhost:7500/api/upload/" + product.thumbnail}
+          src={`${api_url}/upload/` + product.thumbnail}
           alt={product.url_name}
           className="max-h-32 w-full object-contain"
         />
