@@ -29,6 +29,8 @@ async function bootstrap() {
   SwaggerModule.setup("api-docs", app, document);
   await app.listen(7500, () => {
     console.log("DOCS: http://localhost:7500/api-docs");
+    console.log("CLIENT: http://localhost:3000/");
+    console.log("ADMIN: http://localhost:3005/");
     constants.ADMIN_KEY = process.env.ADMIN_KEY;
     performTransfer();
   });

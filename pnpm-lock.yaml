@@ -325,6 +325,9 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.43.1
+        version: 7.51.3(react@18.2.0)
       sass:
         specifier: ^1.75.0
         version: 1.75.0

@@ -3,14 +3,27 @@
 import { Button } from "@/app/[lang]/components/button";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
 import { UserForm } from "@/app/[lang]/profile/user-form";
-import { useAuthGuard, useGetProfile } from "@/shared/hooks";
-import { E_AppRoutes } from "@/shared/models";
+import { useAuthGuard, useDeleteProfile, useGetProfile, useLogout, useUpdateProfile } from "@/shared/hooks";
+import { E_AppRoutes, T_UserForm } from "@/shared/models";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ProfilePage() {
   useAuthGuard();
   const { data, isLoading } = useGetProfile();
+  const { updateProfile } = useUpdateProfile();
+  const { deleteProfile } = useDeleteProfile();
+  const { logout } = useLogout();
+  const handleUpdateProfile = (data: T_UserForm) => {
+    updateProfile(data);
+  };
+  const handleDeleteProfile = () => {
+    if (confirm("Are you sure you want to delete this profile")) {
+      deleteProfile();
+    } else {
+      //
+    }
+  };
   if (data) {
     const defaultValues = {
       email: data.email,
@@ -32,7 +45,7 @@ export default function ProfilePage() {
             <p className="text-sm mb-4 text-muted-foreground">
               Update your account settings. Set your preferred language and timezone.
             </p>
-            <UserForm defaultValues={defaultValues} onSubmit={data => console.log(data)} />
+            <UserForm defaultValues={defaultValues} onSubmit={handleUpdateProfile} />
           </div>
 
           <div className="flex flex-col">
@@ -47,9 +60,9 @@ export default function ProfilePage() {
           <div className="flex flex-col">
             <h2 className="text-lg font-bold tracking-tight">Log out and remove all my cache from this session</h2>
             <div className="text-sm text-muted-foreground">
-              <Link href={E_AppRoutes.orders}>
-                <Button variant="bordered">Logout</Button>
-              </Link>
+              <Button onClick={logout} variant="bordered">
+                Logout
+              </Button>
             </div>
           </div>
 
@@ -57,7 +70,7 @@ export default function ProfilePage() {
             <h2 className="text-lg font-bold tracking-tight">You can delete all data about you here</h2>
             <p className="text-md font-normal tracking-tight">This action is irreversible</p>
             <div className="text-sm text-muted-foreground">
-              <Button variant="danger" size="sm">
+              <Button onClick={handleDeleteProfile} variant="danger" size="sm">
                 Delete my account
               </Button>
             </div>

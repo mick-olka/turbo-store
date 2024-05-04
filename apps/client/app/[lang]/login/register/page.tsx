@@ -3,22 +3,23 @@
 import { ArrowRight } from "@/app/[lang]/assets/icons/arrow-right";
 import { Button } from "@/app/[lang]/components/button";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
-import { useSignIn } from "@/shared/hooks";
-import { E_AppRoutes, T_LoginForm } from "@/shared/models";
+import { useRegister, useSignIn } from "@/shared/hooks";
+import { E_AppRoutes, T_RegisterForm } from "@/shared/models";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import { emailRule, requiredRule } from "@/shared/utils";
 
-export default function LoginPage() {
-  const { signIn } = useSignIn();
+export default function RegisterPage() {
+  const { signUp } = useRegister();
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
-  } = useForm<T_LoginForm>();
-  const onSubmit = (data: T_LoginForm) => {
-    signIn(data);
+  } = useForm<T_RegisterForm>();
+  const onSubmit = (data: T_RegisterForm) => {
+    signUp(data);
   };
   return (
     <div className="min-h-screen w-full bg-gray-100 flex flex-col justify-center sm:py-12">
@@ -33,6 +34,23 @@ export default function LoginPage() {
               variant={errors.email ? "error" : "bordered"}
               placeholder="Email"
               className="w-full"
+              type="email"
+            />
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">First name</label>
+            <TextField
+              {...register("first_name", { ...requiredRule })}
+              error={errors.first_name?.message}
+              variant={errors.first_name ? "error" : "bordered"}
+              placeholder="First name"
+              className="w-full"
+            />
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Last name</label>
+            <TextField
+              {...register("last_name", { ...requiredRule })}
+              error={errors.last_name?.message}
+              variant={errors.last_name ? "error" : "bordered"}
+              placeholder="Last name"
+              className="w-full"
             />
             <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Password</label>
             <TextField
@@ -43,12 +61,24 @@ export default function LoginPage() {
               type="password"
               className="w-full"
             />
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Repeat Password</label>
+            <TextField
+              {...register("password_repeat", {
+                ...requiredRule,
+                validate: value => value === getValues("password") || "Passwords do not match",
+              })}
+              error={errors.password_repeat?.message}
+              variant={errors.password_repeat ? "error" : "bordered"}
+              placeholder="Repeat Password"
+              type="password"
+              className="w-full"
+            />
             <br />
             <br />
-            <LoginButton />
-            <Link href={E_AppRoutes.register}>
+            <RegisterButton />
+            <Link href={E_AppRoutes.login}>
               <Button className="mt-4 w-full" variant="bordered">
-                Register
+                Back to login
               </Button>
             </Link>
           </form>
@@ -118,7 +148,7 @@ export default function LoginPage() {
   );
 }
 
-function LoginButton() {
+function RegisterButton() {
   // const { pending, data } = useFormStatus();
 
   // useEffect(() => {
@@ -135,7 +165,7 @@ function LoginButton() {
 
   return (
     <Button className="w-full" type="submit">
-      <span className="inline-block mr-2">Login</span>
+      <span className="inline-block mr-2">Register</span>
       <ArrowRight variant="white" />
     </Button>
   );

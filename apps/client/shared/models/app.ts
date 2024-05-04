@@ -5,6 +5,7 @@ export enum E_AppRoutes {
   cart = "/cart",
   profile = "/profile",
   login = "/login",
+  register = "/login/register",
   collection = "/collection",
   orders = "/orders",
   search = "/search",

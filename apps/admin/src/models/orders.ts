@@ -17,7 +17,7 @@ export enum StatusEnum {
 }
 
 export interface I_CartItem {
-  // _id: string
+  _id: string
   product: string
   count: number
   main_color: string

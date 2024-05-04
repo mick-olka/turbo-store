@@ -24,3 +24,22 @@ export interface I_UserOrders {
   createdAt: string;
   updatedAt: string;
 }
+
+export type T_UserForm = {
+  first_name: string;
+  last_name: string;
+  email: string;
+};
+
+export type T_LoginForm = {
+  email: string;
+  password: string;
+};
+
+export type T_RegisterForm = {
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  password_repeat: string;
+};

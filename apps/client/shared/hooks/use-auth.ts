@@ -1,4 +1,4 @@
-import { E_AppRoutes } from "@/shared/models";
+import { E_AppRoutes, T_RegisterForm } from "@/shared/models";
 import { useRouter } from "next/navigation";
 
 import { useSession } from "./use-session";
@@ -32,6 +32,37 @@ export const useSignIn = () => {
     }
   };
   return { signIn };
+};
+
+type RegisterDTO = Omit<T_RegisterForm, "password_repeat"> & {
+  first_name: string;
+  last_name: string;
+  type: "user";
+};
+
+export const useRegister = () => {
+  const { setAccessToken } = useSession();
+  const router = useRouter();
+  const register = async (body: T_RegisterForm) => {
+    const b: RegisterDTO = { ...body, type: "user" };
+    const res = await fetch(api_url + "/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(b),
+    });
+    if (!res.ok) {
+      alert("Invalid credentials or already registered");
+    } else {
+      const data: TokensRes = await res.json();
+      if (data) {
+        setAccessToken(data.access_token);
+        router.push(E_AppRoutes.profile);
+      }
+    }
+  };
+  return { signUp: register };
 };
 
 export const useLogout = () => {
