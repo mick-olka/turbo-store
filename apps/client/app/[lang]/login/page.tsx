@@ -4,14 +4,14 @@ import { ArrowRight } from "@/app/[lang]/assets/icons/arrow-right";
 import { Button } from "@/app/[lang]/components/button";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
 import { useSignIn } from "@/shared/hooks";
-import { E_AppRoutes, T_LoginForm } from "@/shared/models";
+import { E_AppRoutes, PageProps, T_LoginForm } from "@/shared/models";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 
-import { emailRule, requiredRule } from "@/shared/utils";
+import { emailRule, localeUrl, requiredRule } from "@/shared/utils";
 
-export default function LoginPage() {
-  const { signIn } = useSignIn();
+export default function LoginPage({ params: { lang } }: PageProps<{}>) {
+  const { signIn } = useSignIn(lang);
   const {
     register,
     handleSubmit,
@@ -46,7 +46,7 @@ export default function LoginPage() {
             <br />
             <br />
             <LoginButton />
-            <Link href={E_AppRoutes.register}>
+            <Link href={localeUrl(E_AppRoutes.register, lang)}>
               <Button className="mt-4 w-full" variant="bordered">
                 Register
               </Button>

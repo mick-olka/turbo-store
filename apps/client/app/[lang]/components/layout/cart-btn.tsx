@@ -2,12 +2,15 @@
 
 import { PacketIcon } from "@/app/[lang]/assets/icons/packet";
 import { Button } from "@/app/[lang]/components/button";
+import { Locale } from "@/shared/configs/i18n-config";
 import { useCart } from "@/shared/hooks";
-import { E_AppRoutes } from "@/shared/models";
+import { E_AppRoutes, PageProps } from "@/shared/models";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const CartBtn = () => {
+import { localeUrl } from "@/shared/utils";
+
+export const CartBtn = ({ lang }: { lang: Locale }) => {
   const { getCart } = useCart();
   const [cartLen, setCartLen] = useState(0);
   useEffect(() => {
@@ -16,7 +19,7 @@ export const CartBtn = () => {
   }, [getCart]);
 
   return (
-    <Link href={E_AppRoutes.cart}>
+    <Link href={localeUrl(E_AppRoutes.cart, lang)}>
       <Button variant="bordered" className="border-gray-200">
         <PacketIcon variant="grey" />
         <span className="pl-1 text-gray-500 text-md">{cartLen}</span>

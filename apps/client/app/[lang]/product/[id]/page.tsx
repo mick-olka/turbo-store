@@ -16,7 +16,7 @@ export default async function Product({ params, searchParams }: Props) {
   return (
     <div className="p-4">
       <div className="py-6">
-        <BreadCrumps items={breadCrumps} />
+        <BreadCrumps items={breadCrumps} lang={params.lang} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
           <div className="flex flex-col items-center xl:items-start xl:flex-row -mx-4">

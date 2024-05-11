@@ -1,16 +1,19 @@
 "use client";
 
+import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, I_User, T_UserForm } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
+import { localeUrl } from "@/shared/utils";
+
 import { useSession } from "./use-session";
 
 const api_url = process.env.NEXT_PUBLIC_API_URL;
 
-export const useGetProfile = () => {
+export const useGetProfile = (lang?: Locale) => {
   const storage = useSession();
   let token = storage.getAccessToken();
   const router = useRouter();
@@ -20,7 +23,7 @@ export const useGetProfile = () => {
   useEffect(() => {
     if (error || !token) {
       // means user is not logged in
-      router.push(E_AppRoutes.login);
+      router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [error, token]);
   return {
@@ -55,7 +58,7 @@ export const useUpdateProfile = () => {
   return { updateProfile };
 };
 
-export const useDeleteProfile = () => {
+export const useDeleteProfile = (lang?: Locale) => {
   const router = useRouter();
   const { getAccessToken } = useSession();
   const token = getAccessToken();
@@ -72,7 +75,7 @@ export const useDeleteProfile = () => {
     if (res.ok) {
       const data: I_User = await res.json();
       if (data) {
-        router.push(E_AppRoutes.login);
+        router.push(localeUrl(E_AppRoutes.login, lang || "en"));
       } else {
         alert("Server error");
       }

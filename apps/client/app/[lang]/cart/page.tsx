@@ -3,9 +3,11 @@
 import { Button } from "@/app/[lang]/components/button";
 import { Selector } from "@/app/[lang]/components/inputs/selector";
 import { useAuthGuard, useCart, useDictionary, useMakeOrder } from "@/shared/hooks";
-import { E_AppRoutes, I_OrderDTO, I_OrderItem } from "@/shared/models";
+import { E_AppRoutes, I_OrderItem, PageProps } from "@/shared/models";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import { localeUrl } from "@/shared/utils";
 
 import { CartForm } from "./cart-form";
 import { CartList } from "./cart-list";
@@ -15,8 +17,10 @@ const paymentTypes = [
   { name: "Post", value: "post" },
 ] as const;
 
-export default function CartPage() {
-  useAuthGuard();
+type Props = PageProps<{}>;
+
+export default function CartPage({ params: { lang } }: Props) {
+  useAuthGuard(lang);
   const router = useRouter();
   const dictionary = useDictionary();
   const { removeFromCart, getCart, total } = useCart();
@@ -34,7 +38,7 @@ export default function CartPage() {
   const canOrder = !cart.length;
   const handleMakeOrder = () => {
     if (payment === "card") {
-      router.push(E_AppRoutes.checkout);
+      router.push(localeUrl(E_AppRoutes.checkout, lang));
     } else makeOrder();
   };
   return (

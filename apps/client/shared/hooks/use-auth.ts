@@ -1,5 +1,8 @@
+import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, T_RegisterForm } from "@/shared/models";
 import { useRouter } from "next/navigation";
+
+import { localeUrl } from "@/shared/utils";
 
 import { useSession } from "./use-session";
 
@@ -10,7 +13,7 @@ type TokensRes = {
   refresh_token: string;
 };
 
-export const useSignIn = () => {
+export const useSignIn = (lang?: Locale) => {
   const { setAccessToken } = useSession();
   const router = useRouter();
   const signIn = async (body: { email: string; password: string }) => {
@@ -27,7 +30,7 @@ export const useSignIn = () => {
       const data: TokensRes = await res.json();
       if (data) {
         setAccessToken(data.access_token);
-        router.push(E_AppRoutes.profile);
+        router.push(localeUrl(E_AppRoutes.profile, lang || "en"));
       }
     }
   };
@@ -40,7 +43,7 @@ type RegisterDTO = Omit<T_RegisterForm, "password_repeat"> & {
   type: "user";
 };
 
-export const useRegister = () => {
+export const useRegister = (lang?: Locale) => {
   const { setAccessToken } = useSession();
   const router = useRouter();
   const register = async (body: T_RegisterForm) => {
@@ -58,19 +61,19 @@ export const useRegister = () => {
       const data: TokensRes = await res.json();
       if (data) {
         setAccessToken(data.access_token);
-        router.push(E_AppRoutes.profile);
+        router.push(localeUrl(E_AppRoutes.profile, lang || "en"));
       }
     }
   };
   return { signUp: register };
 };
 
-export const useLogout = () => {
+export const useLogout = (lang?: Locale) => {
   const router = useRouter();
   const { setAccessToken } = useSession();
   const logout = () => {
     setAccessToken(null);
-    router.push(E_AppRoutes.login);
+    router.push(localeUrl(E_AppRoutes.login, lang || "en"));
   };
   return { logout };
 };

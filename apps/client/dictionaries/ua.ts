@@ -33,4 +33,8 @@ export const dictionaryUA: Dictionary = {
     specification: "Модель",
     description: "Опис",
   },
+  search: {
+    search_results: "Результати пошуку для: ",
+    no_results: "За вашим запитом нічого не знайдено, перевірте правильність вводу",
+  },
 };

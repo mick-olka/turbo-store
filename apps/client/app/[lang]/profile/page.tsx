@@ -1,18 +1,20 @@
 "use client";
 
 import { Button } from "@/app/[lang]/components/button";
-import { TextField } from "@/app/[lang]/components/inputs/text-field";
 import { UserForm } from "@/app/[lang]/profile/user-form";
 import { useAuthGuard, useDeleteProfile, useGetProfile, useLogout, useUpdateProfile } from "@/shared/hooks";
-import { E_AppRoutes, T_UserForm } from "@/shared/models";
+import { E_AppRoutes, PageProps, T_UserForm } from "@/shared/models";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function ProfilePage() {
-  useAuthGuard();
-  const { data, isLoading } = useGetProfile();
+import { localeUrl } from "@/shared/utils";
+
+type Props = PageProps<{}>;
+
+export default function ProfilePage({ params: { lang } }: Props) {
+  useAuthGuard(lang);
+  const { data, isLoading } = useGetProfile(lang);
   const { updateProfile } = useUpdateProfile();
-  const { deleteProfile } = useDeleteProfile();
+  const { deleteProfile } = useDeleteProfile(lang);
   const { logout } = useLogout();
   const handleUpdateProfile = (data: T_UserForm) => {
     updateProfile(data);
@@ -51,7 +53,7 @@ export default function ProfilePage() {
           <div className="flex flex-col">
             <h2 className="text-lg font-bold tracking-tight">Check my orders history</h2>
             <div className="text-sm text-muted-foreground">
-              <Link href={E_AppRoutes.orders}>
+              <Link href={localeUrl(E_AppRoutes.orders, lang)}>
                 <Button variant="bordered">My Orders</Button>
               </Link>
             </div>

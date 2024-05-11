@@ -2,18 +2,21 @@
 
 import { SearchIcon } from "@/app/[lang]/assets/icons/search";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
+import { Locale } from "@/shared/configs/i18n-config";
 import { useDictionary } from "@/shared/hooks";
 import { E_AppRoutes } from "@/shared/models";
 import { useRouter } from "next/navigation";
 
-export const SearchField = () => {
+import { localeUrl } from "@/shared/utils";
+
+export const SearchField = ({ lang }: { lang: Locale }) => {
   const router = useRouter();
   const dictionary = useDictionary();
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const search = e.currentTarget.value;
-      if (search) router.push(E_AppRoutes.search + `?search=${e.currentTarget.value}`);
-      else router.push(E_AppRoutes.home);
+      if (search) router.push(localeUrl(E_AppRoutes.search + `?search=${e.currentTarget.value}`, lang));
+      else router.push(localeUrl(E_AppRoutes.home, lang));
     }
   };
   return (

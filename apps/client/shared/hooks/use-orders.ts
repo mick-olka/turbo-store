@@ -1,24 +1,27 @@
 "use client";
 
+import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, I_Order, I_OrderDTO, I_OrderPopulated, I_UserOrders } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
 
+import { localeUrl } from "@/shared/utils";
+
 import { useCart } from "./use-cart";
 import { useSession } from "./use-session";
 
 const api_url = process.env.NEXT_PUBLIC_API_URL;
 
-export const useMakeOrder = () => {
+export const useMakeOrder = (lang?: Locale) => {
   const { getAccessToken } = useSession();
   const { total, setCart, setMessage, getCart, getName, getPhone, getMessage } = useCart();
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
     if (!token) {
-      router.push(E_AppRoutes.login);
+      router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [token]);
   const sendOrder = async (body: I_OrderDTO) => {
@@ -35,7 +38,7 @@ export const useMakeOrder = () => {
       if (data) {
         setCart([]);
         setMessage("");
-        router.push(E_AppRoutes.orders);
+        router.push(localeUrl(E_AppRoutes.orders, lang || "en"));
       } else {
         alert("Error sending order");
       }
@@ -62,7 +65,7 @@ export const useMakeOrder = () => {
   return { makeOrder };
 };
 
-export const useGetOrders = () => {
+export const useGetOrders = (lang?: Locale) => {
   const storage = useSession();
   let token = storage.getAccessToken();
   const router = useRouter();
@@ -72,7 +75,7 @@ export const useGetOrders = () => {
   useEffect(() => {
     if (error || !token) {
       // means user is not logged in
-      router.push(E_AppRoutes.login);
+      router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [error, token]);
   return {
@@ -82,7 +85,7 @@ export const useGetOrders = () => {
   };
 };
 
-export const useGetOrderById = (id?: string) => {
+export const useGetOrderById = ({ id, lang }: { id?: string; lang?: Locale }) => {
   const storage = useSession();
   let token = storage.getAccessToken();
   const router = useRouter();
@@ -93,7 +96,7 @@ export const useGetOrderById = (id?: string) => {
   useEffect(() => {
     if (error || !token) {
       // means user is not logged in
-      router.push(E_AppRoutes.login);
+      router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [error, token]);
   return {

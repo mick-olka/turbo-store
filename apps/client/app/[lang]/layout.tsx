@@ -33,7 +33,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <DictionaryProvider dictionary={dictionary}>
           <main className="min-h-screen w-full bg-gray-100 text-gray-700 overflow-hidden" x-data="layout">
-            <Header lan={params.lang} />
+            <Header lang={params.lang} />
             <div className="flex min-h-screen pt-14">
               <Sidebar list={collections} dictionary={dictionary} lang={params.lang} />
               {children}

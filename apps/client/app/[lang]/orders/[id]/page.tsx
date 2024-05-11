@@ -2,10 +2,10 @@
 
 import { BreadCrumps } from "@/app/[lang]/components/ui";
 import { useGetOrderById } from "@/shared/hooks";
-import { E_AppRoutes } from "@/shared/models/app";
+import { E_AppRoutes, PageProps } from "@/shared/models/app";
 
-export default function CheckoutPage({ params }: { params: { id: string } }) {
-  const { data, isLoading } = useGetOrderById(params.id);
+export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
+  const { data, isLoading } = useGetOrderById({ id: params.id, lang: params.lang });
   if (data)
     return (
       <div className="flex w-full flex-col justify-center items-center h-screen bg-gray-200 text-gray-900">
@@ -14,6 +14,7 @@ export default function CheckoutPage({ params }: { params: { id: string } }) {
             { name: "Orders", link: E_AppRoutes.orders },
             { name: data._id, link: "#" },
           ]}
+          lang={params.lang}
         />
         <div className="rounded-md relative w-96 shadow-2xl p-3 bg-white">
           <div className="py-2">

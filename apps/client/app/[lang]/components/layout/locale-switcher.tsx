@@ -5,7 +5,7 @@ import { type Locale, i18n } from "@/shared/configs/i18n-config";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function LocaleSwitcher({ lan }: { lan: Locale }) {
+export default function LocaleSwitcher({ lang }: { lang: Locale }) {
   const pathName = usePathname();
   const router = useRouter();
   const redirectedPathName = (locale: Locale) => {
@@ -22,7 +22,7 @@ export default function LocaleSwitcher({ lan }: { lan: Locale }) {
     <div>
       <Selector
         hideArrow
-        value={lan}
+        value={lang}
         onItemSelect={handleClickItem}
         list={i18n.locales.map(l => ({ name: l, value: l }))}
       />

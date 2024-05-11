@@ -1,17 +1,21 @@
 import { TightArrowRightIcon } from "@/app/[lang]/assets/icons/tight-arrow-right";
+import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
 import React from "react";
 
-interface I_Props {
-  items: { name: string; link: string }[];
-}
+import { localeUrl } from "@/shared/utils";
 
-export const BreadCrumps = ({ items }: I_Props) => {
+type Props = {
+  items: { name: string; link: string }[];
+  lang: Locale;
+};
+
+export const BreadCrumps = ({ items, lang }: Props) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center space-x-2 text-gray-400 text-sm">
-        <Link href={E_AppRoutes.home} className="hover:underline hover:text-gray-600">
+        <Link href={localeUrl(E_AppRoutes.home, lang)} className="hover:underline hover:text-gray-600">
           Home
         </Link>
         {items.map(i => (

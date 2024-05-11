@@ -33,4 +33,8 @@ export const dictionaryDE: Dictionary = {
     specification: "Specification",
     description: "Description",
   },
+  search: {
+    search_results: "Search results for: ",
+    no_results: "No products found for this search"
+  }
 };

@@ -31,4 +31,8 @@ export type Dictionary = {
     specification: string;
     description: string;
   };
+  search: {
+    search_results: string;
+    no_results: string;
+  };
 };

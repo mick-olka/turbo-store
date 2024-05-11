@@ -10,7 +10,7 @@ export default async function Home({ params }: Props) {
   const data = await getProducts();
 
   const items = data.docs.map(product => ({
-    link: "/product/" + product.url_name,
+    link: `/${params.lang}/product/` + product.url_name,
     content: <ProductCard lang={params.lang} product={product} />,
   }));
 
