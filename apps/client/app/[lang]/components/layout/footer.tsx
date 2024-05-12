@@ -1,24 +1,31 @@
 import { Dictionary } from "@/dictionaries/model";
+import { email, gitHub, shopLabel } from "@/shared/configs/global";
+import { Locale } from "@/shared/configs/i18n-config";
+import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
 
-export const Footer = ({ dictionary }: { dictionary: Dictionary }) => {
+import { localeUrl } from "@/shared/utils";
+
+export const Footer = ({ dictionary, lang }: { dictionary: Dictionary; lang: Locale }) => {
   return (
     <footer className="py-6  bg-gray-200 text-gray-900">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid justify-center  lg:justify-between">
           <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-            <span>Copy rgight © 2024 by mhutsal </span>
-            <Link rel="noopener noreferrer" href="#">
+            <span>{shopLabel}</span>
+            <span>Copyright © 2024 by mhutsal </span>
+            <Link rel="noopener noreferrer" href={localeUrl(E_AppRoutes.privacy_policy, lang)}>
               <span>{dictionary.footer.privacy_policy}</span>
             </Link>
-            <Link rel="noopener noreferrer" href="#">
+            <Link rel="noopener noreferrer" href={localeUrl(E_AppRoutes.terms_of_service, lang)}>
               <span>{dictionary.footer.terms_of_service}</span>
             </Link>
           </div>
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <Link
               rel="noopener noreferrer"
-              href="#"
+              href={`mailto:${email}`}
+              target="_blank"
               title="Email"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 duration-150 text-gray-50"
             >
@@ -39,8 +46,9 @@ export const Footer = ({ dictionary }: { dictionary: Dictionary }) => {
             </Link> */}
             <Link
               rel="noopener noreferrer"
-              href="#"
+              href={gitHub}
               title="GitHub"
+              target="_blank"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 duration-150 text-gray-50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">

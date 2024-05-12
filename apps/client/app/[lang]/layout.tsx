@@ -20,25 +20,25 @@ export const metadata: Metadata = {
 // }
 
 export default async function RootLayout({
-  params,
+  params: { lang },
   children,
 }: Readonly<{
   params: { lang: Locale };
   children: React.ReactNode;
 }>) {
   const collections = await getCollections();
-  const dictionary = await getDictionary(params.lang);
+  const dictionary = await getDictionary(lang);
   return (
-    <html lang={params.lang}>
+    <html lang={lang}>
       <body className={inter.className}>
         <DictionaryProvider dictionary={dictionary}>
           <main className="min-h-screen w-full bg-gray-100 text-gray-700 overflow-hidden" x-data="layout">
-            <Header lang={params.lang} />
+            <Header lang={lang} />
             <div className="flex min-h-screen pt-14">
-              <Sidebar list={collections} dictionary={dictionary} lang={params.lang} />
+              <Sidebar list={collections} dictionary={dictionary} lang={lang} />
               {children}
             </div>
-            <Footer dictionary={dictionary} />
+            <Footer dictionary={dictionary} lang={lang} />
           </main>
         </DictionaryProvider>
       </body>

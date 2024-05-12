@@ -23,8 +23,8 @@ export const dictionaryUA: Dictionary = {
     search: "Пошук",
   },
   footer: {
-    privacy_policy: "Privacy policy",
-    terms_of_service: "Terms of service",
+    privacy_policy: "Політика конфіденційності",
+    terms_of_service: "Умови користування",
   },
   product: {
     add_to_cart: "До кошика",
@@ -36,5 +36,16 @@ export const dictionaryUA: Dictionary = {
   search: {
     search_results: "Результати пошуку для: ",
     no_results: "За вашим запитом нічого не знайдено, перевірте правильність вводу",
+  },
+  auth: {
+    login: "Логін",
+    register: "Реєстрація",
+    back_to_login: "Назад до логіну",
+    email: "Ел. пошта",
+    password: "Пароль",
+    first_name: "Ім'я",
+    last_name: "Фамілія",
+    main_page: "Назад на головну",
+    repeat_password: "Повторити пароль",
   },
 };

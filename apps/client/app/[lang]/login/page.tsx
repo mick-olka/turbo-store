@@ -3,7 +3,8 @@
 import { ArrowRight } from "@/app/[lang]/assets/icons/arrow-right";
 import { Button } from "@/app/[lang]/components/button";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
-import { useSignIn } from "@/shared/hooks";
+import { shopLabel } from "@/shared/configs/global";
+import { useDictionary, useSignIn } from "@/shared/hooks";
 import { E_AppRoutes, PageProps, T_LoginForm } from "@/shared/models";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -12,6 +13,7 @@ import { emailRule, localeUrl, requiredRule } from "@/shared/utils";
 
 export default function LoginPage({ params: { lang } }: PageProps<{}>) {
   const { signIn } = useSignIn(lang);
+  const dictionary = useDictionary();
   const {
     register,
     handleSubmit,
@@ -23,32 +25,32 @@ export default function LoginPage({ params: { lang } }: PageProps<{}>) {
   return (
     <div className="min-h-screen w-full bg-gray-100 flex flex-col justify-center sm:py-12">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-        <h1 className="font-bold text-center text-2xl mb-5">Shop.</h1>
+        <h1 className="font-bold text-center text-2xl mb-5">{shopLabel}</h1>
         <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
           <form onSubmit={handleSubmit(onSubmit)} className="px-5 py-7">
-            <label className="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block">{dictionary.auth.email}</label>
             <TextField
               {...register("email", { ...requiredRule, ...emailRule })}
               error={errors.email?.message}
               variant={errors.email ? "error" : "bordered"}
-              placeholder="Email"
+              placeholder={dictionary.auth.email}
               className="w-full"
             />
-            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Password</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">{dictionary.auth.password}</label>
             <TextField
               {...register("password", { ...requiredRule })}
               error={errors.password?.message}
               variant={errors.password ? "error" : "bordered"}
-              placeholder="Password"
+              placeholder={dictionary.auth.password}
               type="password"
               className="w-full"
             />
             <br />
             <br />
-            <LoginButton />
+            <LoginButton label={dictionary.auth.login} />
             <Link href={localeUrl(E_AppRoutes.register, lang)}>
               <Button className="mt-4 w-full" variant="bordered">
-                Register
+                {dictionary.auth.register}
               </Button>
             </Link>
           </form>
@@ -108,7 +110,7 @@ export default function LoginPage({ params: { lang } }: PageProps<{}>) {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                <span className="inline-block ml-1">Back to main page</span>
+                <span className="inline-block ml-1">{dictionary.auth.main_page}</span>
               </button>
             </div>
           </div>
@@ -118,7 +120,7 @@ export default function LoginPage({ params: { lang } }: PageProps<{}>) {
   );
 }
 
-function LoginButton() {
+function LoginButton({ label }: { label: string }) {
   // const { pending, data } = useFormStatus();
 
   // useEffect(() => {
@@ -135,7 +137,7 @@ function LoginButton() {
 
   return (
     <Button className="w-full" type="submit">
-      <span className="inline-block mr-2">Login</span>
+      <span className="inline-block mr-2">{label}</span>
       <ArrowRight variant="white" />
     </Button>
   );

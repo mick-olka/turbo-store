@@ -12,6 +12,8 @@ export enum E_AppRoutes {
   about = "/about",
   checkout = "/cart/checkout",
   product = "/product",
+  privacy_policy = "/about/privacy-policy",
+  terms_of_service = "/about/terms-of-service",
 }
 
 export type LocaleParam<T extends object> = T & {

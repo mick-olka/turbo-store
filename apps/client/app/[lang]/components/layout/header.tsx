@@ -2,6 +2,7 @@ import { InfoIcon } from "@/app/[lang]/assets/icons/info";
 import { UserIcon } from "@/app/[lang]/assets/icons/user";
 import { Button } from "@/app/[lang]/components/button";
 import LocaleSwitcher from "@/app/[lang]/components/layout/locale-switcher";
+import { shopLabel } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
@@ -16,7 +17,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
     <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2 fixed z-10">
       <div className="flex items-center space-x-2">
         <Link href={localeUrl(E_AppRoutes.home, lang)} className="font-bold text-gray-700 text-2xl">
-          <h1 className="mx-6">Techno-Hutsal</h1>
+          <h1 className="mx-6">{shopLabel}</h1>
         </Link>
       </div>
 

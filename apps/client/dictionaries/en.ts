@@ -37,4 +37,15 @@ export const dictionaryEN: Dictionary = {
     search_results: "Search results for: ",
     no_results: "No products found for this search",
   },
+  auth: {
+    login: "Login",
+    register: "register",
+    back_to_login: "Back to login",
+    email: "Email",
+    password: "Password",
+    first_name: "First Name",
+    last_name: "Last Name",
+    main_page: "Back to main page",
+    repeat_password: "Repeat Password",
+  },
 };

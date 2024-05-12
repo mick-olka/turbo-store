@@ -35,4 +35,15 @@ export type Dictionary = {
     search_results: string;
     no_results: string;
   };
+  auth: {
+    login: string;
+    register: string;
+    main_page: string;
+    email: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+    repeat_password: string;
+    back_to_login: string;
+  };
 };

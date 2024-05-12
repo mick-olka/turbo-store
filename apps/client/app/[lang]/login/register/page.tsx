@@ -3,7 +3,8 @@
 import { ArrowRight } from "@/app/[lang]/assets/icons/arrow-right";
 import { Button } from "@/app/[lang]/components/button";
 import { TextField } from "@/app/[lang]/components/inputs/text-field";
-import { useRegister } from "@/shared/hooks";
+import { shopLabel } from "@/shared/configs/global";
+import { useDictionary, useRegister } from "@/shared/hooks";
 import { E_AppRoutes, PageProps, T_RegisterForm } from "@/shared/models";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -12,6 +13,7 @@ import { emailRule, localeUrl, requiredRule } from "@/shared/utils";
 
 export default function RegisterPage({ params }: PageProps<{}>) {
   const { signUp } = useRegister();
+  const dictionary = useDictionary();
   const {
     register,
     handleSubmit,
@@ -24,44 +26,46 @@ export default function RegisterPage({ params }: PageProps<{}>) {
   return (
     <div className="min-h-screen w-full bg-gray-100 flex flex-col justify-center sm:py-12">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-        <h1 className="font-bold text-center text-2xl mb-5">Shop.</h1>
+        <h1 className="font-bold text-center text-2xl mb-5">{shopLabel}</h1>
         <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
           <form onSubmit={handleSubmit(onSubmit)} className="px-5 py-7">
-            <label className="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block">{dictionary.auth.email}</label>
             <TextField
               {...register("email", { ...requiredRule, ...emailRule })}
               error={errors.email?.message}
               variant={errors.email ? "error" : "bordered"}
-              placeholder="Email"
+              placeholder={dictionary.auth.email}
               className="w-full"
               type="email"
             />
-            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">First name</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">{dictionary.auth.first_name}</label>
             <TextField
               {...register("first_name", { ...requiredRule })}
               error={errors.first_name?.message}
               variant={errors.first_name ? "error" : "bordered"}
-              placeholder="First name"
+              placeholder={dictionary.auth.first_name}
               className="w-full"
             />
-            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Last name</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">{dictionary.auth.last_name}</label>
             <TextField
               {...register("last_name", { ...requiredRule })}
               error={errors.last_name?.message}
               variant={errors.last_name ? "error" : "bordered"}
-              placeholder="Last name"
+              placeholder={dictionary.auth.last_name}
               className="w-full"
             />
-            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Password</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">{dictionary.auth.password}</label>
             <TextField
               {...register("password", { ...requiredRule })}
               error={errors.password?.message}
               variant={errors.password ? "error" : "bordered"}
-              placeholder="Password"
+              placeholder={dictionary.auth.password}
               type="password"
               className="w-full"
             />
-            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">Repeat Password</label>
+            <label className="font-semibold text-sm text-gray-600 pb-1 block mt-4">
+              {dictionary.auth.repeat_password}
+            </label>
             <TextField
               {...register("password_repeat", {
                 ...requiredRule,
@@ -69,16 +73,16 @@ export default function RegisterPage({ params }: PageProps<{}>) {
               })}
               error={errors.password_repeat?.message}
               variant={errors.password_repeat ? "error" : "bordered"}
-              placeholder="Repeat Password"
+              placeholder={dictionary.auth.repeat_password}
               type="password"
               className="w-full"
             />
             <br />
             <br />
-            <RegisterButton />
+            <RegisterButton label={dictionary.auth.register} />
             <Link href={localeUrl(E_AppRoutes.login, params.lang)}>
               <Button className="mt-4 w-full" variant="bordered">
-                Back to login
+                {dictionary.auth.back_to_login}
               </Button>
             </Link>
           </form>
@@ -138,7 +142,7 @@ export default function RegisterPage({ params }: PageProps<{}>) {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                <span className="inline-block ml-1">Back to main page</span>
+                <span className="inline-block ml-1">{dictionary.auth.main_page}</span>
               </button>
             </div>
           </div>
@@ -148,7 +152,7 @@ export default function RegisterPage({ params }: PageProps<{}>) {
   );
 }
 
-function RegisterButton() {
+function RegisterButton({ label }: { label: string }) {
   // const { pending, data } = useFormStatus();
 
   // useEffect(() => {
@@ -165,7 +169,7 @@ function RegisterButton() {
 
   return (
     <Button className="w-full" type="submit">
-      <span className="inline-block mr-2">Register</span>
+      <span className="inline-block mr-2">{label}</span>
       <ArrowRight variant="white" />
     </Button>
   );
