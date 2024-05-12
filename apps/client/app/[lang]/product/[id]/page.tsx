@@ -1,7 +1,9 @@
 import { BreadCrumps } from "@/app/[lang]/components/ui/breadcrumps";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { PageProps } from "@/shared/models";
+import { E_AppRoutes, PageProps } from "@/shared/models";
 import { getProductById } from "@/shared/service";
+
+import { localeUrl } from "@/shared/utils";
 
 import { AddToCartPane } from "./add-to-cart-pane";
 import { Gallery } from "./gallery";
@@ -10,13 +12,24 @@ type Props = PageProps<{ id: string }, { spec?: string }>;
 
 export default async function Product({ params, searchParams }: Props) {
   const product = await getProductById(params.id);
-  const breadCrumps = [{ name: product.name["ua"], link: product.url_name }];
+  const getBreadCrumps = () => {
+    const category = product.collections[0];
+    if (category) {
+      return [
+        {
+          name: category.name[params.lang],
+          link: localeUrl(`${E_AppRoutes.collection}/${category.url_name}`, params.lang),
+        },
+        { name: product.name[params.lang], link: product.url_name },
+      ];
+    }
+    return [{ name: product.name[params.lang], link: product.url_name }];
+  };
   const dictionary = await getDictionary(params.lang);
-  // const spec = searchParams.spec;
   return (
     <div className="p-4">
       <div className="py-6">
-        <BreadCrumps items={breadCrumps} lang={params.lang} />
+        <BreadCrumps items={getBreadCrumps()} lang={params.lang} homeLabel={dictionary.sidebar.home} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
           <div className="flex flex-col items-center xl:items-start xl:flex-row -mx-4">

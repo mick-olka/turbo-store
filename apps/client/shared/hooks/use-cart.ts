@@ -1,7 +1,6 @@
 "use client";
 
 import { I_OrderItem } from "@/shared/models";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 enum Items {

@@ -22,6 +22,7 @@ type ProductI = Product & { _id: mongoose.Types.ObjectId };
 const populateProductsSelector =
   "_id name url_name thumbnail price old_price index active";
 
+const populateCollectionSelector = "_id name url_name";
 @Injectable()
 export class ProductsService {
   constructor(
@@ -54,6 +55,7 @@ export class ProductsService {
 
   async findOne(id: string): Promise<ProductI> {
     return await this.ProductModel.findOne(getUrlNameFilter(id))
+      .populate("collections", populateCollectionSelector)
       .populate("photos")
       .populate("related_products", populateProductsSelector)
       .populate("similar_products", populateProductsSelector);

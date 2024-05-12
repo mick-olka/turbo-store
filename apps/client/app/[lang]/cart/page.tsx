@@ -24,7 +24,7 @@ export default function CartPage({ params: { lang } }: Props) {
   const router = useRouter();
   const dictionary = useDictionary();
   const { removeFromCart, getCart, total } = useCart();
-  const { makeOrder } = useMakeOrder();
+  const { makeOrder } = useMakeOrder(lang);
   const [cart, setCart] = useState<I_OrderItem[]>([]);
   const [payment, setPayment] = useState<"card" | "post">("card");
   const handleRemoveItem = (id: string) => {

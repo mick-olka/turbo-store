@@ -1,10 +1,11 @@
 "use client";
 
 import { BreadCrumps } from "@/app/[lang]/components/ui";
-import { useGetOrderById } from "@/shared/hooks";
+import { useDictionary, useGetOrderById } from "@/shared/hooks";
 import { E_AppRoutes, PageProps } from "@/shared/models/app";
 
 export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
+  const dictionary = useDictionary();
   const { data, isLoading } = useGetOrderById({ id: params.id, lang: params.lang });
   if (data)
     return (
@@ -15,6 +16,7 @@ export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
             { name: data._id, link: "#" },
           ]}
           lang={params.lang}
+          homeLabel={dictionary.sidebar.home}
         />
         <div className="rounded-md relative w-96 shadow-2xl p-3 bg-white">
           <div className="py-2">

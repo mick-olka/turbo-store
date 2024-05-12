@@ -1,3 +1,5 @@
+import { I_Collection } from "@/shared/models/collections-model";
+
 import { E_Locales, LocalesObjectT } from "./locales-model";
 import { I_PhotosBlock } from "./photos-model";
 
@@ -27,7 +29,7 @@ export interface I_Product {
   description: LocalesObjectT<string>;
   features: I_ProductFeatures;
   photos: I_PhotosBlock[];
-  collections: string[];
+  collections: Pick<I_Collection, "_id" | "name" | "url_name">[];
   related_products: string[];
   similar_products: string[];
   index: number;
