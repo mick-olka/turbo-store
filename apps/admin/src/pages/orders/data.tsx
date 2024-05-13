@@ -12,11 +12,11 @@ const date_options = {
 }
 
 export const orders_columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', width: 130 },
-  { field: 'status', headerName: 'Status', width: 130 },
+  { field: 'name', headerName: "Ім'я", width: 130 },
+  { field: 'status', headerName: 'Статус', width: 130 },
   {
     field: 'date',
-    headerName: 'Date',
+    headerName: 'Дата',
     width: 130,
     valueFormatter: (v) =>
       new Date(v.value).toLocaleDateString('ua-UA', date_options as Intl.DateTimeFormatOptions),
@@ -26,7 +26,7 @@ export const orders_columns: GridColDef[] = [
 export const cart_item_columns: GridColDef[] = [
   {
     field: 'product',
-    headerName: 'Product',
+    headerName: 'Товар',
     renderCell: (params) => (
       <Box
         sx={{
@@ -51,7 +51,7 @@ export const cart_item_columns: GridColDef[] = [
           <ImageIcon />
         )}
         <Typography sx={{ marginLeft: '1rem' }}>
-          {params.value ? params.value.name.ua : 'deleted product'}
+          {params.value ? params.value.name.ua : 'видалений товар'}
         </Typography>
       </Box>
     ),
@@ -59,14 +59,14 @@ export const cart_item_columns: GridColDef[] = [
   },
   {
     field: 'count',
-    headerName: 'Count',
+    headerName: 'К-ть',
     width: 130,
     align: 'center',
     headerAlign: 'center',
   },
   {
     field: 'main_color',
-    headerName: 'Color 1',
+    headerName: 'Модель',
     width: 130,
     // editable: true,
     // renderCell: (params) => {
@@ -96,7 +96,7 @@ export const cart_item_columns: GridColDef[] = [
     //   console.log(v)
     // },
   },
-  { field: 'pill_color', headerName: 'Color 2', width: 130 },
+  { field: 'pill_color', headerName: 'Варіант', width: 130 },
   {
     field: 'edit',
     headerName: '',

@@ -28,7 +28,7 @@ export const SimilarRelatedProducts = ({ prod_id, related, similar }: I_Props) =
   }
 
   const handleTypeChange = (event: React.MouseEvent<HTMLElement>, newType: ListType) => {
-    setType(newType)
+    if (newType) setType(newType)
   }
 
   const data = {
@@ -104,14 +104,14 @@ export const SimilarRelatedProducts = ({ prod_id, related, similar }: I_Props) =
           >
             <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '45vw' }}>
               <Button onClick={() => setProductsSelectionMode(true)} variant='outlined'>
-                Add Products
+                Додати товари
               </Button>
               <ToggleButtonGroup value={type} exclusive onChange={handleTypeChange}>
                 <ToggleButton value='related'>
-                  <Typography>Related</Typography>
+                  <Typography>Пов'язані</Typography>
                 </ToggleButton>
                 <ToggleButton value='similar'>
-                  <Typography>Similar</Typography>
+                  <Typography>Схожі</Typography>
                 </ToggleButton>
               </ToggleButtonGroup>
             </Box>

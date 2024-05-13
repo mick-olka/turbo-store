@@ -42,7 +42,7 @@ export const TextBlocksPage = () => {
   return (
     <>
       <ItemsPage
-        title='Text on Site'
+        title='Текст на сайті'
         data={data}
         columns={text_blocks_columns}
         clientPagination

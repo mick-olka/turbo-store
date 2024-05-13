@@ -30,7 +30,7 @@ export const ChooseProducts = ({
     if (products && collectionId)
       res = res.map((p) => ({
         ...p,
-        disabled: p.collections ? p.collections.includes(collectionId) : false,
+        disabled: p.collections ? !!p.collections.find((c) => c._id === collectionId) : false,
       }))
     if (products && exclude) res = res.filter((p) => ({ ...p, disabled: !exclude.includes(p._id) }))
     return res
@@ -67,7 +67,7 @@ export const ChooseProducts = ({
       }}
     >
       <ItemsPage
-        title='Select Products'
+        title='Оберіть товари'
         data={data}
         columns={product_columns}
         pagination
@@ -80,9 +80,9 @@ export const ChooseProducts = ({
         onSelect={(ids) => setSelected(ids)}
       >
         <Button disabled={!selected.length} onClick={handleSelectProducts}>
-          ADD
+          Додати
         </Button>
-        <Button onClick={onCancel}>Cancel</Button>
+        <Button onClick={onCancel}>Скасувати</Button>
       </ItemsPage>
     </Box>
   )

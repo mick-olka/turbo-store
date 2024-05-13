@@ -18,11 +18,11 @@ export const CreateCollectionPage = () => {
 
   return (
     <S.Pane>
-      <h2>Create Collection</h2>
+      <h2>Створити категорію</h2>
       <Box sx={{ display: 'flex' }}>
         <CollectionForm onSubmit={onSubmit} isLoading={isLoading} />
       </Box>
-      {isError && <h3>Error creating collection</h3>}
+      {isError && <h3>Помилка при створенні категорії</h3>}
       {collection && <Navigate to={getRouteWithId(ROUTES.collection, collection.data._id)} />}
     </S.Pane>
   )

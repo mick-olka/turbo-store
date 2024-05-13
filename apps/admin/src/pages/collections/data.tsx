@@ -6,11 +6,11 @@ import { useDebounce } from 'use-debounce'
 import { useUpdateCollection } from 'src/hooks'
 
 export const columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', flex: 1, valueGetter: (param) => param.value.ua },
-  { field: 'url_name', headerName: 'Url', width: 130 },
+  { field: 'name', headerName: 'Назва', flex: 1, valueGetter: (param) => param.value.ua },
+  { field: 'url_name', headerName: 'Url-назва', width: 130 },
   {
     field: 'index',
-    headerName: 'Index',
+    headerName: 'Порядок',
     width: 100,
     renderCell: (params) => {
       const [index, setIndex] = useState<number>(params.value || 0)

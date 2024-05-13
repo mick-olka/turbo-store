@@ -24,7 +24,7 @@ export const CreateProductPage = () => {
 
   return (
     <S.CreateProductPane>
-      <h2>Create Product</h2>
+      <h2>Створити товар</h2>
       <Box sx={{ display: 'flex' }}>
         <Box sx={{ width: '150px', height: '150px', margin: '2rem' }}>
           <AvatarUploader
@@ -34,7 +34,7 @@ export const CreateProductPage = () => {
         </Box>
         <ProductForm onSubmit={onSubmit} isLoading={isLoading} />
       </Box>
-      {isError && <h3>Error creating product</h3>}
+      {isError && <h3>Помилка при створенні товару</h3>}
       {product && <Navigate to={getRouteWithId(ROUTES.product, product.data._id)} />}
     </S.CreateProductPane>
   )

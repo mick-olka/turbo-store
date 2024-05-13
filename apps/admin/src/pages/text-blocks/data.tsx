@@ -5,7 +5,7 @@ import { GridColDef } from '@mui/x-data-grid'
 import { I_Locales, I_TextBlock } from 'src/models'
 
 export const text_blocks_columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', width: 130 },
+  { field: 'name', headerName: 'Назва', width: 130 },
   {
     field: 'text',
     headerName: 'text',

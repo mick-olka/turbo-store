@@ -9,13 +9,8 @@ import { useOrderById, useUpdateOrder } from 'src/hooks'
 import { I_CartItemPopulated, I_OrderDto, StatusEnum } from 'src/models'
 import { ChooseProducts } from 'src/pages'
 
-// interface I_OrderItemWithId extends I_CartItemPopulated {
-//   _id: string
-// }
-
 export const OrderPage = () => {
   const id = String(useParams().id)
-  // const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const [itemOpen, setItemOpen] = useState(false)
   const [cartItem, setCartItem] = useState<I_CartItemPopulated | null>(null)
@@ -116,19 +111,19 @@ export const OrderPage = () => {
 
         <Box sx={{ height: '100%' }}>
           <ItemsPage
-            title={'Ordered products'}
+            title={'Замовлені товари'}
             data={cart_items}
             columns={cart_item_columns}
             clientPagination
             onDeleteMultiple={onItemsDelete}
             onItemClick={onProdClick}
-            deleteTitle='Remove these items from the order'
+            deleteTitle='Видалити ці товари із замовлення'
           >
             <>
               {/* <RoundButton onClick={() => setOpen(true)}>
                 <EditOutlinedIcon />
               </RoundButton> */}
-              <Button onClick={() => setProductsSelectionMode(true)}>Add Products</Button>
+              <Button onClick={() => setProductsSelectionMode(true)}>Додати товари</Button>
             </>
           </ItemsPage>
         </Box>
@@ -148,10 +143,10 @@ export const OrderPage = () => {
       </Box>
     )
   }
-  if (isLoading) return <Box>Loading...</Box>
+  if (isLoading) return <Box>Завантаження...</Box>
   return (
     <Box>
-      <h3>Error</h3>
+      <h3>Помилка сервера</h3>
     </Box>
   )
 }

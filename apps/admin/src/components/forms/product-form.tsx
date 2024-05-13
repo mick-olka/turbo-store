@@ -88,7 +88,7 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('url_name')} label='URL-назва (англ)' fullWidth />
+          <S.TextFieldStyled {...register('url_name')} label='URL-назва' fullWidth />
         </S.TextFieldBox>
 
         <S.TextFieldBox>

@@ -77,7 +77,7 @@ export const CollectionForm = (props: Readonly<I_Props>) => {
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('url_name')} label='URL-назва (англ)' fullWidth />
+          <S.TextFieldStyled {...register('url_name')} label='URL-назва' fullWidth />
         </S.TextFieldBox>
 
         <S.TextFieldBox>

@@ -30,7 +30,7 @@ export const OrdersPage = () => {
 
   return (
     <ItemsPage
-      title='Orders'
+      title='Замовлення'
       data={data}
       columns={orders_columns}
       onDeleteMultiple={deleteMany}

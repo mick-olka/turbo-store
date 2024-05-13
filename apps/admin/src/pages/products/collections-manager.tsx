@@ -58,9 +58,9 @@ export const CollectionsManager = ({
       loadingAlert
     >
       <Box sx={{ width: '20rem', display: 'flex', alignItems: 'center' }}>
-        <Typography>Collections: </Typography>
+        <Typography>Категорії: </Typography>
         <ItemSelector
-          placeholder='Add to Collection'
+          placeholder='Додати до категорії'
           items={other_collections}
           onSelect={handleCollectionSelected}
         />

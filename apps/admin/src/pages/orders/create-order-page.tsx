@@ -19,11 +19,11 @@ export const CreateOrderPage = () => {
 
   return (
     <S.Pane>
-      <h2>Create Order</h2>
+      <h2>Нове замовлення</h2>
       <Box sx={{ display: 'flex' }}>
         <OrderForm onSubmit={onSubmit} isLoading={isLoading} />
       </Box>
-      {isError && <h3>Error creating order</h3>}
+      {isError && <h3>Помилка при створенні замовлення</h3>}
       {order && <Navigate to={getRouteWithId(ROUTES.order, order.data._id)} />}
     </S.Pane>
   )
