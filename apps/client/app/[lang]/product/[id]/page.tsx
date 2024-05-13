@@ -17,7 +17,7 @@ export default async function Product({ params, searchParams }: Props) {
     if (category) {
       return [
         {
-          name: category.name[params.lang],
+          name: category.name ? category.name[params.lang] : category.url_name,
           link: localeUrl(`${E_AppRoutes.collection}/${category.url_name}`, params.lang),
         },
         { name: product.name[params.lang], link: product.url_name },

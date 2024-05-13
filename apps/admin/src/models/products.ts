@@ -1,4 +1,4 @@
-import { E_Languages, I_Locales, I_Photos } from '.'
+import { E_Languages, I_Collection, I_Locales, I_Photos } from '.'
 
 export type I_ProductFeatures = {
   [key in E_Languages]: {
@@ -30,7 +30,7 @@ export interface I_Product {
   photos: I_Photos[]
   related_products: I_ProductPopulated[]
   similar_products: I_ProductPopulated[]
-  collections: string[]
+  collections: Pick<I_Collection, '_id' | 'name' | 'url_name'>[]
   index?: number
   active: boolean
 }

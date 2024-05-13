@@ -77,7 +77,10 @@ export const ProductPage = () => {
               />
             </Box>
             <Box sx={{ margin: '2rem' }}>
-              <CollectionsManager available_list={product.collections} product_id={product._id} />
+              <CollectionsManager
+                available_list={product.collections.map((c) => c._id)}
+                product_id={product._id}
+              />
             </Box>
           </Box>
           <Box sx={{ width: '100%' }}>

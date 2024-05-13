@@ -13,7 +13,7 @@ export async function getProducts(search?: string): Promise<I_ProductsListRes> {
 }
 
 export async function getProductById(id: string): Promise<I_Product> {
-  const res = await fetch(url + "/products/" + id);
+  const res = await fetch(url + "/products/" + id, { next: { revalidate: 120 } });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

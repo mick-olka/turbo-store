@@ -3,7 +3,7 @@ import { I_Collection } from "@/shared/models";
 const url = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getCollections(): Promise<I_Collection[]> {
-  const res = await fetch(url + "/collections");
+  const res = await fetch(url + "/collections", { next: { revalidate: 120 } });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
