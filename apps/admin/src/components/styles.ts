@@ -86,7 +86,8 @@ export const SubmitButton = styled(TextField)`
 export const ButtonStyled = styled(Button)`
   &&& {
     border-radius: 20px;
-    padding: 1rem 3rem;
+    padding: 1rem;
+    width: 140px;
     margin: 1rem;
     background-color: ${({ theme }) => theme.components.button.bg};
     color: ${({ theme }) => theme.components.button.c};

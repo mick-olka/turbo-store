@@ -7,6 +7,7 @@ import { getProductById } from "@/shared/service";
 import { localeUrl } from "@/shared/utils";
 
 import { AddToCartPane } from "./add-to-cart-pane";
+import { FeaturesList } from "./features-list";
 import { Gallery } from "./gallery";
 
 type Props = PageProps<{ id: string }, { spec?: string }>;
@@ -70,6 +71,7 @@ export default async function Product({ params, searchParams }: Props) {
               <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
             </div>
           </div>
+          <FeaturesList list={product.features} lang={params.lang} />
           {product.related_products.length ? (
             <div className="mt-6">
               <h2 className="text-lg font-bold">{dictionary.product.related_products}</h2>

@@ -52,7 +52,7 @@ export const ProductPage = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <h2 style={{ margin: '2rem' }}>
               <Link
-                href={client_url + '/products' + product.url_name}
+                href={client_url + '/product/' + product.url_name}
                 target='_blank'
                 color='inherit'
                 sx={{ textDecoration: 'none', cursor: 'pointer' }}
