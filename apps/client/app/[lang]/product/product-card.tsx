@@ -3,6 +3,7 @@ import { Button } from "@/app/[lang]/components/button";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { Locale } from "@/shared/configs/i18n-config";
 import { I_ProductRelated } from "@/shared/models";
+import { getTextByName } from "@/shared/service";
 import Image from "next/image";
 import React from "react";
 
@@ -10,6 +11,9 @@ const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_ProductRelated }) => {
   const dictionary = await getDictionary(lang);
+  const dollar_block = await getTextByName("dollar");
+  const coefficient = Number(dollar_block.text[lang]);
+  const isSale = !!product.old_price;
   return (
     <>
       <div className="relative flex items-end overflow-hidden rounded-xl">
@@ -31,7 +35,9 @@ export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_
         <h2 className="text-slate-700 line-clamp-2">{product.name[lang]}</h2>
         <p className="text-sm text-slate-400">{product.url_name}</p>
         <div className="mt-3 flex items-end justify-between">
-          <p className="text-lg font-bold text-blue-500">₴{product.price}</p>
+          <p className={`text-lg font-bold ${isSale ? "text-red-500" : "text-blue-500"}`}>
+            ₴{product.price * coefficient}
+          </p>
           <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
             <CartIcon variant="white" />
             <Button className="max-h-4" size="sm">

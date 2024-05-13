@@ -27,7 +27,7 @@ export const dictionaryUA: Dictionary = {
     terms_of_service: "Умови користування",
   },
   product: {
-    add_to_cart: "До кошика",
+    add_to_cart: "У кошик",
     taxes: "З урахуванням усіх податків",
     quantity: "К-ть",
     specification: "Модель",

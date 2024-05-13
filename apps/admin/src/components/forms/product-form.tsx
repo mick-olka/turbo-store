@@ -24,7 +24,7 @@ const def: I_ProductForm = {
   description: lanEnumToObject(''),
   code: '',
   price: 1000,
-  oldPrice: undefined,
+  old_price: undefined,
   index: 0,
   keywords: [],
   features: lanEnumToObject([]),
@@ -32,7 +32,6 @@ const def: I_ProductForm = {
 }
 
 export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Readonly<I_Props>) => {
-  const [isSale, setIsSale] = useState(false)
   const {
     register,
     handleSubmit,
@@ -43,6 +42,7 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
   } = useForm<I_ProductForm>({
     defaultValues: initValues || def,
   })
+  const [isSale, setIsSale] = useState(initValues ? !!initValues.old_price : false)
 
   watch(['keywords', 'features'])
 
@@ -52,6 +52,7 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
       name: data.name,
       code: data.code,
       price: data.price,
+      old_price: data.old_price,
       index: data.index,
       keywords: data.keywords,
       description: data.description,
@@ -62,8 +63,8 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
   }
 
   const toggleSale = () => {
-    if (!isSale) setValue('oldPrice', getValues('price'))
-    else setValue('oldPrice', undefined)
+    if (!isSale) setValue('old_price', getValues('price'))
+    else setValue('old_price', undefined)
     setIsSale(!isSale)
   }
 
@@ -103,15 +104,15 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
           {isSale && (
             <S.TextFieldStyled
               type='number'
-              {...register('oldPrice', { required: !!required })}
-              label='Стара ціна'
+              {...register('old_price', { required: !!required })}
+              label='Стара ціна ($)'
               fullWidth
             />
           )}
           <S.TextFieldStyled
             type='number'
             {...register('price', { required: !!required })}
-            label={isSale ? 'Нова ціна' : 'Ціна'}
+            label={isSale ? 'Нова ціна' : 'Ціна ($)'}
             fullWidth
             // sx={{ marginLeft: '1rem' }}
           />

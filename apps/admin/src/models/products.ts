@@ -22,7 +22,7 @@ export interface I_Product {
   url_name: string
   code: string
   price: number
-  oldPrice: number
+  old_price: number
   thumbnail: string
   keywords: string[]
   description: I_Locales
@@ -44,7 +44,7 @@ export interface I_ProductForm {
   name: I_Locales
   code: string
   price: number
-  oldPrice?: number
+  old_price?: number
   index?: number
   keywords?: string[]
   description?: I_Locales
