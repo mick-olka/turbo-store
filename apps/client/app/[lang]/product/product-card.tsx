@@ -23,7 +23,7 @@ export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_
           height="200"
           src={`${api_url}/upload/` + product.thumbnail}
           alt={product.url_name}
-          className="max-h-32 w-full object-contain"
+          className="h-32 w-full object-contain"
         />
         {/* <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md">
           <StarIcon className="text-yellow-400" size="sm" />

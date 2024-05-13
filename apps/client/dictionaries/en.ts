@@ -34,6 +34,7 @@ export const dictionaryEN: Dictionary = {
     description: "Description",
     related_products: "Related products",
     similar_products: "Similar products",
+    features: "Features",
   },
   search: {
     search_results: "Search results for: ",

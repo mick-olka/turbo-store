@@ -34,6 +34,7 @@ export const dictionaryUA: Dictionary = {
     description: "Опис",
     related_products: "Пов'язані товари",
     similar_products: "Схожі товари",
+    features: "Характеристики",
   },
   search: {
     search_results: "Результати пошуку для: ",

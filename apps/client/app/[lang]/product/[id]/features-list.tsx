@@ -1,3 +1,4 @@
+import { getDictionary } from "@/dictionaries/get-dictionary";
 import { Locale } from "@/shared/configs/i18n-config";
 import { I_ProductFeatures } from "@/shared/models";
 import React from "react";
@@ -7,10 +8,11 @@ type Props = {
   list: I_ProductFeatures;
 };
 
-export const FeaturesList = ({ lang, list }: Props) => {
+export const FeaturesList = async ({ lang, list }: Props) => {
+  const dictionary = await getDictionary(lang);
   return (
     <div className="my-4">
-      <h3 className="font-bold text-lg mb-4 mt-8">Features</h3>
+      <h3 className="font-bold text-lg mb-4 mt-8">{dictionary.product.features}</h3>
       {list[lang].map(f => (
         <div key={f.key} className="flex justify-between max-w-xl">
           <span>{f.key}:</span>
