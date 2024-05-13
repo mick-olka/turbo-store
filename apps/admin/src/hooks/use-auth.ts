@@ -9,15 +9,19 @@ export const useLogin = () => {
   const { mutateAsync, data, isLoading, isError } = useMutation(
     'login',
     (form_data: I_LoginCreds) =>
-      toasterPending(
-        AuthService.login(form_data),
-        'Checking...',
-        'Invalid Credentials',
-        'Login successful',
-      ),
+      toasterPending(AuthService.login(form_data), 'Перевірка...', 'Невірні дані', 'Вхід успішний'),
     {},
   )
   return { login: mutateAsync, tokens: data?.data, isLoading, isError }
+}
+
+export const useLogout = () => {
+  const { mutateAsync, isSuccess, isLoading, isError } = useMutation(
+    'logout',
+    () => toasterPending(AuthService.logout(), 'Перевірка...', 'Помилка', 'Сесію закрито'),
+    {},
+  )
+  return { logout: mutateAsync, isSuccess, isLoading, isError }
 }
 
 export const useRegister = () => {
@@ -26,9 +30,9 @@ export const useRegister = () => {
     (form_data: I_RegisterCreds) =>
       toasterPending(
         AuthService.login(form_data),
-        'Checking data...',
-        'Error checking data',
-        'Register successful',
+        'Перевірка...',
+        'Помилка при перевірці даних',
+        'Реєстрація успішна',
       ),
     {},
   )

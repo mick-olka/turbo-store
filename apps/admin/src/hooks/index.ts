@@ -1,4 +1,4 @@
-export { useCheckLogin, useLogin, useRegister } from './use-auth'
+export * from './use-auth'
 export {
   useCollectionById,
   useCollections,

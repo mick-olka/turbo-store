@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Button } from '@mui/material'
 import { useForm } from 'react-hook-form'
 
 export { Register as SignUp, Login as SignIn } from '.'
@@ -23,32 +23,35 @@ export const CredentialsForm = ({ onSubmit, isLoading }: I_Props) => {
   })
 
   return (
-    <Box sx={{ width: 'fit-content', margin: '0 auto' }}>
-      <form onSubmitCapture={handleSubmit(onSubmit)}>
-        <TextFieldBox>
-          <TextFieldStyled
-            error={!!errors.email}
-            {...register('email', { required: true })}
-            label='email'
-          />
-        </TextFieldBox>
-
-        <TextFieldBox>
-          <TextFieldStyled
-            error={!!errors.password}
-            type='password'
-            {...register('password', { required: true, minLength: 2 })}
-            label='Password'
-          />
-        </TextFieldBox>
-
+    <form onSubmitCapture={handleSubmit(onSubmit)}>
+      <TextFieldBox>
         <TextFieldStyled
-          sx={{ backgroundColor: '#55f' }}
-          disabled={isLoading}
-          type='submit'
-          // value={isLoading ? 'Loading...' : 'Create'}
+          error={!!errors.email}
+          {...register('email', { required: true })}
+          label='Ел. пошта (логін)'
+          fullWidth
         />
-      </form>
-    </Box>
+      </TextFieldBox>
+
+      <TextFieldBox>
+        <TextFieldStyled
+          error={!!errors.password}
+          type='password'
+          {...register('password', { required: true, minLength: 2 })}
+          label='Пароль'
+          fullWidth
+        />
+      </TextFieldBox>
+
+      <Button
+        sx={{ width: '100%' }}
+        variant='contained'
+        disabled={isLoading}
+        type='submit'
+        // value={isLoading ? 'Loading...' : 'Create'}
+      >
+        Увійти
+      </Button>
+    </form>
   )
 }

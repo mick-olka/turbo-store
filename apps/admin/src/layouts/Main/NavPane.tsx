@@ -4,10 +4,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from 'src/routing/routes'
 
 const items = [
-  { route: ROUTES.home, title: 'Products' },
-  { route: ROUTES.collectionsPage, title: 'Collections' },
-  { route: ROUTES.ordersPage, title: 'Orders' },
-  { route: ROUTES.textBlocksPage, title: 'Text on Site' },
+  { route: ROUTES.home, title: 'Товари' },
+  { route: ROUTES.collectionsPage, title: 'Категорії' },
+  { route: ROUTES.ordersPage, title: 'Замовлення' },
+  { route: ROUTES.textBlocksPage, title: 'Текст на сайті' },
 ]
 
 export const NavPane = () => {

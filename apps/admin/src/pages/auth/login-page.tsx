@@ -32,8 +32,14 @@ export const Login = () => {
   }, [tokens])
   return (
     <S.AuthPane>
-      <h2>Login</h2>
-      <CredentialsForm isLoading={isLoading} onSubmit={onSubmit} />
+      <S.Header>
+        <h2>Techo-Hutsal</h2>
+        <h2>Панель адміністратора: Вхід</h2>
+      </S.Header>
+      <S.FormWrapper>
+        <p>Будь ласка, введіть дані для входу в панель адміністратора</p>
+        <CredentialsForm isLoading={isLoading} onSubmit={onSubmit} />
+      </S.FormWrapper>
     </S.AuthPane>
   )
 }

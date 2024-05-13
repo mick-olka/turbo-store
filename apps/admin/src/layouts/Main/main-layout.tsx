@@ -1,10 +1,8 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 
 import { NavPane } from './NavPane'
 import * as S from './styles'
-
-import { ROUTES } from 'src/routing'
+import { Header } from './header'
 
 interface I_Authorized {
   children: ReactNode
@@ -13,11 +11,7 @@ interface I_Authorized {
 export const MainLayout = ({ children }: I_Authorized) => {
   return (
     <S.MainLayout>
-      <S.MainHeader>
-        <S.HeaderText>
-          <Link to={ROUTES.home}>Techno-Hutsal</Link>
-        </S.HeaderText>
-      </S.MainHeader>
+      <Header />
       <S.MainMiddle>
         <S.MainNav>
           <NavPane />

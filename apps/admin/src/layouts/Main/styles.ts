@@ -10,10 +10,12 @@ export const MainLayout = styled(Box)`
 `
 
 export const MainHeader = styled.header`
-  padding: 1px;
+  padding: 1px 1rem;
   background-color: ${({ theme }) => theme.components.header.bg};
   color: ${({ theme }) => theme.components.header.c};
   height: 6vh;
+  display: flex;
+  justify-content: space-between;
   /* border-bottom: 2px solid ${({ theme }) => theme.colors.gray}; */
 `
 

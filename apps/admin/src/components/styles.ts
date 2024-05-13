@@ -6,7 +6,7 @@ export const TextFieldStyled = styled(TextField)`
     /* width: calc(100% - 7rem); */
     border-radius: 15px;
     /* margin: 1rem; */
-    background-color: ${({ theme }) => theme.components.textInput.bg};
+    /* background-color: ${({ theme }) => theme.components.textInput.bg}; */
     color: ${({ theme }) => theme.components.textInput.c};
     .MuiFormLabel-root {
       font-size: 20px;

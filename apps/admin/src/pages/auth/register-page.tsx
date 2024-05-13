@@ -36,9 +36,9 @@ export const Register = () => {
 
   return (
     <S.AuthPane>
-      <h2>Register</h2>
+      <h2>Реєстрація</h2>
       <TextFieldBox>
-        <label>Admin Key</label>
+        <label>Адмін-ключ</label>
         <TextFieldStyled
           value={adminKey}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>
