@@ -1,7 +1,7 @@
-import { BreadCrumps, ItemsGrid } from "@/app/[lang]/components/ui";
-import { ProductCard } from "@/app/[lang]/product/product-card";
+import { BreadCrumps } from "@/app/[lang]/components/ui";
+import { ProductsGrid } from "@/app/[lang]/product/products-grid";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { E_AppRoutes, I_Product, PageProps } from "@/shared/models";
+import { E_AppRoutes, PageProps } from "@/shared/models";
 import { getCollectionById } from "@/shared/service";
 
 import { localeUrl } from "@/shared/utils";
@@ -12,11 +12,6 @@ export default async function Collection({ params }: Props) {
   const collection = await getCollectionById(params.url);
   const lang = params.lang;
   const dictionary = await getDictionary(lang);
-
-  const items = collection.items.map(product => ({
-    link: localeUrl(`${E_AppRoutes.product}/${product.url_name}`, lang),
-    content: <ProductCard product={product} lang={lang} />,
-  }));
 
   const breadcrumbs = [
     {
@@ -31,7 +26,7 @@ export default async function Collection({ params }: Props) {
         <BreadCrumps items={breadcrumbs} lang={lang} homeLabel={dictionary.sidebar.home} />
       </div>
       <p className="px-4">{collection.description["ua"]}</p>
-      <ItemsGrid items={items} />
+      <ProductsGrid products={collection.items} lang={lang} />
     </div>
   );
 }

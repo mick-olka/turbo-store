@@ -30,8 +30,8 @@ export interface I_Product {
   features: I_ProductFeatures;
   photos: I_PhotosBlock[];
   collections: Pick<I_Collection, "_id" | "name" | "url_name">[];
-  related_products: string[];
-  similar_products: string[];
+  related_products: I_ProductRelated[];
+  similar_products: I_ProductRelated[];
   index: number;
 }
 

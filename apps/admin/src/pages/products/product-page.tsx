@@ -86,9 +86,9 @@ export const ProductPage = () => {
           <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <Tabs value={tab} onChange={handleChange} aria-label='basic tabs example'>
-                <Tab label='General' {...a11yProps(0)} />
-                <Tab label='Photos' {...a11yProps(1)} />
-                <Tab label='Related' {...a11yProps(2)} />
+                <Tab label='Інформація' {...a11yProps(0)} />
+                <Tab label='Фото' {...a11yProps(1)} />
+                <Tab label="Пов'язані товари" {...a11yProps(2)} />
               </Tabs>
             </Box>
             <CustomTabPanel value={tab} index={0}>

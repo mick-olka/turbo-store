@@ -30,6 +30,8 @@ export type Dictionary = {
     quantity: string;
     specification: string;
     description: string;
+    related_products: string;
+    similar_products: string;
   };
   search: {
     search_results: string;

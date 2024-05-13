@@ -27,11 +27,13 @@ export const dictionaryUA: Dictionary = {
     terms_of_service: "Умови користування",
   },
   product: {
-    add_to_cart: "У кошик",
+    add_to_cart: "Купити",
     taxes: "З урахуванням усіх податків",
     quantity: "К-ть",
     specification: "Модель",
     description: "Опис",
+    related_products: "Пов'язані товари",
+    similar_products: "Схожі товари",
   },
   search: {
     search_results: "Результати пошуку для: ",

@@ -1,4 +1,5 @@
 import { BreadCrumps } from "@/app/[lang]/components/ui/breadcrumps";
+import { ProductsGrid } from "@/app/[lang]/product/products-grid";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { E_AppRoutes, PageProps } from "@/shared/models";
 import { getProductById } from "@/shared/service";
@@ -69,6 +70,18 @@ export default async function Product({ params, searchParams }: Props) {
               <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
             </div>
           </div>
+          {product.related_products.length ? (
+            <div className="mt-6">
+              <h2 className="text-lg font-bold">{dictionary.product.related_products}</h2>
+              <ProductsGrid products={product.related_products} lang={params.lang} />
+            </div>
+          ) : null}
+          {product.similar_products.length ? (
+            <div className="mt-6">
+              <h2>{dictionary.product.similar_products}</h2>
+              <ProductsGrid products={product.similar_products} lang={params.lang} />
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

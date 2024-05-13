@@ -27,11 +27,13 @@ export const dictionaryEN: Dictionary = {
     terms_of_service: "Terms of service",
   },
   product: {
-    add_to_cart: "Add to cart",
+    add_to_cart: "Buy",
     taxes: "Inclusive all Taxes",
     quantity: "Q-ty",
     specification: "Specification",
     description: "Description",
+    related_products: "Related products",
+    similar_products: "Similar products",
   },
   search: {
     search_results: "Search results for: ",
