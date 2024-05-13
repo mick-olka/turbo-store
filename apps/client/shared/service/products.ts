@@ -1,10 +1,12 @@
 import { I_Product, I_ProductsListRes } from "@/shared/models";
 
+import { revalidation } from "./data";
+
 const url = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getProducts(search?: string): Promise<I_ProductsListRes> {
   const link = search ? `${url}/products?regex=${search}` : `${url}/products`;
-  const res = await fetch(link, { next: { revalidate: 120 } });
+  const res = await fetch(link, revalidation);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
@@ -13,7 +15,7 @@ export async function getProducts(search?: string): Promise<I_ProductsListRes> {
 }
 
 export async function getProductById(id: string): Promise<I_Product> {
-  const res = await fetch(url + "/products/" + id, { next: { revalidate: 120 } });
+  const res = await fetch(url + "/products/" + id, revalidation);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
