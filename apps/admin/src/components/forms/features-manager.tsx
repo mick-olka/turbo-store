@@ -39,7 +39,7 @@ export const FeaturesManager = ({ features, onChange }: I_Props) => {
   return (
     <S.FeaturesManagerWrapper>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h3>Features</h3>
+        <h3>Характеристики</h3>
         <ToggleButtonGroup value={featuresLan} exclusive onChange={handleFeatureLan} size='small'>
           {Object.values(E_Languages).map((l) => (
             <ToggleButton key={l} value={l}>
@@ -49,9 +49,9 @@ export const FeaturesManager = ({ features, onChange }: I_Props) => {
         </ToggleButtonGroup>
       </Box>
       <Box sx={{ display: 'flex' }}>
-        <Typography sx={{ fontWeight: 600, flexGrow: 1 }}>Title</Typography>
+        <Typography sx={{ fontWeight: 600, flexGrow: 1 }}>Заголовок</Typography>
         <Typography fontWeight={600} sx={{ flexGrow: 1 }}>
-          Value
+          Значення
         </Typography>
       </Box>
       {features[featuresLan].map((f, i) => (

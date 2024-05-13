@@ -54,7 +54,7 @@ export const CollectionForm = (props: Readonly<I_Props>) => {
             register={register}
             names={['name.ua', 'name.en', 'name.de']}
             error={!!errors.name}
-            label='Name'
+            label='Назва'
           />
         </S.TextFieldBox>
 
@@ -63,7 +63,7 @@ export const CollectionForm = (props: Readonly<I_Props>) => {
             register={register}
             names={['description.ua', 'description.en', 'description.de']}
             textarea
-            label='Description'
+            label='Опис'
           />
         </S.TextFieldBox>
 
@@ -71,18 +71,18 @@ export const CollectionForm = (props: Readonly<I_Props>) => {
           <S.TextFieldStyled
             type='number'
             {...register('index', { required: false })}
-            label='Index'
+            label='Порядок'
             fullWidth
           />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('url_name')} label='Url Name' fullWidth />
+          <S.TextFieldStyled {...register('url_name')} label='URL-назва (англ)' fullWidth />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
           <TextListCreator
-            label='Keywords'
+            label='Ключові слова'
             list={getValues('keywords')}
             onListChange={(l) => setValue('keywords', l)}
             sx={{ width: '100%' }}
@@ -90,7 +90,7 @@ export const CollectionForm = (props: Readonly<I_Props>) => {
         </S.TextFieldBox>
 
         <S.ButtonStyled variant='contained' type='submit' disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Save'}
+          {isLoading ? 'Завантаження...' : 'Зберегти'}
         </S.ButtonStyled>
       </form>
     </Box>

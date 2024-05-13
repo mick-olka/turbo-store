@@ -40,7 +40,7 @@ export const ControlPane = (
                 />
               )} */}
             {props.onDeleteClick && (
-              <Tooltip title={props.deleteTitle || 'Delete Selected Items'}>
+              <Tooltip title={props.deleteTitle || 'Видалити обране?'}>
                 <Box>
                   <S.RoundButton
                     variant='contained'

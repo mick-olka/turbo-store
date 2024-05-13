@@ -49,7 +49,7 @@ export const OrderForm = (props: Readonly<I_Props>) => {
           <TextFieldStyled
             {...register('name', { required: !!required })}
             fullWidth
-            label='Client Name'
+            label="Ім'я замовника"
           />
         </TextFieldBox>
 
@@ -57,7 +57,7 @@ export const OrderForm = (props: Readonly<I_Props>) => {
           <TextFieldStyled
             {...register('phone', { required: !!required })}
             fullWidth
-            label='Phone'
+            label='Телефон'
           />
         </TextFieldBox>
 
@@ -65,30 +65,30 @@ export const OrderForm = (props: Readonly<I_Props>) => {
           <TextFieldStyled
             {...register('message', { required: false })}
             fullWidth
-            label='Message'
+            label='Повідомлення'
           />
         </TextFieldBox>
 
         <TextFieldBox>
           <FormControl fullWidth>
-            <InputLabel>Status</InputLabel>
+            <InputLabel>Статус замовлення</InputLabel>
             <Select
               value={getValues('status')}
               onChange={(e) => setValue('status', e.target.value as StatusEnum)}
               sx={{ textAlign: 'left' }}
-              label='Status'
+              label='Статус'
               fullWidth
             >
-              <MenuItem value={StatusEnum.c}>Cancelled</MenuItem>
-              <MenuItem value={StatusEnum.d}>Done</MenuItem>
-              <MenuItem value={StatusEnum.w}>Cancelled</MenuItem>
-              <MenuItem value={StatusEnum.p}>In Progress</MenuItem>
+              <MenuItem value={StatusEnum.c}>Скасовано</MenuItem>
+              <MenuItem value={StatusEnum.d}>Готово</MenuItem>
+              <MenuItem value={StatusEnum.w}>Очікує</MenuItem>
+              <MenuItem value={StatusEnum.p}>В обробці</MenuItem>
             </Select>
           </FormControl>
         </TextFieldBox>
 
         <ButtonStyled variant='contained' type='submit' disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Save'}
+          {isLoading ? 'Завантаження...' : 'Зберегти'}
         </ButtonStyled>
       </form>
     </Box>

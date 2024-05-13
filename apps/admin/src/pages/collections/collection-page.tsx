@@ -83,12 +83,12 @@ export const CollectionPage = () => {
         onDeleteMultiple={handleDeleteItems}
         onItemClick={onProdClick}
         onSearchTrigger={handleSearchTrigger}
-        deleteTitle='Remove these items from the collection'
+        deleteTitle='Видалити ці товари з категорії?'
       >
         <RoundButton onClick={() => setOpen(true)}>
           <EditOutlinedIcon />
         </RoundButton>
-        <Button onClick={() => setProductsSelectionMode(true)}>Add Products</Button>
+        <Button onClick={() => setProductsSelectionMode(true)}>Додати товари</Button>
       </ItemsPage>
       <ContentDialog open={open} setOpen={setOpen}>
         <CollectionForm

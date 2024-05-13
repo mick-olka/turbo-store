@@ -1,5 +1,4 @@
 export { CollectionPage } from './collection-page'
-import { Box } from '@mui/material'
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -46,7 +45,7 @@ export const CollectionsListPage = () => {
   }
   return (
     <ItemsPage
-      title='Collections'
+      title='Категорії'
       data={data}
       columns={columns}
       pagination={false}

@@ -41,7 +41,7 @@ export const TextBlockForm = (props: Readonly<I_Props>) => {
     <Box sx={{ width: '30rem' }}>
       <form onSubmitCapture={handleSubmit(prepareSubmit)}>
         <S.TextFieldBox>
-          <label>Text</label>
+          <label>Текст</label>
           <Box sx={fieldBoxStyles}>
             <MultiLangTextField
               registerOptions={{ required: false }}
@@ -53,7 +53,7 @@ export const TextBlockForm = (props: Readonly<I_Props>) => {
         </S.TextFieldBox>
 
         <S.ButtonStyled variant='contained' type='submit' disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Save'}
+          {isLoading ? 'Завантаження...' : 'Зберегти'}
         </S.ButtonStyled>
       </form>
     </Box>

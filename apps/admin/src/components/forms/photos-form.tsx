@@ -73,14 +73,14 @@ export const PhotosForm = ({ data, editMode, onCancel, onSubmit, onDeletePhoto }
             <Box>
               <CS.TextFieldBox>
                 <MultiLangTextField
-                  label='Equipment'
+                  label='Модель'
                   register={register}
                   names={['main_color.ua', 'main_color.en', 'main_color.de']}
                 />
               </CS.TextFieldBox>
               <CS.TextFieldBox>
                 <MultiLangTextField
-                  label='Variant'
+                  label='Варіант'
                   register={register}
                   names={['pill_color.ua', 'pill_color.en', 'pill_color.de']}
                 />
@@ -103,10 +103,10 @@ export const PhotosForm = ({ data, editMode, onCancel, onSubmit, onDeletePhoto }
           </S.PhotosFormStyled>
         ) : (
           <Box>
-            <Typography>Equipment:</Typography>
+            <Typography>Модель:</Typography>
             <Typography fontSize='20px'>{photos.main_color.ua}</Typography>
             <br />
-            <Typography>Variant: </Typography>
+            <Typography>Варіант: </Typography>
             <Typography fontSize='20px'>{photos.pill_color.ua}</Typography>
           </Box>
         )}
@@ -121,10 +121,10 @@ export const PhotosForm = ({ data, editMode, onCancel, onSubmit, onDeletePhoto }
       <AlertDialog
         open={isAlert}
         setOpen={setIsAlert}
-        title='Discard changes?'
-        text='You have unsaved changes. Delete them?'
-        agreeTitle='Cancel Changes'
-        cancelTitle='Save Changes'
+        title='Скасувати зміни?'
+        text='У вас незбережені зміни. Видалити їх?'
+        agreeTitle='Скасувати зміни'
+        cancelTitle='Зберегти зміни'
         onAgree={cancelChanges}
         onCancel={handleSubmit(onSave)}
       />

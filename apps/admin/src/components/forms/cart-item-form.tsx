@@ -13,13 +13,6 @@ interface I_Props {
   // required?: boolean
 }
 
-// const def: I_CartItem = {
-//   main_color: '',
-//   pill_color: '',
-//   count: 1,
-//   product: '',
-// }
-
 export const CartItemForm = (props: Readonly<I_Props>) => {
   const { onSubmit, onCancel, isLoading, initValues } = props
   const {
@@ -33,22 +26,22 @@ export const CartItemForm = (props: Readonly<I_Props>) => {
     <Box sx={{ width: '30rem' }}>
       <form onSubmitCapture={handleSubmit(onSubmit)}>
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('main_color', { required: false })} label='Equipment' />
+          <S.TextFieldStyled {...register('main_color', { required: false })} label='Модель' />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('pill_color', { required: false })} label='Variant' />
+          <S.TextFieldStyled {...register('pill_color', { required: false })} label='Варіант' />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('count', { required: true })} label='Count' />
+          <S.TextFieldStyled {...register('count', { required: true })} label='К-ть.' />
         </S.TextFieldBox>
 
         <S.ButtonStyled variant='contained' type='submit' disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Save'}
+          {isLoading ? 'Завантаження...' : 'Зберегти'}
         </S.ButtonStyled>
         <S.ButtonStyled onClick={onCancel} variant='contained' disabled={isLoading}>
-          Cancel
+          Скасувати
         </S.ButtonStyled>
       </form>
     </Box>

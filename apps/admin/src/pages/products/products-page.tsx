@@ -43,7 +43,7 @@ export const ProductsListPage = () => {
 
   return (
     <ItemsPage
-      title='Products'
+      title='Товари'
       data={data}
       columns={product_columns}
       pagination

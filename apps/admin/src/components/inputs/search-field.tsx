@@ -17,7 +17,7 @@ export const SearchField = ({
   return (
     <Box>
       <S.TextFieldStyled
-        placeholder='Search'
+        placeholder='Пошук'
         value={text}
         onChange={(e) => setText(e.target.value)}
         size='small'

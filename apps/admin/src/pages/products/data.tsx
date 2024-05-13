@@ -11,10 +11,10 @@ import { useUpdateProduct } from 'src/hooks/use-products'
 import { PHOTOS_URL } from 'src/utils'
 
 export const product_columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', flex: 1, valueGetter: (param) => param.value.ua },
+  { field: 'name', headerName: 'Назва', flex: 1, valueGetter: (param) => param.value.ua },
   {
     field: 'thumbnail',
-    headerName: 'Image',
+    headerName: 'Зображення',
     width: 130,
     renderCell: (params) => (
       <Box>
@@ -28,10 +28,10 @@ export const product_columns: GridColDef[] = [
       </Box>
     ),
   },
-  { field: 'price', headerName: 'Price', width: 130, valueFormatter: (p) => `$ ${p.value}` },
+  { field: 'price', headerName: 'Ціна в $', width: 130, valueFormatter: (p) => `$ ${p.value}` },
   {
     field: 'price_uah',
-    headerName: 'UAH',
+    headerName: 'Ціна в грн',
     width: 130,
     renderCell: (row_props) => {
       const d = useTextBlockById('dollar')
@@ -41,7 +41,7 @@ export const product_columns: GridColDef[] = [
   },
   {
     field: 'index',
-    headerName: 'Index',
+    headerName: 'Порядок',
     width: 100,
     renderCell: (row_props) => {
       const [index, setIndex] = useState<number>(row_props.value || 0)
@@ -69,7 +69,7 @@ export const product_columns: GridColDef[] = [
   },
   {
     field: 'active',
-    headerName: 'Active',
+    headerName: 'Активний',
     width: 100,
     renderCell: (row_props) => {
       const [active, setActive] = useState<boolean>(row_props.value || false)

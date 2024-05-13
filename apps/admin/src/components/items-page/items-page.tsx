@@ -105,8 +105,8 @@ export const ItemsPage = <T extends { _id: string }>(props: I_Props<T>) => {
         <AlertDialog
           open={deleteDialog}
           setOpen={setDeleteDialog}
-          title={deleteTitle || 'Delete Selected Items?'}
-          text='This action can not be undone'
+          title={deleteTitle || 'Видалити обрані товари?'}
+          text='Цю дію не можна скасувати після підтвердження'
           onAgree={onConfirmDelete}
           onCancel={() => null}
         />

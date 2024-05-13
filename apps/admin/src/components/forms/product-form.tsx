@@ -76,24 +76,24 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
           disabled={isLoading}
           sx={{ position: 'fixed', left: '-8px', bottom: 0 }}
         >
-          {isLoading ? 'Loading...' : 'Save'}
+          {isLoading ? 'Завантаження...' : 'Зберегти'}
         </S.ButtonStyled>
         <S.TextFieldBox>
           <MultiLangTextField
             register={register}
             names={['name.ua', 'name.en', 'name.de']}
-            label='Name'
+            label='Назва'
           />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('url_name')} label='Url Name' fullWidth />
+          <S.TextFieldStyled {...register('url_name')} label='URL-назва (англ)' fullWidth />
         </S.TextFieldBox>
 
         <S.TextFieldBox>
           <S.TextFieldStyled
             {...register('code', { required: !!required })}
-            label='Code'
+            label='Артикул'
             fullWidth
           />
           {errors.code && <span>This field is required</span>}
@@ -104,14 +104,14 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
             <S.TextFieldStyled
               type='number'
               {...register('oldPrice', { required: !!required })}
-              label='Old Price'
+              label='Стара ціна'
               fullWidth
             />
           )}
           <S.TextFieldStyled
             type='number'
             {...register('price', { required: !!required })}
-            label={isSale ? 'New Price' : 'Price'}
+            label={isSale ? 'Нова ціна' : 'Ціна'}
             fullWidth
             // sx={{ marginLeft: '1rem' }}
           />
@@ -122,18 +122,18 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
               bgcolor: isSale ? 'Highlight' : 'none',
             }}
             onClick={toggleSale}
-            title='Discount'
+            title='Знижка'
           >
             {isSale ? <CloseRoundedIcon /> : <PercentRoundedIcon />}
           </S.RoundButton>
-          {errors.code && <span>This field is required</span>}
+          {errors.code && <span>Це поле обов'язкове</span>}
         </S.TextFieldBox>
 
         <S.TextFieldBox>
           <S.TextFieldStyled
             type='number'
             {...register('index', { required: false })}
-            label='Index'
+            label='Порядок'
             fullWidth
           />
         </S.TextFieldBox>
@@ -143,7 +143,7 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
             <MultiLangTextField
               register={register}
               names={['description.ua', 'description.en', 'description.de']}
-              label='Description'
+              label='Опис'
               textarea
             />
           </Box>
@@ -151,7 +151,7 @@ export const ProductForm = ({ onSubmit, isLoading, initValues, required }: Reado
 
         <S.TextFieldBox>
           <TextListCreator
-            label='Keywords'
+            label='Ключові слова'
             list={getValues('keywords')}
             onListChange={(l) => setValue('keywords', l)}
             sx={{ width: '100%' }}

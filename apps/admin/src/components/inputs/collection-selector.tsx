@@ -38,13 +38,13 @@ export const CollectionSelector = ({ disabled, onSubmit }: I_Props) => {
   return (
     <Box>
       <Button disabled={disabled || false} variant='contained' onClick={handleClickOpen}>
-        Choose Collection
+        Обрати категорію
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add products to collection</DialogTitle>
+        <DialogTitle>Додати до категорії</DialogTitle>
         <DialogContent>
-          {isLoading && <h3>Loading...</h3>}
+          {isLoading && <h3>Завантаження...</h3>}
           {items.length && <ItemSelector items={items} onSelect={handleSelect} />}
         </DialogContent>
         <DialogActions>
