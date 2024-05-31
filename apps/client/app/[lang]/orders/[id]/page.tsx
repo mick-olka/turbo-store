@@ -26,7 +26,7 @@ export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
           <div className="text-center text-xs font-bold mb-1">~~~~~~~~~~~~~~~~~~~~~~~~~~~~</div>
           <div className="text-xs pl-2">
             <div className="text-xs mb-1">Customer： {data.name}</div>
-            <div className="text-xs mb-1">TelePhone： {data.phone}</div>
+            <div className="text-xs mb-1">Phone number： {data.phone}</div>
             {/* <div>OrderNumber：{data._id}</div> */}
             <div>Status：{data.status}</div>
           </div>
@@ -42,7 +42,7 @@ export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
                 return (
                   <div key={"item" + i} className="flex justify-between text-sm">
                     <span className="w-3/6">{item.product.name["ua"]}</span>
-                    <span className="w-2/6 text-left">UAH {item.product.price}</span>
+                    <span className="w-2/6 text-left">UAH {item.product.price * 40}</span>
                     <span className="w-1/6 text-right">{item.count}</span>
                   </div>
                 );
@@ -64,7 +64,7 @@ export default function CheckoutPage({ params }: PageProps<{ id: string }>) {
             <div className="mb-52">Remark：{data.message}</div>
             <div className="text-right">
               <div>Time：{new Date(data.date).toUTCString()}</div>
-              <div className="font-bold text-sm">Total：UAH {data.sum}</div>
+              <div className="font-bold text-sm">Total：UAH {data.sum * 40}</div>
             </div>
           </div>
         </div>

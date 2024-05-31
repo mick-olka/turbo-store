@@ -6,6 +6,14 @@ export const dictionaryDE: Dictionary = {
     delivery_note: "Delivery is proceeded with Nova Post services to written in form address",
     make_order: "Make order",
     in_cart: "In cart",
+    sum: "Sum",
+    product_name: "Product name",
+    quantity: "Q-ty",
+    price: "Price",
+    payment_types: {
+      card: "Credit card",
+      post: "Via post service",
+    },
     form: {
       address_placeholder: "Delivery address & comment",
       name_placeholder: "Your name",
@@ -35,6 +43,7 @@ export const dictionaryDE: Dictionary = {
     related_products: "Related products",
     similar_products: "Similar products",
     features: "Features",
+    currency: "$",
   },
   search: {
     search_results: "Search results for: ",

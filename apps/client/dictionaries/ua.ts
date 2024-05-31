@@ -6,6 +6,14 @@ export const dictionaryUA: Dictionary = {
     delivery_note: "Відправка відбувається Новою Поштою за вказаною у формі адресою",
     make_order: "Зробити замовлення",
     in_cart: "У кошику",
+    sum: "Сума",
+    product_name: "Назва товару",
+    quantity: "К-ть",
+    price: "Ціна",
+    payment_types: {
+      card: "Банківська картка",
+      post: "Поштовий переказ (при отриманні)",
+    },
     form: {
       address_placeholder: "Адреса доставки та коментар",
       name_placeholder: "Ім'я",
@@ -35,6 +43,7 @@ export const dictionaryUA: Dictionary = {
     related_products: "Пов'язані товари",
     similar_products: "Схожі товари",
     features: "Характеристики",
+    currency: "₴",
   },
   search: {
     search_results: "Результати пошуку для: ",

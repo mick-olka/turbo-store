@@ -22,7 +22,7 @@ export const TextField = forwardRef(
   },
 );
 
-const fieldVariants = cva("h-10 p-1 rounded-lg focus:outline-none focus:shadow-inner leading-none transition", {
+const fieldVariants = cva("h-10 p-1 px-4 rounded-lg focus:outline-none focus:shadow-inner leading-none transition", {
   variants: {
     variant: {
       solid: "bg-gray-100",

@@ -73,7 +73,7 @@ export const PhotosForm = ({ data, editMode, onCancel, onSubmit, onDeletePhoto }
             <Box>
               <CS.TextFieldBox>
                 <MultiLangTextField
-                  label='Модель'
+                  label='Заголовок'
                   register={register}
                   names={['main_color.ua', 'main_color.en', 'main_color.de']}
                 />

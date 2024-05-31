@@ -26,7 +26,7 @@ export const CartItemForm = (props: Readonly<I_Props>) => {
     <Box sx={{ width: '30rem' }}>
       <form onSubmitCapture={handleSubmit(onSubmit)}>
         <S.TextFieldBox>
-          <S.TextFieldStyled {...register('main_color', { required: false })} label='Модель' />
+          <S.TextFieldStyled {...register('main_color', { required: false })} label='Заголовок' />
         </S.TextFieldBox>
 
         <S.TextFieldBox>

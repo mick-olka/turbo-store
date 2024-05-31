@@ -114,7 +114,7 @@ export const PhotosList = ({ product_id, product_url, photos }: I_Props) => {
             color='inherit'
             sx={{ margin: '1rem' }}
           >
-            Add photos group
+            Додати новий варіант
           </Button>
         )}
       </Box>

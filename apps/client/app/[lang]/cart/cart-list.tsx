@@ -1,4 +1,5 @@
 import { TrashBinIcon } from "@/app/[lang]/assets/icons/trash-bin";
+import { useDictionary } from "@/shared/hooks";
 import { I_OrderItem } from "@/shared/models";
 import { useEffect, useState } from "react";
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export const CartList = ({ items, onItemRemove, total }: Props) => {
+  const dictionary = useDictionary();
   return (
     <div className="mx-auto w-full max-w-2xl border border-gray-200 bg-white shadow-lg">
       <div className="overflow-x-auto p-3">
@@ -17,17 +19,17 @@ export const CartList = ({ items, onItemRemove, total }: Props) => {
             <tr>
               <th></th>
               <th className="p-2">
-                <div className="text-left font-semibold">Product Name</div>
+                <div className="text-left font-semibold">{dictionary.cart.product_name}</div>
               </th>
               <th className="p-2">
-                <div className="text-left font-semibold">Quantity</div>
+                <div className="text-left font-semibold">{dictionary.cart.quantity}</div>
               </th>
               <th className="p-2">
-                <div className="text-left font-semibold">Total</div>
+                <div className="text-left font-semibold">{dictionary.cart.price}</div>
               </th>
               {onItemRemove ? (
                 <th className="p-2">
-                  <div className="text-center font-semibold">Action</div>
+                  <div className="text-center font-semibold"></div>
                 </th>
               ) : null}
             </tr>
@@ -43,7 +45,7 @@ export const CartList = ({ items, onItemRemove, total }: Props) => {
                   <div className="text-left">{item.count}</div>
                 </td>
                 <td className="p-2">
-                  <div className="text-left font-medium text-green-500">UAH {item.price}</div>
+                  <div className="text-left font-medium text-green-500">UAH {item.price * 40}</div>
                 </td>
                 {onItemRemove ? (
                   <td className="p-2">
@@ -62,7 +64,7 @@ export const CartList = ({ items, onItemRemove, total }: Props) => {
       </div>
 
       <div className="flex justify-end space-x-4 border-t border-gray-100 px-5 py-4 text-2xl font-bold">
-        <div>Total</div>
+        <div>{dictionary.cart.sum}:</div>
         <div className="text-blue-600">
           UAH <span>{total}</span>
         </div>

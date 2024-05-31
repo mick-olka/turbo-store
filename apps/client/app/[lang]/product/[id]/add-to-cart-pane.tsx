@@ -3,13 +3,18 @@
 import { CartIcon } from "@/app/[lang]/assets/icons/cart";
 import { Button } from "@/app/[lang]/components/button";
 import { Selector } from "@/app/[lang]/components/inputs/selector";
+import { Locale } from "@/shared/configs/i18n-config";
 import { useDictionary } from "@/shared/hooks";
 import { useCart } from "@/shared/hooks/use-cart";
 import { E_AppRoutes, I_OrderItem, I_ProductRelated } from "@/shared/models";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-export const AddToCartPane = ({ product, size = "lg" }: { size?: "sm" | "lg"; product: I_ProductRelated }) => {
+import { localeUrl } from "@/shared/utils";
+
+type Props = { size?: "sm" | "lg"; product: I_ProductRelated; lang: Locale };
+
+export const AddToCartPane = ({ product, size = "lg", lang }: Props) => {
   const { addToCart } = useCart();
   const dictionary = useDictionary();
   const [quantity, setQuantity] = useState(1);
@@ -21,10 +26,10 @@ export const AddToCartPane = ({ product, size = "lg" }: { size?: "sm" | "lg"; pr
       count: quantity,
       main_color: "",
       pill_color: "",
-      name: product.name["ua"],
+      name: product.name[lang],
     };
     addToCart(order);
-    router.push(E_AppRoutes.cart);
+    router.push(localeUrl(E_AppRoutes.cart, lang));
   };
   const handleQuantityChange = (n: number | null) => {
     if (n) setQuantity(n);
@@ -45,7 +50,7 @@ export const AddToCartPane = ({ product, size = "lg" }: { size?: "sm" | "lg"; pr
       <Button type="button" className="flex items-center justify-between" size={size} onClick={handleOrderProduct}>
         <CartIcon size="md" variant="white" className="mr-2" />
         {dictionary.product.add_to_cart}
-      </Button>{" "}
+      </Button>
     </div>
   );
 };

@@ -22,9 +22,10 @@ export const AddToCartBtn = ({ product, size = "lg", lang }: Props) => {
       count: 1,
       main_color: "",
       pill_color: "",
-      name: product.name["ua"],
+      name: product.name[lang],
     };
     addToCart(order);
+    console.log(lang);
     router.push(localeUrl(E_AppRoutes.cart, lang));
   };
   return (

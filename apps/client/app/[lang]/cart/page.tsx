@@ -12,17 +12,16 @@ import { localeUrl } from "@/shared/utils";
 import { CartForm } from "./cart-form";
 import { CartList } from "./cart-list";
 
-const paymentTypes = [
-  { name: "Card", value: "card" },
-  { name: "Post", value: "post" },
-] as const;
-
 type Props = PageProps<{}>;
 
 export default function CartPage({ params: { lang } }: Props) {
   useAuthGuard(lang);
   const router = useRouter();
   const dictionary = useDictionary();
+  const paymentTypes = [
+    { name: dictionary.cart.payment_types.card, value: "card" },
+    { name: dictionary.cart.payment_types.post, value: "post" },
+  ] as const;
   const { removeFromCart, getCart, total } = useCart();
   const { makeOrder } = useMakeOrder(lang);
   const [cart, setCart] = useState<I_OrderItem[]>([]);
@@ -48,7 +47,7 @@ export default function CartPage({ params: { lang } }: Props) {
       <div className="border-b border-gray-100 px-5 py-4">
         <div className="font-semibold text-gray-800">{dictionary.cart.in_cart}:</div>
       </div>
-      <CartList items={cart} onItemRemove={handleRemoveItem} total={total} />
+      <CartList items={cart} onItemRemove={handleRemoveItem} total={total * 40} />
       <div className="border-b border-gray-100 px-5 py-4">
         <div className="font-semibold text-gray-800">{dictionary.cart.form.payment_method}:</div>
         <Selector list={paymentTypes} value={payment} onItemSelect={v => setPayment(v || "card")} />

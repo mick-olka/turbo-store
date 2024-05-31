@@ -66,7 +66,7 @@ export const cart_item_columns: GridColDef[] = [
   },
   {
     field: 'main_color',
-    headerName: 'Модель',
+    headerName: 'Заголовок',
     width: 130,
     // editable: true,
     // renderCell: (params) => {

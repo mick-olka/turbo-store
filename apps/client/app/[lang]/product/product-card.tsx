@@ -2,7 +2,7 @@ import { CartIcon } from "@/app/[lang]/assets/icons/cart";
 import { Button } from "@/app/[lang]/components/button";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { Locale } from "@/shared/configs/i18n-config";
-import { I_ProductRelated } from "@/shared/models";
+import { I_ProductRelated, TextBlocks } from "@/shared/models";
 import { getTextByName } from "@/shared/service";
 import Image from "next/image";
 import React from "react";
@@ -11,7 +11,7 @@ const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_ProductRelated }) => {
   const dictionary = await getDictionary(lang);
-  const dollar_block = await getTextByName("dollar");
+  const dollar_block = await getTextByName(TextBlocks.dollar);
   const coefficient = Number(dollar_block.text[lang]);
   const isSale = !!product.old_price;
   return (

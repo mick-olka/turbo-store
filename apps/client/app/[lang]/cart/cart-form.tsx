@@ -27,10 +27,18 @@ export const CartForm = () => {
   };
   return (
     <div className="flex flex-col gap-2 mb-3">
-      <TextField placeholder="Your Name" value={name} onChange={e => handleChangeName(e.target.value)} />
-      <TextField placeholder="Phone number" value={phone} onChange={e => handleChangePhone(e.target.value)} />
       <TextField
-        placeholder="Адреса доставки та коментар"
+        placeholder={dictionary.cart.form.name_placeholder}
+        value={name}
+        onChange={e => handleChangeName(e.target.value)}
+      />
+      <TextField
+        placeholder={dictionary.cart.form.phone_placeholder}
+        value={phone}
+        onChange={e => handleChangePhone(e.target.value)}
+      />
+      <TextField
+        placeholder={dictionary.cart.form.address_placeholder}
         value={message}
         onChange={e => handleChangeMessage(e.target.value)}
       />

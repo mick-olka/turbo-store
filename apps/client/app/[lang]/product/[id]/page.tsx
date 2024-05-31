@@ -1,8 +1,8 @@
 import { BreadCrumps } from "@/app/[lang]/components/ui/breadcrumps";
 import { ProductsGrid } from "@/app/[lang]/product/products-grid";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { E_AppRoutes, PageProps } from "@/shared/models";
-import { getProductById } from "@/shared/service";
+import { E_AppRoutes, PageProps, TextBlocks } from "@/shared/models";
+import { getProductById, getTextByName } from "@/shared/service";
 
 import { localeUrl } from "@/shared/utils";
 
@@ -14,6 +14,8 @@ type Props = PageProps<{ id: string }, { spec?: string }>;
 
 export default async function Product({ params, searchParams }: Props) {
   const product = await getProductById(params.id);
+  const dollar_block = await getTextByName(TextBlocks.dollar);
+  const coefficient = Number(dollar_block.text[params.lang]);
   const getBreadCrumps = () => {
     const category = product.collections[0];
     if (category) {
@@ -52,7 +54,7 @@ export default async function Product({ params, searchParams }: Props) {
                       className="font-bold text-indigo-600 text-3xl"
                       style={product.old_price ? { color: "#f55" } : {}}
                     >
-                      {product.price}
+                      {product.price * coefficient}
                     </span>
                   </div>
                 </div>
@@ -65,7 +67,7 @@ export default async function Product({ params, searchParams }: Props) {
               </div>
 
               <div className="flex py-4 space-x-4">
-                <AddToCartPane product={product} />
+                <AddToCartPane product={product} lang={params.lang} />
               </div>
               <h3 className="font-bold text-lg">{dictionary.product.description}</h3>
               <p className="text-gray-500" dangerouslySetInnerHTML={{ __html: product.description["ua"] }}></p>
