@@ -1,8 +1,10 @@
 import { ItemsGrid } from "@/app/[lang]/components/ui/items-grid";
 import { ProductCard } from "@/app/[lang]/product/product-card";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { I_Product, PageProps } from "@/shared/models";
+import { E_AppRoutes, I_Product, PageProps } from "@/shared/models";
 import { getProducts } from "@/shared/service";
+
+import { localeUrl } from "@/shared/utils";
 
 type Props = PageProps<{}, { search: string }>;
 
@@ -11,7 +13,7 @@ export default async function SearchPage({ params, searchParams }: Props) {
   const dictionary = await getDictionary(params.lang);
 
   const items = data.docs.map((product: I_Product) => ({
-    link: `/${params.lang}/product/` + product.url_name,
+    link: localeUrl(`${E_AppRoutes.product}/${product.url_name}`, params.lang),
     content: <ProductCard product={product} lang={params.lang} />,
   }));
 
