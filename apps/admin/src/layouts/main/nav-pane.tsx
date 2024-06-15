@@ -1,5 +1,5 @@
 import { ListItemText, MenuItem, MenuList, Paper } from '@mui/material'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { ROUTES } from 'src/routing/routes'
 

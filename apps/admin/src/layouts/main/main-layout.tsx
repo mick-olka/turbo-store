@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { NavPane } from './NavPane'
+import { NavPane } from './nav-pane'
 import * as S from './styles'
 import { Header } from './header'
 
