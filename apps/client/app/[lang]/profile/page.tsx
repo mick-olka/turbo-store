@@ -2,7 +2,14 @@
 
 import { Button } from "@/app/[lang]/components/button";
 import { UserForm } from "@/app/[lang]/profile/user-form";
-import { useAuthGuard, useDeleteProfile, useGetProfile, useLogout, useUpdateProfile } from "@/shared/hooks";
+import {
+  useAuthGuard,
+  useDeleteProfile,
+  useDictionary,
+  useGetProfile,
+  useLogout,
+  useUpdateProfile,
+} from "@/shared/hooks";
 import { E_AppRoutes, PageProps, T_UserForm } from "@/shared/models";
 import Link from "next/link";
 
@@ -16,6 +23,7 @@ export default function ProfilePage({ params: { lang } }: Props) {
   const { updateProfile } = useUpdateProfile();
   const { deleteProfile } = useDeleteProfile(lang);
   const { logout } = useLogout();
+  const dictionary = useDictionary();
   const handleUpdateProfile = (data: T_UserForm) => {
     updateProfile(data);
   };
@@ -43,37 +51,35 @@ export default function ProfilePage({ params: { lang } }: Props) {
           </div>
 
           <div>
-            <h2 className="text-lg font-bold tracking-tight">Account</h2>
-            <p className="text-sm mb-4 text-muted-foreground">
-              Update your account settings. Set your preferred language and timezone.
-            </p>
+            <h2 className="text-lg font-bold tracking-tight">{dictionary.profile.account}</h2>
+            <p className="text-sm mb-4 text-muted-foreground">{dictionary.profile.update_settings}</p>
             <UserForm defaultValues={defaultValues} onSubmit={handleUpdateProfile} />
           </div>
 
           <div className="flex flex-col">
-            <h2 className="text-lg font-bold tracking-tight">Check my orders history</h2>
+            <h2 className="text-lg font-bold tracking-tight">{dictionary.profile.orders_label}</h2>
             <div className="text-sm text-muted-foreground">
               <Link href={localeUrl(E_AppRoutes.orders, lang)}>
-                <Button variant="bordered">My Orders</Button>
+                <Button variant="bordered">{dictionary.profile.orders}</Button>
               </Link>
             </div>
           </div>
 
           <div className="flex flex-col">
-            <h2 className="text-lg font-bold tracking-tight">Log out and remove all my cache from this session</h2>
+            <h2 className="text-lg font-bold tracking-tight">{dictionary.profile.logout_label}</h2>
             <div className="text-sm text-muted-foreground">
               <Button onClick={logout} variant="bordered">
-                Logout
+                {dictionary.profile.logout}
               </Button>
             </div>
           </div>
 
           <div className="flex flex-col">
-            <h2 className="text-lg font-bold tracking-tight">You can delete all data about you here</h2>
-            <p className="text-md font-normal tracking-tight">This action is irreversible</p>
+            <h2 className="text-lg font-bold tracking-tight">{dictionary.profile.delete_label}</h2>
+            <p className="text-md font-normal tracking-tight">{dictionary.profile.irreversible_warning}</p>
             <div className="text-sm text-muted-foreground">
               <Button onClick={handleDeleteProfile} variant="danger" size="sm">
-                Delete my account
+                {dictionary.profile.delete}
               </Button>
             </div>
           </div>

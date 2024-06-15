@@ -60,4 +60,16 @@ export const dictionaryEN: Dictionary = {
     main_page: "Back to main page",
     repeat_password: "Repeat Password",
   },
+  profile: {
+    account: "Account",
+    save: "Save",
+    orders_label: "Check my orders history",
+    orders: "My Orders",
+    logout_label: "Log out and remove all my cache from this session",
+    logout: "Logout",
+    delete_label: "You can delete all data about you",
+    delete: "Delete my account",
+    irreversible_warning: "This action is irreversible",
+    update_settings: "Update your account settings, change your mail or name",
+  },
 };

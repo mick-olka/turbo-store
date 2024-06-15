@@ -58,4 +58,16 @@ export type Dictionary = {
     repeat_password: string;
     back_to_login: string;
   };
+  profile: {
+    account: string;
+    update_settings: string;
+    save: string;
+    orders_label: string;
+    orders: string;
+    logout_label: string;
+    logout: string;
+    delete_label: string;
+    delete: string;
+    irreversible_warning: string;
+  }
 };
