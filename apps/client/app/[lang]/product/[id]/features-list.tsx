@@ -14,10 +14,10 @@ export const FeaturesList = ({ lang, list }: Props) => {
     <div className="my-4">
       <h3 className="font-bold text-lg mb-4 mt-8">{dictionary.product.features}</h3>
       {list[lang].map(f => (
-        <div key={f.key} className="flex justify-between max-w-xl my-4">
-          <span>{f.key}:</span>
+        <div key={f.key} className="flex justify-between max-w-2xl my-4 font-semibold">
+          <span>{f.key}</span>
           <hr className="flex-1 mx-4 border-gray-300 mt-3" />
-          <span className="font-semibold">{f.value}</span>
+          <span className="max-w-96 font-light text-right">{f.value}</span>
         </div>
       ))}
     </div>

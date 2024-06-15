@@ -12,7 +12,7 @@ import {
   ProductImportedEvent,
 } from "./events/product-deleted.event";
 import { EVENTS } from "src/utils/constants";
-import { PhotosDeletedEvent, PhotosAddedEvent } from "../photos/events";
+import { PhotosAddedEvent, PhotosDeletedEvent } from "../photos/events";
 import { CollectionItemsUpdatedEvent } from "../collections/events/collection-items-updated.event";
 import { getProductsJSON, transferOneProduct } from "src/utils/transfer";
 import { getAllFiles } from "src/utils/files";
@@ -54,7 +54,7 @@ export class ProductsService {
   }
 
   async findOne(id: string): Promise<ProductI> {
-    return await this.ProductModel.findOne(getUrlNameFilter(id))
+    return this.ProductModel.findOne(getUrlNameFilter(id))
       .populate("collections", populateCollectionSelector)
       .populate("photos")
       .populate("related_products", populateProductsSelector)
@@ -63,17 +63,13 @@ export class ProductsService {
 
   async create(data: CreateProductDto): Promise<ProductI> {
     const createData = { ...data, collections: [] };
-    const createdProduct = await this.ProductModel.create(createData);
-    return createdProduct;
+    return await this.ProductModel.create(createData);
   }
 
   async update(id: string, data: UpdateProductDto): Promise<ProductI> {
-    const updatedItem = await this.ProductModel.findOneAndUpdate(
-      getUrlNameFilter(id),
-      data,
-      { new: true }
-    );
-    return updatedItem;
+    return this.ProductModel.findOneAndUpdate(getUrlNameFilter(id), data, {
+      new: true,
+    });
   }
 
   async delete(id: string): Promise<ProductI> {
@@ -88,10 +84,9 @@ export class ProductsService {
   }
 
   async addPhotos(id: string, photos_id: string): Promise<ProductI> {
-    const updatedProduct = await this.ProductModel.findByIdAndUpdate(id, {
+    return this.ProductModel.findByIdAndUpdate(id, {
       $addToSet: { photos: [photos_id] },
     });
-    return updatedProduct;
   }
 
   async transferOneProduct(index?: number): Promise<Product> {
@@ -126,15 +121,13 @@ export class ProductsService {
 
   async renamePhotos(): Promise<object> {
     const files = getAllFiles();
-    const with_space = files.filter((f) => f.includes(" "));
-    return with_space;
+    return files.filter((f) => f.includes(" "));
   }
 
   async removePhotos(id: string, photos_id: string): Promise<ProductI> {
-    const updatedProduct = await this.ProductModel.findByIdAndUpdate(id, {
+    return this.ProductModel.findByIdAndUpdate(id, {
       $pull: { photos: photos_id },
     });
-    return updatedProduct;
   }
 
   @OnEvent(EVENTS.photos_deleted)
