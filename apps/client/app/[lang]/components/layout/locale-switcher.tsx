@@ -2,7 +2,6 @@
 
 import { Selector } from "@/app/[lang]/components/inputs/selector";
 import { type Locale, i18n } from "@/shared/configs/i18n-config";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function LocaleSwitcher({ lang }: { lang: Locale }) {
@@ -24,7 +23,8 @@ export default function LocaleSwitcher({ lang }: { lang: Locale }) {
         hideArrow
         value={lang}
         onItemSelect={handleClickItem}
-        list={i18n.locales.map(l => ({ name: l, value: l }))}
+        list={i18n.locales.map(l => ({ name: l.toUpperCase(), value: l }))}
+        className="text-gray-500"
       />
     </div>
   );

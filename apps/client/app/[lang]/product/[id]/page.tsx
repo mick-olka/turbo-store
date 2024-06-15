@@ -12,9 +12,10 @@ import { Gallery } from "./gallery";
 
 type Props = PageProps<{ id: string }, { spec?: string }>;
 
-export default async function Product({ params, searchParams }: Props) {
+export default async function Product({ params }: Props) {
   const product = await getProductById(params.id);
   const dollar_block = await getTextByName(TextBlocks.dollar);
+  const dictionary = await getDictionary(params.lang);
   const coefficient = Number(dollar_block.text[params.lang]);
   const getBreadCrumps = () => {
     const category = product.collections[0];
@@ -29,14 +30,13 @@ export default async function Product({ params, searchParams }: Props) {
     }
     return [{ name: product.name[params.lang], link: product.url_name }];
   };
-  const dictionary = await getDictionary(params.lang);
   return (
     <div className="p-4">
       <div className="py-6">
         <BreadCrumps items={getBreadCrumps()} lang={params.lang} homeLabel={dictionary.sidebar.home} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-          <div className="flex flex-col items-center xl:items-start xl:flex-row -mx-4">
+          <div className="flex flex-col items-center xl:items-start xl:flex-row gap-4 -mx-4">
             <Gallery photos={product.photos} />
             <div className="md:flex-1 px-4">
               <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
@@ -60,7 +60,9 @@ export default async function Product({ params, searchParams }: Props) {
                 </div>
                 <div className="flex-1">
                   {product.old_price ? (
-                    <p className="text-green-500 text-xl font-semibold line-through">{product.old_price}</p>
+                    <p className="text-gray-500 text-xl font-semibold line-through">
+                      {product.old_price * coefficient}
+                    </p>
                   ) : null}
                   <p className="text-gray-400 text-sm">{dictionary.product.taxes}.</p>
                 </div>

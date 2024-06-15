@@ -36,7 +36,10 @@ export interface I_Product {
 }
 
 export interface I_ProductRelated
-  extends Pick<I_Product, "_id" | "name" | "price" | "url_name" | "old_price" | "thumbnail" | "index"> {}
+  extends Pick<
+    I_Product,
+    "_id" | "name" | "price" | "url_name" | "old_price" | "thumbnail" | "index" | "description"
+  > {}
 
 export interface I_ProductExtended extends Omit<I_Product, "related_products" | "similar_products" | "photos"> {
   related_products: I_ProductRelated[];

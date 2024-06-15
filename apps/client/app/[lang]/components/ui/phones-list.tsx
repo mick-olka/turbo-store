@@ -17,7 +17,7 @@ export const PhonesList = ({ phones }: Props) => {
   ));
   return (
     <Dropdown itemsList={list} className="min-w-12 w-12" hideArrow>
-      <PhoneIcon variant="grey" />
+      <PhoneIcon variant="grey" className="w-5 h-5" />
     </Dropdown>
   );
 };

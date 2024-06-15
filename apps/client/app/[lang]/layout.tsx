@@ -31,7 +31,11 @@ export default async function RootLayout({ params: { lang }, children }: Props) 
     <html lang={lang}>
       <body className={inter.className}>
         <DictionaryProvider dictionary={dictionary}>
-          <main className="min-h-screen w-full bg-gray-100 text-gray-700 overflow-hidden" x-data="layout">
+          <main
+            className="min-h-screen w-full bg-gray-100 text-gray-700 overflow-hidden"
+            x-data="layout"
+            style={{ minWidth: "360px" }}
+          >
             <Header lang={lang} />
             <div className="flex min-h-screen pt-14">
               <Sidebar list={collections} dictionary={dictionary} lang={lang} />

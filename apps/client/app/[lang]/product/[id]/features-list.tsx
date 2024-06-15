@@ -1,15 +1,15 @@
 import { getDictionary } from "@/dictionaries/get-dictionary";
 import { Locale } from "@/shared/configs/i18n-config";
 import { I_ProductFeatures } from "@/shared/models";
-import React from "react";
+import React, { use } from "react";
 
 type Props = {
   lang: Locale;
   list: I_ProductFeatures;
 };
 
-export const FeaturesList = async ({ lang, list }: Props) => {
-  const dictionary = await getDictionary(lang);
+export const FeaturesList = ({ lang, list }: Props) => {
+  const dictionary = use(getDictionary(lang));
   return (
     <div className="my-4">
       <h3 className="font-bold text-lg mb-4 mt-8">{dictionary.product.features}</h3>

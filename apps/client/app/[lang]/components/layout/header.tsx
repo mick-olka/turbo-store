@@ -1,9 +1,7 @@
 import { InfoIcon } from "@/app/[lang]/assets/icons/info";
-import { PhoneIcon } from "@/app/[lang]/assets/icons/phone";
 import { UserIcon } from "@/app/[lang]/assets/icons/user";
 import { Button } from "@/app/[lang]/components/button";
 import LocaleSwitcher from "@/app/[lang]/components/layout/locale-switcher";
-import { Dropdown } from "@/app/[lang]/components/ui/dropdown/dropdown";
 import { PhonesList } from "@/app/[lang]/components/ui/phones-list";
 import { shopLabel } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
@@ -31,13 +29,13 @@ export const Header = ({ lang }: { lang: Locale }) => {
 
       <div className="flex items-center space-x-4">
         <PhonesList phones={phones} />
-
+        <LocaleSwitcher lang={lang} />
+        <SearchField lang={lang} />
         <Link href={localeUrl(E_AppRoutes.about, lang)}>
           <Button variant="bordered" className="border-gray-200">
             <InfoIcon variant="grey" />
           </Button>
         </Link>
-        <SearchField lang={lang} />
         <CartBtn lang={lang} />
 
         <Link href={localeUrl(E_AppRoutes.profile, lang)}>
@@ -45,7 +43,6 @@ export const Header = ({ lang }: { lang: Locale }) => {
             <UserIcon variant="grey" />
           </Button>
         </Link>
-        <LocaleSwitcher lang={lang} />
       </div>
     </header>
   );

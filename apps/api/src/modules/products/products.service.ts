@@ -20,7 +20,7 @@ import { getAllFiles } from "src/utils/files";
 type ProductI = Product & { _id: mongoose.Types.ObjectId };
 
 const populateProductsSelector =
-  "_id name url_name thumbnail price old_price index active";
+  "_id name url_name thumbnail price old_price index active description";
 
 const populateCollectionSelector = "_id name url_name";
 @Injectable()

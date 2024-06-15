@@ -7,6 +7,7 @@ type Props = SVGAttributes<SVGElement> & VariantProps<typeof iconVariants> & {};
 type IconCallback = (props: Props, ref: LegacyRef<SVGSVGElement> | undefined) => ReactNode;
 
 export const createIcon = (iconCallback: IconCallback) => {
+  // @ts-ignore
   return forwardRef(({ variant, size, className, ...props }: Props, ref: LegacyRef<SVGSVGElement> | undefined) => {
     const classes = iconVariants({ variant, size, className });
     return iconCallback({ ...props, className: classes }, ref);

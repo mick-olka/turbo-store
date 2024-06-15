@@ -1,17 +1,23 @@
 import { CartIcon } from "@/app/[lang]/assets/icons/cart";
 import { Button } from "@/app/[lang]/components/button";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import { Dictionary } from "@/dictionaries/model";
 import { Locale } from "@/shared/configs/i18n-config";
-import { I_ProductRelated, TextBlocks } from "@/shared/models";
+import { I_ProductRelated, I_TextBlock, TextBlocks } from "@/shared/models";
 import { getTextByName } from "@/shared/service";
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 
 const api_url = process.env.NEXT_PUBLIC_API_URL;
 
-export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_ProductRelated }) => {
-  const dictionary = await getDictionary(lang);
-  const dollar_block = await getTextByName(TextBlocks.dollar);
+type Props = {
+  lang: Locale;
+  product: I_ProductRelated;
+};
+
+export const ProductCard = ({ lang, product }: Props) => {
+  const dictionary = use(getDictionary(lang));
+  const dollar_block = use(getTextByName(TextBlocks.dollar));
   const coefficient = Number(dollar_block.text[lang]);
   const isSale = !!product.old_price;
   return (
@@ -33,7 +39,9 @@ export const ProductCard = async ({ lang, product }: { lang: Locale; product: I_
 
       <div className="mt-1 p-2 h-32 flex flex-col justify-between">
         <h2 className="text-slate-700 line-clamp-2">{product.name[lang]}</h2>
-        <p className="text-sm text-slate-400">{product.url_name}</p>
+        <p className="text-sm text-slate-400 line-clamp-1">
+          {product.description ? product.description[lang] : product.url_name}
+        </p>
         <div className="mt-3 flex items-end justify-between">
           <p className={`text-lg font-bold ${isSale ? "text-red-500" : "text-blue-500"}`}>
             ₴{product.price * coefficient}
