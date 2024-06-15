@@ -9,9 +9,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import 'src/styles/normalize.scss'
 import 'src/styles/fonts.scss'
 
-import { useCheckLogin } from './hooks/use-auth'
-import { Routing } from './routing'
-import { ROUTES } from './routing/routes'
+import { useCheckLogin } from './hooks'
+import { ROUTES, Routing } from './routing'
 import { theme } from './styles/theme'
 
 const AppStyled = styled.div`
@@ -29,7 +28,6 @@ function App() {
       },
     },
   })
-
   return (
     <AppStyled>
       <QueryClientProvider client={queryClient}>
