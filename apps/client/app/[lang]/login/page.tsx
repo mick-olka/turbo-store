@@ -100,6 +100,7 @@ export default function LoginPage({ params: { lang } }: PageProps<{}>) {
         <div className="py-5">
           <div className="grid grid-cols-2 gap-1">
             <div className="text-center sm:text-left whitespace-nowrap">
+              <Link href={localeUrl(E_AppRoutes.home, lang)}>
               <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -112,6 +113,7 @@ export default function LoginPage({ params: { lang } }: PageProps<{}>) {
                 </svg>
                 <span className="inline-block ml-1">{dictionary.auth.main_page}</span>
               </button>
+              </Link>
             </div>
           </div>
         </div>

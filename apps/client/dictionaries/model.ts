@@ -69,5 +69,22 @@ export type Dictionary = {
     delete_label: string;
     delete: string;
     irreversible_warning: string;
-  }
+  };
+  order: {
+    order: string;
+    orders: string;
+    order_id: string;
+    date: string;
+    check: string;
+    customer: string;
+    status: string;
+    phone_number: string;
+    name: string;
+    price: string;
+    quantity: string;
+    discount: string;
+    remark: string;
+    time: string;
+    total: string;
+  };
 };
