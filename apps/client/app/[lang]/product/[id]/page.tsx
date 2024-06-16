@@ -49,7 +49,7 @@ export default async function Product({ params }: Props) {
               <div className="flex items-center space-x-4 my-4">
                 <div>
                   <div className="rounded-lg bg-gray-100 flex py-2 px-3">
-                    <span className="text-indigo-400 mr-1 mt-1">UAH</span>
+                    <span className="text-indigo-400 mr-1 mt-1 text-xl">{dictionary.product.currency}</span>
                     <span
                       className="font-bold text-indigo-600 text-3xl"
                       style={product.old_price ? { color: "#f55" } : {}}

@@ -1,9 +1,8 @@
 import { CartIcon } from "@/app/[lang]/assets/icons/cart";
 import { Button } from "@/app/[lang]/components/button";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { Dictionary } from "@/dictionaries/model";
 import { Locale } from "@/shared/configs/i18n-config";
-import { I_ProductRelated, I_TextBlock, TextBlocks } from "@/shared/models";
+import { I_ProductRelated, TextBlocks } from "@/shared/models";
 import { getTextByName } from "@/shared/service";
 import Image from "next/image";
 import React, { use } from "react";
@@ -44,7 +43,7 @@ export const ProductCard = ({ lang, product }: Props) => {
         </p>
         <div className="mt-3 flex items-end justify-between">
           <p className={`text-lg font-bold ${isSale ? "text-red-500" : "text-blue-500"}`}>
-            ₴{product.price * coefficient}
+            {dictionary.product.currency}{product.price * coefficient}
           </p>
           <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
             <CartIcon variant="white" />
