@@ -1,6 +1,6 @@
-const api_url = process.env.NEXT_PUBLIC_API_URL;
+import { localConfig } from "@/shared/utils";
 
-export const getURL = (path: string): string => api_url + path;
+export const getURL = (path: string): string => localConfig.apiUrl + path;
 
 export const fetcher = (url: string) => fetch(getURL(url)).then(res => res.json());
 

@@ -8,11 +8,12 @@ import { I_PhotosBlock } from "@/shared/models";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
 
+import { localConfig } from "@/shared/utils";
+
 interface I_Props {
   photos: I_PhotosBlock[];
   onSpecificationSelect?: (p: I_PhotosBlock | null) => void;
 }
-const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
   const [current, setCurrent] = useState<string | null>(photos[0]?._id || null);
@@ -29,7 +30,14 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
     if (photosBlock)
       return [
         ...photosBlock?.path_arr.map(s => (
-          <Image key={s} alt={s} width={640} height={640} src={api_url + "/upload/" + s} className="object-contain" />
+          <Image
+            key={s}
+            alt={s}
+            width={640}
+            height={640}
+            src={localConfig.apiUrl + "/upload/" + s}
+            className="object-contain"
+          />
         )),
       ];
     return [<Image key={1} alt={"No photo"} width={640} height={640} src={NoImage} />];

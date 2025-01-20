@@ -7,12 +7,10 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
 
-import { localeUrl } from "@/shared/utils";
+import { localConfig, localeUrl } from "@/shared/utils";
 
 import { useCart } from "./use-cart";
 import { useSession } from "./use-session";
-
-const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const useMakeOrder = (lang?: Locale) => {
   const { getAccessToken } = useSession();
@@ -20,12 +18,12 @@ export const useMakeOrder = (lang?: Locale) => {
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
-    if (!token) {
+    if (!localConfig.userCanOrderWithoutAuth && !token) {
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [token]);
   const sendOrder = async (body: I_OrderDTO) => {
-    const res = await fetch(api_url + "/orders", {
+    const res = await fetch(localConfig.apiUrl + "/orders", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -73,7 +71,7 @@ export const useGetOrders = (lang?: Locale) => {
     fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || !token) {
+    if (error || (!token && !localConfig.userCanOrderWithoutAuth)) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
@@ -94,7 +92,7 @@ export const useGetOrderById = ({ id, lang }: { id?: string; lang?: Locale }) =>
     ([url, token]) => fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || !token) {
+    if (error || (!token && !localConfig.userCanOrderWithoutAuth)) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }

@@ -7,7 +7,7 @@ import { getTextByName } from "@/shared/service";
 import Image from "next/image";
 import React, { use } from "react";
 
-const api_url = process.env.NEXT_PUBLIC_API_URL;
+import { localConfig } from "@/shared/utils";
 
 type Props = {
   lang: Locale;
@@ -26,7 +26,7 @@ export const ProductCard = ({ lang, product }: Props) => {
           priority
           width="200"
           height="200"
-          src={`${api_url}/upload/` + product.thumbnail}
+          src={`${localConfig.apiUrl}/upload/` + product.thumbnail}
           alt={product.url_name}
           className="h-32 w-full object-contain"
         />
@@ -38,12 +38,13 @@ export const ProductCard = ({ lang, product }: Props) => {
 
       <div className="mt-1 p-2 h-32 flex flex-col justify-between">
         <h2 className="text-slate-700 line-clamp-2">{product.name[lang]}</h2>
-        <p className="text-sm text-slate-400 line-clamp-1">
+        {/* <p className="text-sm text-slate-400 line-clamp-1">
           {product.description ? product.description[lang] : product.url_name}
-        </p>
+        </p> */}
         <div className="mt-3 flex items-end justify-between">
           <p className={`text-lg font-bold ${isSale ? "text-red-500" : "text-blue-500"}`}>
-            {dictionary.product.currency}{product.price * coefficient}
+            {dictionary.product.currency}
+            {product.price * coefficient}
           </p>
           <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
             <CartIcon variant="white" />

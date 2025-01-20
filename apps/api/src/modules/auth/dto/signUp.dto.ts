@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsEmail, IsString, IsOptional } from "class-validator";
+import {
+  IsNotEmpty,
+  IsEmail,
+  IsString,
+  IsOptional,
+  IsEnum,
+} from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { UserRole } from "src/schemas/user.schema";
 
@@ -26,6 +32,7 @@ export class SignUpDto {
     description: "User type (user or admin)",
   })
   @IsNotEmpty()
+  @IsEnum(UserRole)
   type: UserRole;
 
   @ApiProperty({

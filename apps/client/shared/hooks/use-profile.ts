@@ -7,11 +7,9 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
-import { localeUrl } from "@/shared/utils";
+import { localConfig, localeUrl } from "@/shared/utils";
 
 import { useSession } from "./use-session";
-
-const api_url = process.env.NEXT_PUBLIC_API_URL;
 
 export const useGetProfile = (lang?: Locale) => {
   const storage = useSession();
@@ -38,7 +36,7 @@ export const useUpdateProfile = () => {
   const token = getAccessToken();
   const { mutate } = useSWRConfig();
   const updateProfile = async (body: T_UserForm) => {
-    const res = await fetch(api_url + "/users/me", {
+    const res = await fetch(localConfig.apiUrl + "/users/me", {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -64,7 +62,7 @@ export const useDeleteProfile = (lang?: Locale) => {
   const token = getAccessToken();
   const { mutate } = useSWRConfig();
   const deleteProfile = async () => {
-    const res = await fetch(api_url + "/users/me", {
+    const res = await fetch(localConfig.apiUrl + "/users/me", {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
