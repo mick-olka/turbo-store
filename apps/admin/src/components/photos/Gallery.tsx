@@ -9,7 +9,7 @@ import * as PS from './styles'
 import { FilesDragDrop } from 'src/components'
 import * as S from 'src/components/styles'
 import { ButtonClickEvent } from 'src/models'
-import { PHOTOS_URL } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 interface I_Props {
   readonly path_arr: string[]
@@ -50,7 +50,7 @@ export const Gallery = (props: I_Props) => {
             height: 150,
           }}
         >
-          <PS.PhotoOverlay onClick={() => onPhotoOpenClick(`${PHOTOS_URL}${path}`)}>
+          <PS.PhotoOverlay onClick={() => onPhotoOpenClick(`${globalConfig.photosUrl}${path}`)}>
             {props.editMode && (
               <S.RoundButton
                 onClick={(e) => onPhotoDeleteClick(e, path)}
@@ -68,7 +68,7 @@ export const Gallery = (props: I_Props) => {
           </PS.PhotoOverlay>
           <S.Image
             sx={{ width: 150, height: 150 }}
-            src={`${PHOTOS_URL}${path}`}
+            src={`${globalConfig.photosUrl}${path}`}
             variant='rounded'
             alt={path}
           />

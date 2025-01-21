@@ -25,7 +25,7 @@ export default function CartPage({ params: { lang } }: Props) {
   const { removeFromCart, getCart, total } = useCart();
   const { makeOrder } = useMakeOrder(lang);
   const [cart, setCart] = useState<I_OrderItem[]>([]);
-  const [payment, setPayment] = useState<"card" | "post">("card");
+  const [payment, setPayment] = useState<"card" | "post">("post");
   const handleRemoveItem = (id: string) => {
     const newCart = removeFromCart(id);
     setCart(newCart);
@@ -49,8 +49,8 @@ export default function CartPage({ params: { lang } }: Props) {
       </div>
       <CartList items={cart} onItemRemove={handleRemoveItem} total={total * 40} />
       <div className="border-b border-gray-100 px-5 py-4">
-        <div className="font-semibold text-gray-800">{dictionary.cart.form.payment_method}:</div>
-        <Selector list={paymentTypes} value={payment} onItemSelect={v => setPayment(v || "card")} />
+        {/* <div className="font-semibold text-gray-800">{dictionary.cart.form.payment_method}:</div> */}
+        {/* <Selector list={paymentTypes} value={payment} onItemSelect={v => setPayment(v || "card")} /> */}
         <div className="font-semibold text-gray-800">{dictionary.cart.delivery_note}</div>
       </div>
       <Button

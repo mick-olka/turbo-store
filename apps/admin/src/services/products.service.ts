@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 import { I_Product, I_ProductDto, I_ProductItemsDto, I_ProductsResData } from 'src/models'
-import { products_page_limit, getFormData } from 'src/utils'
+import { globalConfig, getFormData } from 'src/utils'
 
 export const productsAPI = {
   async getAll({ page, limit, regex }: { page?: number; limit?: number; regex?: string }) {
-    let route = `/products?all=true&page=${page || 1}&limit=${limit || products_page_limit}`
+    let route = `/products?all=true&page=${page || 1}&limit=${
+      limit || globalConfig.productsPageLimit
+    }`
     if (regex) route += `&regex=${regex}`
     return axios.get<I_ProductsResData>(route)
   },

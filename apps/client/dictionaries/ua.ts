@@ -3,7 +3,8 @@ import { Dictionary } from "./model";
 export const dictionaryUA: Dictionary = {
   cart: {
     my_order: "Моє замовлення",
-    delivery_note: "Відправка відбувається Новою Поштою за вказаною у формі адресою",
+    // delivery_note: "Відправка відбувається Новою Поштою за вказаною у формі адресою",
+    delivery_note: "З вами зв'яжеться менеджер для уточнення деталей, способу доставки та оплати",
     make_order: "Зробити замовлення",
     in_cart: "У кошику",
     sum: "Сума",

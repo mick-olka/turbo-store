@@ -23,7 +23,7 @@ export const Header = () => {
   return (
     <S.MainHeader>
       <S.HeaderText>
-        <Link to={ROUTES.home}>Techno-Hutsal: адміністратор</Link>
+        <Link to={ROUTES.home}>Rotang.ua: адміністратор</Link>
       </S.HeaderText>
       <Button onClick={handleLogoutClick}>Вихід</Button>
     </S.MainHeader>

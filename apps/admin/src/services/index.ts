@@ -8,9 +8,9 @@ export { textBlocksAPI as TextBlocksService } from './text_blocks.service'
 import axios from 'axios'
 
 import { ROUTES } from 'src/routing/routes'
-import { api_url, LocalStorage } from 'src/utils'
+import { globalConfig, LocalStorage } from 'src/utils'
 
-axios.defaults.baseURL = api_url
+axios.defaults.baseURL = globalConfig.apiUrl
 axios.defaults.headers.common = {
   Authorization: LocalStorage.getAuthToken() ? `Bearer ${LocalStorage.getAuthToken()}` : null,
 }

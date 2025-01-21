@@ -8,7 +8,7 @@ import * as S from './styles'
 
 import { useTextBlockById } from 'src/hooks'
 import { useUpdateProduct } from 'src/hooks/use-products'
-import { PHOTOS_URL } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 export const product_columns: GridColDef[] = [
   { field: 'name', headerName: 'Назва', flex: 1, valueGetter: (param) => param.value.ua },
@@ -20,7 +20,11 @@ export const product_columns: GridColDef[] = [
       <Box>
         {params.value ? (
           <Box sx={{ width: '3rem', height: '3rem' }}>
-            <S.Thumbnail alt={'R'} src={`${PHOTOS_URL}${params.value}`} variant='square' />
+            <S.Thumbnail
+              alt={'R'}
+              src={`${globalConfig.photosUrl}${params.value}`}
+              variant='square'
+            />
           </Box>
         ) : (
           <ImageIcon />

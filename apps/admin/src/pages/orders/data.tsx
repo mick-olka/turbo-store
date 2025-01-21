@@ -3,7 +3,7 @@ import ImageIcon from '@mui/icons-material/Image'
 import { Avatar, Box, IconButton, Typography } from '@mui/material'
 import { GridColDef } from '@mui/x-data-grid'
 
-import { PHOTOS_URL } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 const date_options = {
   year: 'numeric',
@@ -41,7 +41,7 @@ export const cart_item_columns: GridColDef[] = [
             <Box sx={{ width: '3rem', height: '3rem' }}>
               <Avatar
                 alt={'R'}
-                src={`${PHOTOS_URL}${params.value.thumbnail}`}
+                src={`${globalConfig.photosUrl}${params.value.thumbnail}`}
                 sx={{ width: 100, height: 50 }}
                 variant='square'
               />

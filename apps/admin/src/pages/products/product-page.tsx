@@ -12,7 +12,7 @@ import { useDeleteProduct, useProductById, useUpdateProduct } from 'src/hooks'
 import { StatusWrapper } from 'src/layouts'
 import { I_ProductForm } from 'src/models'
 import { ROUTES } from 'src/routing'
-import { PHOTOS_URL, client_url } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 export const ProductPage = () => {
   const { id } = useParams()
@@ -52,7 +52,7 @@ export const ProductPage = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <h2 style={{ margin: '2rem' }}>
               <Link
-                href={client_url + '/product/' + product.url_name}
+                href={globalConfig.clientUrl + '/product/' + product.url_name}
                 target='_blank'
                 color='inherit'
                 sx={{ textDecoration: 'none', cursor: 'pointer' }}
@@ -73,7 +73,7 @@ export const ProductPage = () => {
             <Box sx={{ margin: '1rem', height: '200px', minWidth: '300px' }}>
               <AvatarUploader
                 handleChange={uploadAvatar}
-                currentURL={`${PHOTOS_URL}${product.thumbnail}`}
+                currentURL={`${globalConfig.photosUrl}${product.thumbnail}`}
               />
             </Box>
             <Box sx={{ margin: '2rem' }}>

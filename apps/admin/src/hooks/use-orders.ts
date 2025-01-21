@@ -5,7 +5,7 @@ import { toasterPending } from './data'
 
 import { E_Queries, I_OrderDto } from 'src/models'
 import { OrdersService } from 'src/services'
-import { orders_page_limit } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 export const useOrders = ({
   page,
@@ -29,7 +29,7 @@ export const useOrders = ({
   return {
     orders: data?.docs,
     count: data?.count,
-    limit: limit || orders_page_limit,
+    limit: limit || globalConfig.ordersPageLimit,
     isLoading,
     isError,
     refetch,

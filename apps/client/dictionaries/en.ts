@@ -3,7 +3,8 @@ import { Dictionary } from "./model";
 export const dictionaryEN: Dictionary = {
   cart: {
     my_order: "My order",
-    delivery_note: "Delivery is proceeded with Nova Post services to written in form address",
+    // delivery_note: "Delivery is proceeded with Nova Post services to written in form address",
+    delivery_note: "You will be contacted by a manager to clarify the details, delivery method and payment",
     make_order: "Make order",
     in_cart: "In cart",
     sum: "Sum",

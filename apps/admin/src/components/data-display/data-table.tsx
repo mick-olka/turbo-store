@@ -1,6 +1,6 @@
 import { DataGrid, GridColDef, GridRowParams, GridRowSelectionModel } from '@mui/x-data-grid'
 
-import { products_page_limit } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 interface I_Props<T> {
   columns: GridColDef[]
@@ -14,7 +14,7 @@ interface I_Props<T> {
 
 export const DataTable = <T,>(props: I_Props<T>) => {
   const { columns, rows, onRowClick, onSelect, limit, pagination, isLoading } = props
-  const pageSize = limit || products_page_limit
+  const pageSize = limit || globalConfig.productsPageLimit
   return (
     <DataGrid
       getRowId={(row) => row._id}

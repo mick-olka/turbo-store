@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 import { I_Order, I_OrderDto, I_OrderPopulated, I_OrdersResData } from 'src/models'
-import { orders_page_limit } from 'src/utils/constants'
+import { globalConfig } from 'src/utils/constants'
 
 export const ordersAPI = {
   async getAll({ page, limit, regex }: { page?: number; limit?: number; regex?: string }) {
-    let route = `/orders?page=${page || 1}&limit=${limit || orders_page_limit}`
+    let route = `/orders?page=${page || 1}&limit=${limit || globalConfig.ordersPageLimit}`
     if (regex) route += `&regex=${regex}`
     return axios.get<I_OrdersResData>(route)
   },

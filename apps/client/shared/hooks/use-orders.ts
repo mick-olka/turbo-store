@@ -58,7 +58,7 @@ export const useMakeOrder = (lang?: Locale) => {
         sum: total,
       };
       sendOrder(order);
-    } else alert("Please fill form");
+    } else alert("Будь ласка, заповніть форму. Please fill the form.");
   };
 
   return { makeOrder };

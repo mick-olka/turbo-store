@@ -4,7 +4,7 @@ import { toasterPending } from './data'
 
 import { E_Queries, I_ProductDto, I_ProductItemsDto } from 'src/models'
 import { ProductService } from 'src/services'
-import { products_page_limit } from 'src/utils'
+import { globalConfig } from 'src/utils'
 
 export const useProducts = ({
   page,
@@ -27,7 +27,7 @@ export const useProducts = ({
   return {
     products: data?.docs,
     count: data?.count,
-    limit: limit || products_page_limit,
+    limit: limit || globalConfig.productsPageLimit,
     isLoading,
     isError,
     refetch,
