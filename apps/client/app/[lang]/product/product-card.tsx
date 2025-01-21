@@ -47,7 +47,7 @@ export const ProductCard = ({ lang, product }: Props) => {
           </p>
           <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
             <CartIcon variant="white" />
-            <Button className="max-h-4" size="sm">
+            <Button className="max-h-6 p-0" size="sm">
               {dictionary.product.add_to_cart}
             </Button>
           </div>

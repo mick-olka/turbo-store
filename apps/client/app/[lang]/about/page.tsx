@@ -5,8 +5,9 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="py-16 bg-white">
-      <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+    <div className="py-16 w-full">
+      <h2 className="text-center text-2xl font-bold">In development</h2>
+      {/* <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
         <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12 mb-12">
           <div className="md:5/12 lg:w-5/12">
             <Image alt="PC" src={PcDisplay} width={460} height={460} className="ml-auto" />
@@ -16,9 +17,9 @@ export default function AboutPage() {
               Чому варто обрати Techno-Hutsal для покупки чи збірки свого ПК?
             </h2>
             <p className="mt-6 text-gray-600 leading-10">
-              У Techno-Hutsal ми любимо техніку та створюємо ідеальні комп&apos;ютери для ваших потреб. Незалежно від того,
-              чи ви досвідчений геймер, творчий професіонал, чи просто шукаєте надійний щоденний комп&apos;ютер, ми
-              пропонуємо найкращий вибір та обслуговування, щоб ви отримали саме те, що шукаєте. Ось чому ми повинні
+              У Techno-Hutsal ми любимо техніку та створюємо ідеальні комп&apos;ютери для ваших потреб. Незалежно від
+              того, чи ви досвідчений геймер, творчий професіонал, чи просто шукаєте надійний щоденний комп&apos;ютер,
+              ми пропонуємо найкращий вибір та обслуговування, щоб ви отримали саме те, що шукаєте. Ось чому ми повинні
               бути вашим універсальним магазином для всього, що стосується ПК!
             </p>
             <p className="mt-4 text-gray-600">Готові зібрати ПК своєї мрії? Перегляньте наші товари вже сьогодні!</p>
@@ -67,7 +68,7 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

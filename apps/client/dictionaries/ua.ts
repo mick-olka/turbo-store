@@ -39,7 +39,7 @@ export const dictionaryUA: Dictionary = {
     add_to_cart: "Купити",
     taxes: "З урахуванням усіх податків",
     quantity: "К-ть",
-    specification: "Модель",
+    specification: "Колір",
     description: "Опис",
     related_products: "Пов'язані товари",
     similar_products: "Схожі товари",

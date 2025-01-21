@@ -15,20 +15,26 @@ interface I_Props {
 }
 
 export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
-  const [current, setCurrent] = useState<string | null>(photos[0]?._id || null);
-  const [photosBlock, setPhotosBlock] = useState<I_PhotosBlock | null>(photos[0] || null);
+  const isOnlyOneVariant = photos.length < 2;
+  const [current, setCurrent] = useState<string | null>(isOnlyOneVariant ? photos[0]._id : "all");
+  const [photosBlock, setPhotosBlock] = useState<I_PhotosBlock[] | null>(photos);
   const dictionary = useDictionary();
+
   const handleItemSelect = (id: string | null) => {
-    const item = photos.find(p => p._id === id);
-    if (item) {
-      setCurrent(item._id);
+    if (id === "all") {
+      setPhotosBlock(photos);
+    } else {
+      const item = photos.find(p => p._id === id);
+      setPhotosBlock(item ? [item] : null);
     }
-    onSpecificationSelect && onSpecificationSelect(item || null);
+    setCurrent(id);
+    onSpecificationSelect && onSpecificationSelect(id === "all" ? null : photosBlock?.[0] || null);
   };
+
   const gallery = (): ReactNode[] => {
-    if (photosBlock)
-      return [
-        ...photosBlock?.path_arr.map(s => (
+    if (photosBlock && photosBlock.length > 0) {
+      return photosBlock.flatMap(block =>
+        block.path_arr.map(s => (
           <Image
             key={s}
             alt={s}
@@ -38,13 +44,26 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
             className="object-contain"
           />
         )),
-      ];
+      );
+    }
     return [<Image key={1} alt={"No photo"} width={640} height={640} src={NoImage} />];
   };
+
   useEffect(() => {
-    setPhotosBlock(photos.find(p => p._id === current) || null);
+    if (current === "all") {
+      setPhotosBlock(photos);
+    } else {
+      setPhotosBlock(photos.find(p => p._id === current) ? [photos.find(p => p._id === current)!] : null);
+    }
   }, [photos, current]);
-  const list = photos.map(p => ({ name: `${p.main_color["ua"]} ${p.pill_color["ua"]}`, value: p._id }));
+
+  const list = isOnlyOneVariant
+    ? photos.map(p => ({ name: `${p.main_color["ua"]} ${p.pill_color["ua"]}`, value: p._id }))
+    : [
+        { name: "...", value: "all" },
+        ...photos.map(p => ({ name: `${p.main_color["ua"]} ${p.pill_color["ua"]}`, value: p._id })),
+      ];
+
   return (
     <div className="max-w-lg max-h-lg">
       <Carousel autoSlide={true}>{gallery()}</Carousel>

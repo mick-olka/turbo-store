@@ -39,7 +39,7 @@ export const dictionaryEN: Dictionary = {
     add_to_cart: "Buy",
     taxes: "Inclusive all Taxes",
     quantity: "Q-ty",
-    specification: "Specification",
+    specification: "Color",
     description: "Description",
     related_products: "Related products",
     similar_products: "Similar products",

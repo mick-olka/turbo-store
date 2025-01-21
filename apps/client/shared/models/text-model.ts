@@ -13,4 +13,5 @@ export enum TextBlocks {
   about_shop = "about_shop",
   main_description = "main_description",
   header_text = "header_text",
+  phones = "phones",
 }

@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 export default async function RootLayout({ params: { lang }, children }: Props) {
   const collections = await getCollections();
   const dictionary = await getDictionary(lang);
+  const phones = await getTextByName(TextBlocks.phones);
   return (
     <html lang={lang}>
       <body className={inter.className}>
@@ -36,7 +37,7 @@ export default async function RootLayout({ params: { lang }, children }: Props) 
             x-data="layout"
             style={{ minWidth: "360px" }}
           >
-            <Header lang={lang} />
+            <Header lang={lang} phones={phones} />
             <div className="flex min-h-screen pt-14">
               <Sidebar list={collections} dictionary={dictionary} lang={lang} />
               {children}

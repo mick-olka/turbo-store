@@ -40,7 +40,7 @@ export const dictionaryDE: Dictionary = {
     add_to_cart: "Kaufen",
     taxes: "Alle Steuern inbegriffen",
     quantity: "Menge",
-    specification: "Spezifikation",
+    specification: "Farbe",
     description: "Beschreibung",
     related_products: "Ähnliche Produkte",
     similar_products: "Ähnliche Produkte",

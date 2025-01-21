@@ -26,9 +26,9 @@ export const Carousel = ({ children: slides, autoSlide = false, autoSlideInterva
     return () => clearInterval(slideInterval);
   }, [slides]);
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative bg-white">
       <div
-        className="flex transition-transform ease-out duration-500"
+        className="flex transition-transform ease-out duration-500 max-h-96"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {slides}

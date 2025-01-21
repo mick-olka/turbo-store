@@ -5,7 +5,7 @@ import LocaleSwitcher from "@/app/[lang]/components/layout/locale-switcher";
 import { PhonesList } from "@/app/[lang]/components/ui/phones-list";
 import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
-import { E_AppRoutes } from "@/shared/models";
+import { E_AppRoutes, I_TextBlock } from "@/shared/models";
 import Link from "next/link";
 
 import { localeUrl } from "@/shared/utils";
@@ -13,12 +13,11 @@ import { localeUrl } from "@/shared/utils";
 import { CartBtn } from "./cart-btn";
 import { SearchField } from "./search-pane";
 
-export const Header = ({ lang }: { lang: Locale }) => {
-  const phones = [
-    { label: "+380963963930", value: "+380963963930" },
-    { label: "+380963963931", value: "+380963963931" },
-    { label: "+380963963932", value: "+380963963932" },
-  ];
+export const Header = ({ lang, phones }: { lang: Locale; phones: I_TextBlock }) => {
+  const phonesList = phones.text[lang]
+    .split(";")
+    .filter(p => Boolean(p))
+    .map(phone => ({ label: phone, value: phone }));
   return (
     <header className="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2 fixed z-10">
       <div className="flex items-center space-x-2">
@@ -28,7 +27,7 @@ export const Header = ({ lang }: { lang: Locale }) => {
       </div>
 
       <div className="flex items-center space-x-4">
-        <PhonesList phones={phones} />
+        <PhonesList phones={phonesList} />
         <LocaleSwitcher lang={lang} />
         <SearchField lang={lang} />
         <Link href={localeUrl(E_AppRoutes.about, lang)}>
@@ -38,11 +37,11 @@ export const Header = ({ lang }: { lang: Locale }) => {
         </Link>
         <CartBtn lang={lang} />
 
-        <Link href={localeUrl(E_AppRoutes.profile, lang)}>
+        {/* <Link href={localeUrl(E_AppRoutes.profile, lang)}>
           <Button variant="bordered" className="border-gray-200">
             <UserIcon variant="grey" />
           </Button>
-        </Link>
+        </Link> */}
       </div>
     </header>
   );
