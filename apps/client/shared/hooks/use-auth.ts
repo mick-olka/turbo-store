@@ -1,8 +1,9 @@
+import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, T_RegisterForm } from "@/shared/models";
 import { useRouter } from "next/navigation";
 
-import { localConfig, localeUrl } from "@/shared/utils";
+import { localeUrl } from "@/shared/utils";
 
 import { useSession } from "./use-session";
 
@@ -15,7 +16,7 @@ export const useSignIn = (lang?: Locale) => {
   const { setAccessToken } = useSession();
   const router = useRouter();
   const signIn = async (body: { email: string; password: string }) => {
-    const res = await fetch(localConfig.apiUrl + "/auth/login", {
+    const res = await fetch(globalConfig.apiUrl + "/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +47,7 @@ export const useRegister = (lang?: Locale) => {
   const router = useRouter();
   const register = async (body: T_RegisterForm) => {
     const b: RegisterDTO = { ...body, type: "user" };
-    const res = await fetch(localConfig.apiUrl + "/auth/register", {
+    const res = await fetch(globalConfig.apiUrl + "/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

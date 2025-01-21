@@ -1,6 +1,6 @@
-import { localConfig } from "@/shared/utils";
+import { globalConfig } from "@/shared/configs/global";
 
-export const getURL = (path: string): string => localConfig.apiUrl + path;
+export const getURL = (path: string): string => globalConfig.apiUrl + path;
 
 export const fetcher = (url: string) => fetch(getURL(url)).then(res => res.json());
 

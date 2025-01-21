@@ -1,5 +1,5 @@
 import { Dictionary } from "@/dictionaries/model";
-import { email, gitHub, shopLabel } from "@/shared/configs/global";
+import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes } from "@/shared/models";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export const Footer = ({ dictionary, lang }: { dictionary: Dictionary; lang: Loc
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
         <div className="grid justify-center  lg:justify-between">
           <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-            <span>{shopLabel}</span>
+            <span>{globalConfig.shopLabel}</span>
             <span>Copyright © 2024 by mhutsal </span>
             <Link rel="noopener noreferrer" href={localeUrl(E_AppRoutes.privacy_policy, lang)}>
               <span>{dictionary.footer.privacy_policy}</span>
@@ -24,7 +24,7 @@ export const Footer = ({ dictionary, lang }: { dictionary: Dictionary; lang: Loc
           <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
             <Link
               rel="noopener noreferrer"
-              href={`mailto:${email}`}
+              href={`mailto:${globalConfig.email}`}
               target="_blank"
               title="Email"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 duration-150 text-gray-50"
@@ -46,7 +46,7 @@ export const Footer = ({ dictionary, lang }: { dictionary: Dictionary; lang: Loc
             </Link> */}
             <Link
               rel="noopener noreferrer"
-              href={gitHub}
+              href={globalConfig.gitHub}
               title="GitHub"
               target="_blank"
               className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 duration-150 text-gray-50"

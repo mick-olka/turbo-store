@@ -1,7 +1,5 @@
-// import { Card } from '@repo/ui'
 import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-// import { ReactQueryDevtools } from 'react-query/devtools'
 import { ToastContainer } from 'react-toastify'
 import styled, { ThemeProvider } from 'styled-components'
 

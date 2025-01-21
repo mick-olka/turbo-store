@@ -1,13 +1,12 @@
 import { CartIcon } from "@/app/[lang]/assets/icons/cart";
 import { Button } from "@/app/[lang]/components/button";
 import { getDictionary } from "@/dictionaries/get-dictionary";
+import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { I_ProductRelated, TextBlocks } from "@/shared/models";
 import { getTextByName } from "@/shared/service";
 import Image from "next/image";
 import React, { use } from "react";
-
-import { localConfig } from "@/shared/utils";
 
 type Props = {
   lang: Locale;
@@ -26,7 +25,7 @@ export const ProductCard = ({ lang, product }: Props) => {
           priority
           width="200"
           height="200"
-          src={`${localConfig.apiUrl}/upload/` + product.thumbnail}
+          src={`${globalConfig.apiUrl}/upload/` + product.thumbnail}
           alt={product.url_name}
           className="h-32 w-full object-contain"
         />

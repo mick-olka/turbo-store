@@ -1,5 +1,6 @@
 "use client";
 
+import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, I_User, T_UserForm } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
@@ -7,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR, { useSWRConfig } from "swr";
 
-import { localConfig, localeUrl } from "@/shared/utils";
+import { localeUrl } from "@/shared/utils";
 
 import { useSession } from "./use-session";
 
@@ -36,7 +37,7 @@ export const useUpdateProfile = () => {
   const token = getAccessToken();
   const { mutate } = useSWRConfig();
   const updateProfile = async (body: T_UserForm) => {
-    const res = await fetch(localConfig.apiUrl + "/users/me", {
+    const res = await fetch(globalConfig.apiUrl + "/users/me", {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -62,7 +63,7 @@ export const useDeleteProfile = (lang?: Locale) => {
   const token = getAccessToken();
   const { mutate } = useSWRConfig();
   const deleteProfile = async () => {
-    const res = await fetch(localConfig.apiUrl + "/users/me", {
+    const res = await fetch(globalConfig.apiUrl + "/users/me", {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

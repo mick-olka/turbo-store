@@ -3,12 +3,11 @@
 import NoImage from "@/app/[lang]/assets/images/no-img.png";
 import { Selector } from "@/app/[lang]/components/inputs/selector";
 import { Carousel } from "@/app/[lang]/components/ui";
+import { globalConfig } from "@/shared/configs/global";
 import { useDictionary } from "@/shared/hooks";
 import { I_PhotosBlock } from "@/shared/models";
 import Image from "next/image";
 import { ReactNode, useEffect, useState } from "react";
-
-import { localConfig } from "@/shared/utils";
 
 interface I_Props {
   photos: I_PhotosBlock[];
@@ -35,7 +34,7 @@ export const Gallery = ({ photos, onSpecificationSelect }: I_Props) => {
             alt={s}
             width={640}
             height={640}
-            src={localConfig.apiUrl + "/upload/" + s}
+            src={globalConfig.apiUrl + "/upload/" + s}
             className="object-contain"
           />
         )),

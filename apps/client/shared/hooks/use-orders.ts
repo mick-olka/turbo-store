@@ -1,5 +1,6 @@
 "use client";
 
+import { globalConfig } from "@/shared/configs/global";
 import { Locale } from "@/shared/configs/i18n-config";
 import { E_AppRoutes, I_Order, I_OrderDTO, I_OrderPopulated, I_UserOrders } from "@/shared/models";
 import { fetchWithAuth } from "@/shared/utils/fetcher";
@@ -7,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useSWR from "swr";
 
-import { localConfig, localeUrl } from "@/shared/utils";
+import { localeUrl } from "@/shared/utils";
 
 import { useCart } from "./use-cart";
 import { useSession } from "./use-session";
@@ -18,12 +19,12 @@ export const useMakeOrder = (lang?: Locale) => {
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
-    if (!localConfig.userCanOrderWithoutAuth && !token) {
+    if (!globalConfig.userCanOrderWithoutAuth && !token) {
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [token]);
   const sendOrder = async (body: I_OrderDTO) => {
-    const res = await fetch(localConfig.apiUrl + "/orders", {
+    const res = await fetch(globalConfig.apiUrl + "/orders", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -71,7 +72,7 @@ export const useGetOrders = (lang?: Locale) => {
     fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || (!token && !localConfig.userCanOrderWithoutAuth)) {
+    if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
@@ -92,7 +93,7 @@ export const useGetOrderById = ({ id, lang }: { id?: string; lang?: Locale }) =>
     ([url, token]) => fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || (!token && !localConfig.userCanOrderWithoutAuth)) {
+    if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
