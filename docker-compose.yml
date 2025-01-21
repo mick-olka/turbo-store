@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  api:
+    container_name: rotang_api
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 7500:7500
+    networks:
+      - rotang_network
+    volumes:
+      - ./apps/api/upload:/app/upload
+    env_file:
+      - ./apps/api/.env
+
+  admin:
+    container_name: rotang_admin
+    build:
+      context: ./apps/admin
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3005:80
+    networks:
+      - rotang_network
+    env_file:
+      - ./apps/admin/.env
+    depends_on:
+      - api
+
+  client:
+    container_name: rotang_client
+    build:
+      context: ./apps/client
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - rotang_network
+    env_file:
+      - ./apps/client/.env.production
+    depends_on:
+      - api
+
+networks:
+  rotang_network:
+    external: true
