@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ RUN pnpm install
 COPY . .
 
 # Build the NextJS application
-# RUN pnpm build
+RUN pnpm build
 
 # Expose the application port
 EXPOSE 3000

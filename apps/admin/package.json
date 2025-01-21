@@ -10,7 +10,6 @@
     "start": "serve -s -p 3005 dist"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",

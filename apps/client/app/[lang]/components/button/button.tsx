@@ -41,3 +41,5 @@ const buttonVariants = cva("py-2 px-4 rounded-md font-semibold hover:opacity-80 
     size: "md",
   },
 });
+
+Button.displayName = "Button";

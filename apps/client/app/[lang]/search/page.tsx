@@ -20,11 +20,11 @@ export default async function SearchPage({ params, searchParams }: Props) {
   return (
     <div className="w-full p-4">
       <h2 className="text-xl font-bold m-5">
-        {dictionary.search.search_results} "{searchParams.search}"
+        {dictionary.search.search_results} &quot;{searchParams.search}&quot;
       </h2>
       {items.length ? null : (
         <div className="m-5 text-lg">
-          {dictionary.search.no_results} "{searchParams.search}"
+          {dictionary.search.no_results} &quot;{searchParams.search}&quot;
         </div>
       )}
       <ItemsGrid items={items} />

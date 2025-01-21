@@ -41,3 +41,5 @@ const fieldVariants = cva("h-10 p-1 px-4 rounded-lg focus:outline-none focus:sha
     inputSize: "md",
   },
 });
+
+TextField.displayName = "TextField";
