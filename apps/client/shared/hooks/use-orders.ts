@@ -19,7 +19,8 @@ export const useMakeOrder = (lang?: Locale) => {
   const router = useRouter();
   const token = getAccessToken();
   useEffect(() => {
-    if (!globalConfig.userCanOrderWithoutAuth && !token) {
+    // if (!globalConfig.userCanOrderWithoutAuth && !token) {
+    if (!token) {
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
   }, [token]);
@@ -72,7 +73,8 @@ export const useGetOrders = (lang?: Locale) => {
     fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
+    // if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
+    if (error || !token) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
@@ -93,7 +95,8 @@ export const useGetOrderById = ({ id, lang }: { id?: string; lang?: Locale }) =>
     ([url, token]) => fetchWithAuth(url, String(token)),
   );
   useEffect(() => {
-    if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
+    // if (error || (!token && !globalConfig.userCanOrderWithoutAuth)) {
+    if (error || !token) {
       // means user is not logged in
       router.push(localeUrl(E_AppRoutes.login, lang || "en"));
     }
