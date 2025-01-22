@@ -20,3 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - phones list example: "+380963963930;+380963963931;+380963963932"
 - in case anything breaks try changing tsconfig - "moduleResolution": "bundler"
+- fix: lang param is 'favicon' at the first render
