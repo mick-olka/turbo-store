@@ -11,6 +11,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "eslint-plugin-perfectionist": "^4.7.0",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },

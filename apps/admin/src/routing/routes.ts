@@ -17,6 +17,7 @@ export enum ROUTES {
   createOrder = '/admin/orders/create',
 
   textBlocksPage = '/admin/text_blocks',
+  textBlock = '/admin/text_blocks/:id',
 
   // Auth
   login = '/admin/login',

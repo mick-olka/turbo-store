@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import { MultiLangTextField } from '../inputs/multi-lang-text-field'
 
@@ -7,6 +7,7 @@ import * as S from 'src/components/styles'
 
 import { I_TextBlockForm } from 'src/models'
 import { lanEnumToObject } from 'src/utils'
+import MDEditor from '@uiw/react-md-editor'
 
 interface I_Props {
   onSubmit: (data: I_TextBlockForm) => void
@@ -25,6 +26,7 @@ export const TextBlockForm = (props: Readonly<I_Props>) => {
   const {
     register,
     handleSubmit,
+    control,
     // formState: { errors },
   } = useForm<I_TextBlockForm>({
     defaultValues: initValues || def,
@@ -48,6 +50,13 @@ export const TextBlockForm = (props: Readonly<I_Props>) => {
               register={register}
               names={['text.ua', 'text.en', 'text.de']}
               // error={!!errors.text}
+            />
+            <Controller
+              control={control}
+              name='text.ua'
+              render={({ field: { onChange, value } }) => (
+                <MDEditor height={400} onChange={onChange} value={value} />
+              )}
             />
           </Box>
         </S.TextFieldBox>

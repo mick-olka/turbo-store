@@ -5,6 +5,10 @@ import { text_blocks_columns, textBlocksFilter } from './data'
 import { ItemsPage, ContentDialog, TextBlockForm } from 'src/components'
 import { useTextBlockById, useTextBlocks, useUpdateTextBlock } from 'src/hooks'
 import { I_TextBlock, I_TextBlockForm } from 'src/models'
+import MDEditor from '@uiw/react-md-editor'
+import { getRouteWithId } from 'src/routing'
+import { ROUTES } from 'src/routing'
+import { useNavigate } from 'react-router-dom'
 
 export const TextBlocksPage = () => {
   const [filter, setFilter] = useState<string | null>(null)
@@ -13,6 +17,7 @@ export const TextBlocksPage = () => {
   const { text_blocks, isLoading, isError } = useTextBlocks()
   const { text_block, isLoading: textBlockLoading } = useTextBlockById(tbId || undefined)
   const { update, isLoading: isFetchingUpdate } = useUpdateTextBlock()
+  const navigate = useNavigate()
 
   const getFilteredTextBlocksList = (): I_TextBlock[] =>
     useMemo(() => {
@@ -20,10 +25,11 @@ export const TextBlocksPage = () => {
     }, [text_blocks, filter])
 
   const onItemClick = (id: string) => {
-    if (text_blocks) {
-      setTbId(id)
-      setOpen(true)
-    }
+    // if (text_blocks) {
+    //   setTbId(id)
+    //   setOpen(true)
+    // }
+    navigate(getRouteWithId(ROUTES.textBlock, id))
   }
   const handleSearchTrigger = (query?: string) => {
     setFilter(query || null)
