@@ -3,8 +3,8 @@ import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import * as bodyParser from "body-parser";
 import { AppModule } from "./app.module";
-import { constants } from "./utils/constants";
 import { performTransfer } from "./utils/transfer";
+// import { ConfigService } from "@nestjs/config";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -27,11 +27,11 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("api-docs", app, document);
+  // const configService = app.get(ConfigService);
   await app.listen(7500, () => {
     console.log("DOCS: http://localhost:7500/api-docs");
     console.log("CLIENT: http://localhost:3000/");
     console.log("ADMIN: http://localhost:3005/");
-    constants.ADMIN_KEY = process.env.ADMIN_KEY;
     performTransfer();
   });
 }

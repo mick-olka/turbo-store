@@ -1,5 +1,10 @@
-export const constants = {
-  ADMIN_KEY: process.env.ADMIN_KEY,
+// these are set in main.ts
+export const envNames = {
+  DATABASE_URL: "DATABASE_URL",
+  ADMIN_KEY: "ADMIN_KEY",
+  ACCESS_TOKEN_SECRET: "ACCESS_TOKEN_SECRET",
+  REFRESH_TOKEN_SECRET: "REFRESH_TOKEN_SECRET",
+  ALLOW_UNAUTHORIZED_ORDERS: "ALLOW_UNAUTHORIZED_ORDERS",
 };
 
 export enum EVENTS {

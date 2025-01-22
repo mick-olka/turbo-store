@@ -12,6 +12,7 @@ import {
 } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
+import { envNames } from "src/utils/constants";
 
 @Injectable()
 export class IsAdminGuard implements CanActivate {
@@ -26,7 +27,7 @@ export class IsAdminGuard implements CanActivate {
     if (token) {
       try {
         const decoded = this.jwtService.verify(token, {
-          secret: this.config.get<string>("ACCESS_TOKEN_SECRET"),
+          secret: this.config.get<string>(envNames.ACCESS_TOKEN_SECRET),
         });
         return decoded.role === "admin"; // Check if user type is 'admin'
       } catch (error) {

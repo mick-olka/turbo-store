@@ -8,7 +8,7 @@ import * as bcrypt from "bcrypt";
 import { SignInDto, SignUpDto } from "./dto";
 import { Tokens } from "./models";
 import { UsersService } from "../users/users.service";
-import { constants } from "src/utils/constants";
+import { envNames } from "src/utils/constants";
 import { UserRole } from "src/schemas/user.schema";
 
 @Injectable()
@@ -21,7 +21,7 @@ export class AuthService {
 
   async signUp(dto: SignUpDto): Promise<Tokens> {
     let userRole = dto.type;
-    if (dto.admin_key !== constants.ADMIN_KEY) {
+    if (dto.admin_key !== this.config.get(envNames.ADMIN_KEY)) {
       userRole = UserRole.user;
       // throw new ForbiddenException("Access denied");
     }
@@ -151,7 +151,7 @@ export class AuthService {
           role: userRole,
         },
         {
-          secret: this.config.get<string>("ACCESS_TOKEN_SECRET"),
+          secret: this.config.get<string>(envNames.ACCESS_TOKEN_SECRET),
           expiresIn: 60 * 60 * 24,
         }
       ),
@@ -162,7 +162,7 @@ export class AuthService {
           role: userRole,
         },
         {
-          secret: this.config.get<string>("REFRESH_TOKEN_SECRET"),
+          secret: this.config.get<string>(envNames.REFRESH_TOKEN_SECRET),
           expiresIn: 60 * 60 * 24 * 7,
         }
       ),
