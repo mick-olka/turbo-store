@@ -53,8 +53,11 @@ export class OrdersService {
       .exec();
   }
 
-  async create(data: CreateOrderDto, userId: string): Promise<OrderI> {
-    const order_data = { ...data, date: new Date(), user: userId };
+  async create(data: CreateOrderDto, userId: string | null): Promise<OrderI> {
+    if (!userId) {
+      // const guestUser = await this.UserService.();
+    }
+    const order_data = { ...data, date: new Date(), user: userId || undefined };
     const createdOrder = await this.OrderModel.create(order_data);
     const orderCreatedEvent = new OrderCreatedEvent(
       userId,

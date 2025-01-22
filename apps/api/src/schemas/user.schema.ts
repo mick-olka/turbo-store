@@ -38,7 +38,7 @@ export class User {
   @Prop({ type: String, enum: UserRole, required: true })
   role: UserRole;
 
-  @Prop(getMongoRef("Order", true))
+  @Prop(getMongoRef("Order", { isArray: true }))
   orders: string[];
 }
 

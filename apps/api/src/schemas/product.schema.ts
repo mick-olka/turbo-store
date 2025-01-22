@@ -43,17 +43,17 @@ export class Product {
   features: I_ProductFeatures;
 
   @ApiProperty({ type: [String] })
-  @Prop(getMongoRef(Photos.name, true))
+  @Prop(getMongoRef(Photos.name, { isArray: true }))
   photos: string[];
 
   @ApiProperty({ type: [String] })
-  @Prop(getMongoRef("Collection", true))
+  @Prop(getMongoRef("Collection", { isArray: true }))
   collections: string[];
 
-  @Prop(getMongoRef("Product", true))
+  @Prop(getMongoRef("Product", { isArray: true }))
   related_products: Product[];
 
-  @Prop(getMongoRef("Product", true))
+  @Prop(getMongoRef("Product", { isArray: true }))
   similar_products: Product[];
 
   @Prop({ default: 0, required: false })

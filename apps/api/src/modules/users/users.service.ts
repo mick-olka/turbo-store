@@ -8,6 +8,7 @@ import { OnEvent } from "@nestjs/event-emitter";
 import { EVENTS } from "src/utils/constants";
 import { OrderCreatedEvent } from "../orders/events";
 import { Order } from "src/schemas/order.schema";
+import { UserRole } from "src/schemas/user.schema";
 
 type UserI = User & { _id: mongoose.Types.ObjectId };
 
@@ -85,5 +86,21 @@ export class UsersService {
       { $push: { orders: event.order_id } },
       { new: true }
     );
+  }
+
+  async ensureGuestUserExists(): Promise<User> {
+    let user = await this.UserModel.findOne({ name: "Guest" }).exec();
+    if (!user) {
+      const guestUserData: CreateUserDto = {
+        first_name: "Guest",
+        last_name: "Guest",
+        email: "guest@mail.com",
+        role: UserRole.user,
+        hash: "guest",
+      };
+      user = new this.UserModel(guestUserData);
+      await user.save();
+    }
+    return user;
   }
 }
