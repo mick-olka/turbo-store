@@ -3,17 +3,39 @@
   "globalDependencies": ["**/.env.*local"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "dev:api"],
       "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "admin:build": {
+      "outputs": ["dist/**"]
+    },
+    "api:build": {
+      "outputs": ["dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
     "start": {
       "cache": true,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["dev:api"]
     },
     "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["dev:api"]
+    },
+    "dev:client": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["dev:api"]
+    },
+    "dev:admin": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["dev:api"]
+    },
+    "dev:api": {
       "cache": false,
       "persistent": true
     }
