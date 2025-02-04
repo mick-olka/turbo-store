@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form'
+import type { FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form'
 
 import * as S from '../styles'
 

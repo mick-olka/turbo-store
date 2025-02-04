@@ -1,5 +1,5 @@
 {
-  // "extends": "@repo/typescript-config",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,

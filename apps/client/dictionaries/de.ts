@@ -1,4 +1,4 @@
-import { Dictionary } from "./model";
+import type { Dictionary } from "./model";
 
 export const dictionaryDE: Dictionary = {
   cart: {

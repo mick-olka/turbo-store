@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Library",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "checkJs": true,
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "incremental": true,
+    "noUncheckedIndexedAccess": true,
+    "composite": false,
+    "declarationMap": false,
+    "inlineSources": false,
+    "resolveJsonModule": true,
+    "noEmit": false,
+    "removeComments": true,
+    "strictPropertyInitialization": false,
+    "ignoreDeprecations": "5.0",
+    "strictFunctionTypes": false,
+    "skipDefaultLibCheck": true,
+    "sourceMap": true
+  }
+}

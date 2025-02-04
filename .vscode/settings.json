@@ -4,10 +4,14 @@
       "mode": "auto"
     }
   ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit"
+  },
   "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "javascript.preferences.importModuleSpecifier": "shortest",
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "eslint.format.enable": true,
-  "eslint.codeActionsOnSave.rules": null
+  // "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.defaultFormatter": "biomejs.biome"
 }

@@ -1,8 +1,8 @@
 import { ProductsGrid } from "@/app/[lang]/product/products-grid";
-import { PageProps } from "@/shared/models";
+import type { PageProps } from "@/shared/models";
 import { getProducts } from "@/shared/service";
 
-type Props = PageProps<{}, {}>;
+type Props = PageProps<{ lang: string }>;
 export default async function Home({ params }: Props) {
   const data = await getProducts();
 

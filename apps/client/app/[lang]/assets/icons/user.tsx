@@ -10,6 +10,7 @@ export const UserIcon = createIcon(({ className, ...props }, ref) => {
       {...props}
       className={classnames("w-5 h-5 inline", className)}
     >
+      <title>User</title>
       <path
         d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
         stroke="currentColor"

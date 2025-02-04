@@ -1,19 +1,19 @@
+import { join } from "node:path";
 import { Module } from "@nestjs/common";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { MongooseModule } from "@nestjs/mongoose";
-import { ProductsModule } from "./modules/products/products.module";
 import { ConfigModule } from "@nestjs/config";
-import { AuthModule } from "./modules/auth/auth.module";
-import { UsersModule } from "./modules/users/users.module";
-import { CollectionsModule } from "./modules/collections/collections.module";
-import { PhotosModule } from "./modules/photos/photos.module";
-import { TextBlocksModule } from "./modules/text_blocks/textBlocks.module";
+import { EventEmitterModule } from "@nestjs/event-emitter";
+import { MongooseModule } from "@nestjs/mongoose";
 import { MulterModule } from "@nestjs/platform-express";
 import { ServeStaticModule } from "@nestjs/serve-static";
-import { join } from "path";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { AuthModule } from "./modules/auth/auth.module";
+import { CollectionsModule } from "./modules/collections/collections.module";
 import { OrdersModule } from "./modules/orders/orders.module";
-import { EventEmitterModule } from "@nestjs/event-emitter";
+import { PhotosModule } from "./modules/photos/photos.module";
+import { ProductsModule } from "./modules/products/products.module";
+import { TextBlocksModule } from "./modules/text_blocks/textBlocks.module";
+import { UsersModule } from "./modules/users/users.module";
 
 @Module({
   imports: [

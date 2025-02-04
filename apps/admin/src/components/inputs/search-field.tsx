@@ -13,7 +13,7 @@ export const SearchField = ({
   const search = useDebounce(text, 500)
   useEffect(() => {
     onSearchTrigger(search[0])
-  }, [search[0]])
+  }, [search[0], onSearchTrigger])
   return (
     <Box>
       <S.TextFieldStyled

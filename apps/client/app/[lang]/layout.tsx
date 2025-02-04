@@ -1,6 +1,11 @@
-import { Footer, Header, Sidebar } from "@/app/[lang]/components/layout";
+import {
+  Footer,
+  Header,
+  MobileSidebar,
+  Sidebar,
+} from "@/app/[lang]/components/layout";
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import { type Locale } from "@/shared/configs/i18n-config";
+import type { Locale } from "@/shared/configs/i18n-config";
 import { DictionaryProvider } from "@/shared/hooks";
 import { TextBlocks } from "@/shared/models";
 import { getCollections, getTextByName } from "@/shared/service";
@@ -16,7 +21,10 @@ type Props = Readonly<{
   children: React.ReactNode;
 }>;
 
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const description = await getTextByName(TextBlocks.main_description);
   return {
     title: "Shop",
@@ -24,7 +32,10 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
   };
 }
 
-export default async function RootLayout({ params: { lang }, children }: Props) {
+export default async function RootLayout({
+  params: { lang },
+  children,
+}: Props) {
   const collections = await getCollections();
   const dictionary = await getDictionary(lang);
   const phones = await getTextByName(TextBlocks.phones);
@@ -38,8 +49,13 @@ export default async function RootLayout({ params: { lang }, children }: Props) 
             style={{ minWidth: "360px" }}
           >
             <Header lang={lang} phones={phones} />
-            <div className="flex min-h-screen pt-14">
+            <div className="flex min-h-screen pt-12">
               <Sidebar list={collections} dictionary={dictionary} lang={lang} />
+              <MobileSidebar
+                list={collections}
+                dictionary={dictionary}
+                lang={lang}
+              />
               {children}
             </div>
             <Footer dictionary={dictionary} lang={lang} />

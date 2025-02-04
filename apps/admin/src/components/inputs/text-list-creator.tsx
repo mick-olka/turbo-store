@@ -1,4 +1,4 @@
-import { Autocomplete, SxProps, TextField } from '@mui/material'
+import { Autocomplete, type SxProps, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 interface I_Props {
@@ -19,8 +19,8 @@ export const TextListCreator = ({ label, list, onListChange, options, sx }: I_Pr
     }
   }
   useEffect(() => {
-    onListChange && onListChange(value)
-  }, [value])
+    onListChange?.(value)
+  }, [value, onListChange])
   return (
     <Autocomplete
       multiple
