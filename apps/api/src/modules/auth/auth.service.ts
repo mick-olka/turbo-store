@@ -1,15 +1,18 @@
-import { ConfigService } from "@nestjs/config";
-import { ForbiddenException } from "@nestjs/common/exceptions";
 import { Injectable } from "@nestjs/common";
+import { ForbiddenException } from "@nestjs/common/exceptions";
+// biome-ignore lint/style/useImportType: <explanation>
+import { ConfigService } from "@nestjs/config";
+// biome-ignore lint/style/useImportType: <explanation>
 import { JwtService } from "@nestjs/jwt";
-
-import * as bcrypt from "bcrypt";
-
-import { SignInDto, SignUpDto } from "./dto";
-import { Tokens } from "./models";
+// biome-ignore lint/style/useImportType: <explanation>
 import { UsersService } from "../users/users.service";
-import { envNames } from "src/utils/constants";
+
+import * as bcrypt from "bcryptjs";
+
 import { UserRole } from "src/schemas/user.schema";
+import { envNames } from "src/utils/constants";
+import type { SignInDto, SignUpDto } from "./dto";
+import type { Tokens } from "./models";
 
 @Injectable()
 export class AuthService {
