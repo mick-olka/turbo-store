@@ -95,7 +95,7 @@ export const MobileSidebar = ({
     <>
       <button
         type="button"
-        className="fixed top-4 left-2 z-100 lg:hidden"
+        className="fixed top-4 left-2 z-50 lg:hidden"
         onClick={() => setIsOpen((v) => !v)}
       >
         <svg
