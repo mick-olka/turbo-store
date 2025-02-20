@@ -118,9 +118,10 @@ export const MobileSidebar = ({
       </button>
       <aside
         className={classnames(
-          "flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 pt-4 top-12 left-0 w-full h-full bg-white z-50",
+          "flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2 pt-4 top-12 left-0 w-full bg-white z-50 overflow-y-auto",
           isOpen ? "fixed" : "hidden"
         )}
+        style={{ height: "calc(100vh - 3rem)" }}
       >
         <SearchField
           lang={lang}
